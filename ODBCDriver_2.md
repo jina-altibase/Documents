@@ -81,7 +81,7 @@ Altibase® Application Development
 
 [[1.]{.underline} [개요]{.underline} 9](#개요)
 
-[[소개]{.underline} 10](#_WWID10000204)
+
 
 [[데이터 타입]{.underline} 11](#_WWID10000677)
 
