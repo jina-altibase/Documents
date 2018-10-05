@@ -9,7 +9,8 @@
 |---|---|
 | 1| 2 |
 
-colspan `>` or ` empty cell`:
+colspan `>` or ` empty cell`
+
 | a | b|
 |---|---|
 | > | 1|
