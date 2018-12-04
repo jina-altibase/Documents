@@ -16,3 +16,73 @@ colspan `>` or ` empty cell`
 | > | 1|
 |2 ||
 | ^ | 4|
+
+
+<table>
+<tbody>
+<tr>
+<td width="57">
+<p>OS</p>
+</td>
+<td width="166">
+<p>CPU</p>
+</td>
+<td width="153">
+<p>Version</p>
+</td>
+<td width="76">
+<p>Bit (Server)</p>
+</td>
+<td width="76">
+<p>Bit (Client)</p>
+</td>
+</tr>
+<tr>
+<td width="57">
+<p>AIX</p>
+</td>
+<td width="166">
+<p>PowerPC</p>
+</td>
+<td width="153">
+<p>6.1 tl03 and higher</p>
+</td>
+<td rowspan="3" width="76">
+<p>64-bit</p>
+<p>&nbsp;</p>
+</td>
+<td width="76">
+<p>64-bit</p>
+</td>
+</tr>
+<tr>
+<td width="57">
+<p>HP-UX</p>
+</td>
+<td width="166">
+<p>IA64</p>
+</td>
+<td width="153">
+<p>11.31 and higher</p>
+</td>
+<td width="76">
+<p>64-bit</p>
+</td>
+</tr>
+<tr>
+<td width="57">
+<p>LINUX</p>
+</td>
+<td width="166">
+<p>x86-64, PowerPC</p>
+<p>(GNU glibc 2.12 and higher)</p>
+</td>
+<td width="153">
+<p>redhat 6.0 and higher</p>
+</td>
+<td width="76">
+<p>64-bit</p>
+</td>
+</tr>
+</tbody>
+</table>
