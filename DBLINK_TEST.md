@@ -65,6 +65,10 @@ homepage: [http://www.altibase.com](http://www.altibase.com/)
 
 ### 이 매뉴얼에 대하여
 
+### 이 매뉴얼에 대하여2
+
+### 이 매뉴얼에 대하여3
+
 이 매뉴얼은 데이터베이스 링크(Database Link)의 개념 및 사용 방법에 대해서
 설명한다.
 
@@ -100,7 +104,7 @@ homepage: [http://www.altibase.com](http://www.altibase.com/)
 작성되었다. 이전 버전의 경우 해당 버전과 일치하는 데이터베이스 링크 매뉴얼을
 참고하도록 한다.
 
-#### 이 매뉴얼의 구성
+##### 이 매뉴얼의 구성
 
 이 매뉴얼은 다음과 같이 구성되어 있다.
 
