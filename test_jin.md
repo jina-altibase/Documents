@@ -170,7 +170,7 @@ Failover 관련 아래의 연결 속성을 제거하였다.
 
 
 
-[ㄹㄴㅇ](#link1)
+[directkey_mod_clause ::=](#link1)
 ㄹ
 ㄴㅇ
 ㄴ
