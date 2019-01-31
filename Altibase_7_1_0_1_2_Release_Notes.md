@@ -17,21 +17,22 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# **Altibase 7.1.0.1.2**
-
-**Release Notes**
+# **Altibase 7.1.0.1.2 Release Note**
 
 **(2018.02)**
+
+
 
 시스템 요구사항
 ---------------
 
-* 하드웨어 최저 사양
-  * 1GB RAM (권장: 2GB)
-  * 1 CPU (권장: 2 CPUs)
-  * 4GB 하드 디스크 여유 공간 (권장: 12GB)
+### 하드웨어 최저 사양
 
-* 운영 체제 및 플랫폼
+* 1GB RAM (권장: 2GB)
+* 1 CPU (권장: 2 CPUs)
+* 4GB 하드 디스크 여유 공간 (권장: 12GB)
+
+### 운영 체제 및 플랫폼
 
 Altibase 7.1.0.1.2는 아래 표에 나열된 운영체제와 플랫폼 상에서 운영 가능하다.
 
@@ -42,11 +43,11 @@ Altibase 7.1.0.1.2는 아래 표에 나열된 운영체제와 플랫폼 상에�
 | LINUX | x86-64, PowerPC (GNU glibc 2.12 and higher) | redhat 6.0 and higher | 64-bit       | 64-bit       |
 | LINUX | PowerPC8(LE) (GNU glibc 2.17)               | Redhat 7.2            | 64-bit       | 64-bit       |
 
-Java 버전: Altibase 7.1은 JDK 1.5 이상에서 호환된다.
+> Java 버전: Altibase 7.1은 JDK 1.5 이상에서 호환된다.
 
-Altibase 7.1부터 윈도우용 서버 및 클라이언트를 지원하지 않는다.  또한 32bit 클라이언트는 더 이상 지원하지 않는다.
+> Altibase 7.1부터 윈도우용 서버 및 클라이언트를 지원하지 않는다.  또한 32bit 클라이언트는 더 이상 지원하지 않는다.
 
-Linux PowerPC8_LE ( little endian) 플랫폼이 추가되었다.
+> Linux PowerPC8_LE ( little endian) 플랫폼이 추가되었다.
 
 
 
@@ -133,113 +134,109 @@ Fetch 구문에서 BULK COLLECT INTO기능을 지원한다.
 OPEN FOR구문에서 동적 SQL뿐만 아니라 정적 SQL을 사용할 수 있다. 정적SQL은 USING
 절과 함께 사용할 수 없다.
 
->   **자율 트랜잭션 및 예외 초기화 프라그마 지원**
+###### 자율 트랜잭션 및 예외 초기화 프라그마 지원
 
 컴파일 옵션을 지정하는 프라그마(Pragma)를 지원한다. 지원하는 프라그마는
 PSM객체가 트랜잭션 내에서 독립적으로 작동하는 자율 트랜잭션
 프라그마(Autonomous_Transaction Pragma)와 예외 변수를 Altibase의 에러 코드로
 초기화 할 수 있는 예외 초기화 프라그마(Exception_Init Pragma)가 있다.
 
->   **집계 함수 및 윈도우 함수 추가**
+###### 집계 함수 및 윈도우 함수 추가
 
 집계 함수와 윈도우 함수에서 사용할 수 있는 백분율 순위, 비율 분석 함수, 그룹의
 누적 분포도, 정렬 함수, 상관 계수, 표본 공분산, 모공 분산 등을 지원한다.
 
->   PERCENT_RANK
+* PERCENT_RANK
+* CUME_DIST
+* RATIO_TO_REPORT
+* NTILE
+* CORR
+* COVAR_SAMP
+* COVAR_POP
 
->   CUME_DIST
-
->   RATIO_TO_REPORT
-
->   NTILE
-
->   CORR
-
->   COVAR_SAMP
-
->   COVAR_POP
-
->   **사용자 잠금(user lock) 함수 추가**
+###### 사용자 잠금(user lock) 함수 추가
 
 사용자가 세션에서 사용자 잠금을 요청하거나 해제할 수 있는 함수가 지원된다.
 
-USER_LOCK_REQUEST  
-USER_LOCK_RELEASE
+* USER_LOCK_REQUEST  
+* USER_LOCK_RELEASE
 
->   **기타 함수 추가**
+###### 기타 함수 추가
 
 현재 세션에 접속한 환경 정보(context)를 반환하는 함수가 지원된다.
 
->   SYS_CONTEXT
+* SYS_CONTEXT
 
 VARBYTE 타입의 문자열을 인코딩 또는 디코딩하여 반환하는 함수를 아래와 같이
 지원한다.
 
->   BASE64_DECODE  
->   BASE64_ENCODE
+* BASE64_DECODE  
+* BASE64_ENCODE
 
 Quoted printable형태로 변환된 VARBYTE 타입의 문자열을 디코딩 또는 인코딩하여
 VARBAYTE 타입의 문자열로 반환하는 함수를 아래와 같이 지원한다.
 
->    QUOTE_PRINTABLE_DECODE  
->    QUOTE_PRINTABLE_ENCODE
+*  QUOTE_PRINTABLE_DECODE  
+* QUOTE_PRINTABLE_ENCODE
 
 특정 스키마에 소속되지 않고 전체 데이터베이스 수준에서 관리되는 알티베이스
 파이프(PIPE)방식의 함수를 추가하였다. 추가된 함수는 아래와 같다.
 
->    MSG_CREATE_QUEUE  
->    MSG_DROP_QUEUE  
->    MSG_SND_QUEUE  
->    MSG_RCV_QUEUE
+* MSG_CREATE_QUEUE  
+* MSG_DROP_QUEUE  
+* MSG_SND_QUEUE  
+* MSG_RCV_QUEUE
 
->   **LOCK TABLE에 'UNTIL NEXT DDL' 구문 지원**
+###### LOCK TABLE에 'UNTIL NEXT DDL' 구문 지원
 
 세션이 NON-AUTOCOMMIT 모드일 때 테이블에 DDL(데이터 정의어)을 수행하면, DDL이
 실행되기 직전에 자동으로 커밋을 수행한다. 그러나 lock_mode에서 EXCLUSIVE 모드를
 지정하면, DDL을 수행하기 직전에 자동으로 커밋을 수행하지 않는다.
 
->   **ENABLE, DISABLE 지원**
+###### 트리거 생성시 ENABLE, DISABLE 지원
 
-트리거 생성할 때 활성화(enable) 상태와 비활성화(disable) 상태를 설정할 수 있다.
-ALTER TIGGER 구문으로 상태를 변경할 수 있다
+트리거 생성할 때 활성화(enable) 상태와 비활성화(disable) 상태를 설정할 수 있다. 이후 ALTER TRIGGER 구문으로 ENABLE/DISABLE 상태를 변경할 수 있다.
 
-집계 함수 FIRST, LAST 추가
+###### 집계 함수 FIRST, LAST 추가
 
 Order by에 의해 정렬된 데이터에 대해, 첫 번째(FIRST) 또는 마지막 부분(LAST)을
 집계하는 함수가 추가되었다. 함께 사용할 수 있는 함수는 MIN, MAX, SUM, AVG,
 COUNT, VARIANCE, STDDEV 이다.
 
-KEEP (DENSE_RANK FIRST ORDER BY )
+* KEEP (DENSE_RANK FIRST ORDER BY )
 
-KEEP (DENSE_RANK LAST ORDER BY)
+* KEEP (DENSE_RANK LAST ORDER BY)
 
-날짜형 데이터 형식 지원
+###### 날짜형 데이터 형식 지원
 
 ROUND(date), TRUNC(date) 등의 날짜 함수에서 아래의 날짜형 데이터 타입을
-지원한다.
+지원한다. 
 
->   SCC, CC, SYYYY, YYYY, YYY, YY, Y, Q, MON, MM, RM, WW, DDD, DD, J, HH, HH12,
->   HH24, MI
+* SCC, CC, SYYYY, YYYY, YYY, YY, Y, Q, MON, MM, RM, WW, DDD, DD, J, HH, HH12,
+  HH24, MI
 
-공간 함수 REVESE , MAKEENVELOPE 추가
+###### 공간 함수 REVERSE , MAKEENVELOPE 추가
 
-REVERSE(GEOMETRY): 입력한 공간 객체의 포인트를 역순으로 변경한다.
-MAKEENVELOPE(X1, Y1, X2, Y2) : 입력한 Double 형 변수 4개에 해당하는 LINESTRING(
-X1 Y1, X2 Y2 )를 ENVELOPE 수행한 결과인 POLYGON( X1 Y1, X2 Y1, X2 Y2, X1 Y2, X1
-Y1 )로 반환한다.
+* REVERSE(GEOMETRY): 입력한 공간 객체의 포인트를 역순으로 변경한다.
+* MAKEENVELOPE(X1, Y1, X2, Y2) : 입력한 Double 형 변수 4개에 해당하는 LINESTRING(
+  X1 Y1, X2 Y2 )를 ENVELOPE 수행한 결과인 POLYGON( X1 Y1, X2 Y1, X2 Y2, X1 Y2, X1
+  Y1 )로 반환한다.
 
-숫자 함수(Numeric Function) 추가
+###### 숫자 함수(Numeric Function) 추가
 
-NUMAND, NUMOR, NUMSHIFT, NUMXOR 함수가 추가되었다.
+* NUMAND
+* NUMOR
+* NUMSHIFT
+* NUMXOR
 
-2.1.2.2 이중화 기능개선
+##### 2.1.3.2 이중화 기능개선
 
-이중화 제약 조건 완화
+###### 이중화 제약 조건 완화
 
 양쪽 서버의 복제할 테이블의 컬럼타입, 프라이머리키, NOT NULL 제약이 동일하지
 않아도 이중화가 지원된다.
 
-SQL 반영 모드 (SQL APPLY MODE)
+###### SQL 반영 모드 (SQL APPLY MODE)
 
 지역서버와 원격서버의 테이블스키마 정보가 다를 경우, 원격 서버에 XLog를 SQL로
 변환하여 반영할 수 있는 기능을 제공한다.
@@ -248,22 +245,18 @@ REPLICATION_SQL_APPLY_ENABLE 가 추가되었다.
 
 REPLICATION_SQL_APPLY_ENABLE 프로퍼티 값을 1로 설정하여 사용할 수 있다.
 
--   제약사항
-
-LAZY 모드에서만 SQL 반영모드로 동작한다. 테이블에 보안칼럼이 존재하면 SQL
-반영모드로 동작하지 않는다.
+> 제약사항 : LAZY 모드에서만 SQL 반영모드로 동작한다. 테이블에 보안칼럼이 존재하면 SQL
+> 반영모드로 동작하지 않는다.
 
 이중화 대상 테이블에 수행 가능한 DDL 추가
 
 REPLICATION_DDL_ENABLE_LEVEL 프로퍼티를 추가하여, DDL 구문
 수행을REPLICATION_DDL_ENABLE_LEVEL에 따라 허용하도록 하였다.
 
--   제약사항
+>  제약사항 : 이중화 복구 옵션이 지정된 테이블에는 DDL 문을 실행할 수 없다. 또한, 이중화가
+> EAGER모드로 실행 중일 때도 DDL문을 실행할 수 없다.
 
-이중화 복구 옵션이 지정된 테이블에는 DDL 문을 실행할 수 없다. 또한, 이중화가
-EAGER모드로 실행 중일 때도 DDL문을 실행할 수 없다.
-
-2.1.2.3 응용 프로그램 개발 인터페이스 확장 및 개선
+##### 2.1.3.3 응용 프로그램 개발 인터페이스 확장 및 개선
 
 PDO 드라이버
 
