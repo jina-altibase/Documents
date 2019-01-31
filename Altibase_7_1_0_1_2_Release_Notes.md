@@ -116,19 +116,19 @@ ALTER TABLE 구문을 이용하여, 테이블의 테이블스페이스를 다른
 
 파티션드 테이블에 파티션 단위로 COMPACT 및 AGING구문을 수행할 수 있다.
 
->   **NOWAIT, WAIT 지원**
+###### NOWAIT, WAIT 지원
 
 INSERT, FOR UPDATE, DEQUEUE 문에 NOWAIT, WAIT옵션을 지원한다.
 
->   **큐 생성시 사용자 정의 칼럼 지원**
+###### 큐 생성시 사용자 정의 칼럼 지원
 
 큐를 생성할 때 사용자가 칼럼을 정의할 수 있다.
 
->   **FETCH구문에 BULK COLLECTION 지원**
+###### FETCH구문에 BULK COLLECTION 지원
 
 Fetch 구문에서 BULK COLLECT INTO기능을 지원한다.
 
->   **커서 사용시 정적 SQL 지원**
+###### 커서 사용시 정적 SQL 지원
 
 OPEN FOR구문에서 동적 SQL뿐만 아니라 정적 SQL을 사용할 수 있다. 정적SQL은 USING
 절과 함께 사용할 수 없다.
