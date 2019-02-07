@@ -1147,4 +1147,4 @@ https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/READM
 
 #### 설치
 
-Altibase Installation Guide 참고
+[Altibase Installation Guide](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/Installation.md) 참고
