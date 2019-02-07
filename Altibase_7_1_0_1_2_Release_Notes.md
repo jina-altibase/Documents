@@ -18,9 +18,7 @@
           - [COMPACT, AGING 구문 확장](#compact-aging-%EA%B5%AC%EB%AC%B8-%ED%99%95%EC%9E%A5)
           - [NOWAIT, WAIT 지원](#nowait-wait-%EC%A7%80%EC%9B%90)
           - [큐 생성시 사용자 정의 칼럼 지원](#%ED%81%90-%EC%83%9D%EC%84%B1%EC%8B%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%B9%BC%EB%9F%BC-%EC%A7%80%EC%9B%90)
-          - [FETCH구문에 BULK COLLECTION 지원](#fetch%EA%B5%AC%EB%AC%B8%EC%97%90-bulk-collection-%EC%A7%80%EC%9B%90)
-          - [커서 사용시 정적 SQL 지원](#%EC%BB%A4%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%8B%9C-%EC%A0%95%EC%A0%81-sql-%EC%A7%80%EC%9B%90)
-          - [자율 트랜잭션 및 예외 초기화 프라그마 지원](#%EC%9E%90%EC%9C%A8-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EB%B0%8F-%EC%98%88%EC%99%B8-%EC%B4%88%EA%B8%B0%ED%99%94-%ED%94%84%EB%9D%BC%EA%B7%B8%EB%A7%88-%EC%A7%80%EC%9B%90)
+          - [Table Function 지원](#table-function-%EC%A7%80%EC%9B%90)
           - [집계 함수 및 윈도우 함수 추가](#%EC%A7%91%EA%B3%84-%ED%95%A8%EC%88%98-%EB%B0%8F-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%95%A8%EC%88%98-%EC%B6%94%EA%B0%80)
           - [사용자 잠금(user lock) 함수 추가](#%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9E%A0%EA%B8%88user-lock-%ED%95%A8%EC%88%98-%EC%B6%94%EA%B0%80)
           - [기타 함수 추가](#%EA%B8%B0%ED%83%80-%ED%95%A8%EC%88%98-%EC%B6%94%EA%B0%80)
@@ -46,9 +44,12 @@
           - [UTL_COPYSWAP 시스템 패키지 제공](#utl_copyswap-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%A0%9C%EA%B3%B5)
           - [UTL_SMTP 패키지 지원](#utl_smtp-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%A7%80%EC%9B%90)
           - [기타 시스템 정의 저장 패키지 추가](#%EA%B8%B0%ED%83%80-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%A0%95%EC%9D%98-%EC%A0%80%EC%9E%A5-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%B6%94%EA%B0%80)
+          - [커서 사용시 정적 SQL 지원](#%EC%BB%A4%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%8B%9C-%EC%A0%95%EC%A0%81-sql-%EC%A7%80%EC%9B%90)
+          - [FETCH 커서 구문에서 BULK COLLECTION INTO 지원](#fetch-%EC%BB%A4%EC%84%9C-%EA%B5%AC%EB%AC%B8%EC%97%90%EC%84%9C-bulk-collection-into-%EC%A7%80%EC%9B%90)
           - [NOCOPY 옵션 지원](#nocopy-%EC%98%B5%EC%85%98-%EC%A7%80%EC%9B%90)
           - [패키지 서브프로그램 다중정의(overloading) 지원](#%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%9C%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%8B%A4%EC%A4%91%EC%A0%95%EC%9D%98overloading-%EC%A7%80%EC%9B%90)
           - [PSM 문자형 데이터 크기 결정](#psm-%EB%AC%B8%EC%9E%90%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%81%AC%EA%B8%B0-%EA%B2%B0%EC%A0%95)
+          - [PRAGMA AUTONOMOUS_TRANSACTION, PRAGMA EXCEPTION_INIT 구문 지원](#pragma-autonomous_transaction-pragma-exception_init-%EA%B5%AC%EB%AC%B8-%EC%A7%80%EC%9B%90)
         - [2.1.3.6 클라이언트 툴](#2136-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%ED%88%B4)
           - [JDBC Adapter 지원](#jdbc-adapter-%EC%A7%80%EC%9B%90)
           - [SQuirreL SQL 클라이언트 연동](#squirrel-sql-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%97%B0%EB%8F%99)
@@ -80,10 +81,9 @@
         - [Query Execution 안정성 개선](#query-execution-%EC%95%88%EC%A0%95%EC%84%B1-%EA%B0%9C%EC%84%A0)
       - [2.1.6 기타](#216-%EA%B8%B0%ED%83%80)
         - [2.1.6.1 그 외 변경사항](#2161-%EA%B7%B8-%EC%99%B8-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD)
-          - [Table Function 지원](#table-function-%EC%A7%80%EC%9B%90)
           - [동적 SQL의 메소드4추가](#%EB%8F%99%EC%A0%81-sql%EC%9D%98-%EB%A9%94%EC%86%8C%EB%93%9C4%EC%B6%94%EA%B0%80)
           - [Hibernate와 연동지원](#hibernate%EC%99%80-%EC%97%B0%EB%8F%99%EC%A7%80%EC%9B%90)
-          - [로드밸런스 로깅 기능 추가](#%EB%A1%9C%EB%93%9C%EB%B0%B8%EB%9F%B0%EC%8A%A4-%EB%A1%9C%EA%B9%85-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80)
+          - [로드밸런서(Load Balancer) 로깅(Logging) 기능 추가](#%EB%A1%9C%EB%93%9C%EB%B0%B8%EB%9F%B0%EC%84%9Cload-balancer-%EB%A1%9C%EA%B9%85logging-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80)
           - [Autoextend 모드 ON에서 테이블스페이스의 자동확장 크기 변경을 지원](#autoextend-%EB%AA%A8%EB%93%9C-on%EC%97%90%EC%84%9C-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9E%90%EB%8F%99%ED%99%95%EC%9E%A5-%ED%81%AC%EA%B8%B0-%EB%B3%80%EA%B2%BD%EC%9D%84-%EC%A7%80%EC%9B%90)
           - [JRE 1.5 지원](#jre-15-%EC%A7%80%EC%9B%90)
           - [윈도우 플랫폼 지원 중단](#%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EC%A7%80%EC%9B%90-%EC%A4%91%EB%8B%A8)
@@ -223,14 +223,10 @@ INSERT, FOR UPDATE, DEQUEUE 문에 NOWAIT, WAIT옵션을 지원한다.
 
 큐를 생성할 때 사용자가 칼럼을 정의할 수 있다.
 
-###### FETCH구문에 BULK COLLECTION 지원
+###### Table Function 지원
 
-Fetch 구문에서 BULK COLLECT INTO기능을 지원한다.
-
-###### 커서 사용시 정적 SQL 지원
-
-OPEN FOR구문에서 동적 SQL뿐만 아니라 정적 SQL을 사용할 수 있다. 정적SQL은 USING
-절과 함께 사용할 수 없다.
+TABLE FUNCTION은 사용자 정의 함수에서 반환하는 associative array 타입이나 record
+타입의 값을 테이블 형태로 변환하여 출력한다.
 
 ###### 집계 함수 및 윈도우 함수 추가
 
@@ -488,6 +484,16 @@ EMAIL을 사용할 수 있도록 SMTP 프로토콜을 수행하는 UTL_SMTP 저�
 
   저장 프로시저에서 TCP 접속을 제어한다.
 
+###### 커서 사용시 정적 SQL 지원
+
+OPEN FOR구문에서 동적 SQL뿐만 아니라 정적 SQL을 사용할 수 있다. 
+
+> 정적SQL은 USING 절과 함께 사용할 수 없다.
+
+###### FETCH 커서 구문에서 BULK COLLECTION INTO 지원
+
+Fetch 구문에서 BULK COLLECT INTO기능을 지원한다. 또한 limit 기능을 지원하여, BULK COLLECT 절에서 반환되는 행의 개수를 조정할 수 있다.
+
 ###### NOCOPY 옵션 지원
 
 저장 프로시저와 저장 함수에서 사용되는 매개 변수 및 지역 변수에 NOCOPY옵션을 지원한다. 이 옵션은 참조(reference)값을 활용하여 인자를 할당하는 방식이다. 
@@ -517,12 +523,12 @@ EMAIL을 사용할 수 있도록 SMTP 프로토콜을 수행하는 UTL_SMTP 저�
 * NVARCHAR_DEFAULT_PRECISION  
 * VARCHAR_DEFAULT_PRECISION
 
-###### pragma autonomous_transaction , pragma exception_init 구문 지원
+###### PRAGMA AUTONOMOUS_TRANSACTION, PRAGMA EXCEPTION_INIT 구문 지원
 
 저장 프로시저, 함수 및 저장 패키지 생성 구문에서 프라그마(Pragma) 구문을 지원한다. 
 
-* pragma autonomous_transaction : 자율 트랜잭션 프라그마. PSM 객체가 트랜잭션 내에서 동작하는 방식을 변경할 수 있다.
-* pragma exception_init : 예외 초기화 프라그마. 사용자가 예외 변수를 Altibase의 에러코드로 초기화 할 수 있는 기능이다.
+* PRAGMA AUTONOMOUS_TRANSACTION : 자율 트랜잭션 프라그마. PSM 객체가 트랜잭션 내에서 동작하는 방식을 변경할 수 있다.
+* PRAGMA EXCEPTION_INIT : 예외 초기화 프라그마. 사용자가 예외 변수를 Altibase의 에러코드로 초기화 할 수 있는 기능이다.
 
 ##### 2.1.3.6 클라이언트 툴
 
@@ -706,11 +712,6 @@ Query Execution 단계에서의 안정성이 개선되었다.
 
 ##### 2.1.6.1 그 외 변경사항
 
-###### Table Function 지원
-
-TABLE FUNCTION은 사용자 정의 함수에서 반환하는 associative array 타입이나 record
-타입의 값을 테이블 형태로 변환하여 출력한다. 이 기능은 함수가 아니다.
-
 ###### 동적 SQL의 메소드4추가
 
 동적SQL에 메소드4를 추가한다. 이 메소드는 프로그램 실행 중에 사용자가 파라미터 마커의 값을 입력할 수 있다. BIND VARIABLES, SELECT LIST, ARRAY SIZE SET함수가 추가되었고 OPEN, FETCH, EXECUTE함수가 개선되었다.
@@ -721,7 +722,7 @@ Altibase가 비표준SQL을 제공할 수 있도록 Hibernate의 dialect클래�
 
 > Hibernate 공식 라이브러리는 AltibaseDialect.class을 포함하지 않기 때문에, AltibaseDialect.java파일을 컴파일하고 포팅해야 사용할 수 있다.
 
-###### 로드밸런스 로깅 기능 추가
+###### 로드밸런서(Load Balancer) 로깅(Logging) 기능 추가
 
 로드밴런서의 주요동작에 대해서 로그를 기록하는 기능이 추가되었다. LB_MSGLOG_FLAG 프로퍼티를 통해 로그의 레벨을 설정하고, \$ALTIBASE_HOME/trc/altibase_lb.log 에 관련 메시지가 기록된다. 
 
