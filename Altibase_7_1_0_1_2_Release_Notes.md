@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [**Altibase 7.1.0.1.2 Release Note**](#altibase-71012-release-note)
+- [Altibase 7.1.0.1.2 Release Note](#altibase-71012-release-note)
   - [시스템 요구사항](#%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD)
     - [하드웨어 최저 사양](#%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4-%EC%B5%9C%EC%A0%80-%EC%82%AC%EC%96%91)
     - [운영 체제 및 플랫폼](#%EC%9A%B4%EC%98%81-%EC%B2%B4%EC%A0%9C-%EB%B0%8F-%ED%94%8C%EB%9E%AB%ED%8F%BC)
@@ -33,6 +33,7 @@
         - [2.1.3.2 이중화 기능개선](#2132-%EC%9D%B4%EC%A4%91%ED%99%94-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0)
           - [이중화 제약 조건 완화](#%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A0%9C%EC%95%BD-%EC%A1%B0%EA%B1%B4-%EC%99%84%ED%99%94)
           - [SQL 반영 모드 (SQL APPLY MODE)](#sql-%EB%B0%98%EC%98%81-%EB%AA%A8%EB%93%9C-sql-apply-mode)
+          - [이중화 대상 테이블에 수행 가능한 DDL 추가](#%EC%9D%B4%EC%A4%91%ED%99%94-%EB%8C%80%EC%83%81-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%88%98%ED%96%89-%EA%B0%80%EB%8A%A5%ED%95%9C-ddl-%EC%B6%94%EA%B0%80)
         - [2.1.3.3 DBLink Two-Phase Commit (2PC) Level 지원 및 기능개선](#2133-dblink-two-phase-commit-2pc-level-%EC%A7%80%EC%9B%90-%EB%B0%8F-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0)
           - [Two-Phase Commit(2PC) Level 지원](#two-phase-commit2pc-level-%EC%A7%80%EC%9B%90)
           - [DBLink 에서 일괄처리(Batch) 지원 REMOTE 함수](#dblink-%EC%97%90%EC%84%9C-%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%ACbatch-%EC%A7%80%EC%9B%90-remote-%ED%95%A8%EC%88%98)
@@ -338,20 +339,20 @@ ROUND(date), TRUNC(date) 등의 날짜 함수에서 아래의 날짜형 데이�
 지역서버와 원격서버의 테이블스키마 정보가 다를 경우, 원격 서버에 XLog를 SQL로
 변환하여 반영할 수 있는 기능을 제공한다.
 
-REPLICATION_SQL_APPLY_ENABLE 가 추가되었다.
+REPLICATION_SQL_APPLY_ENABLE 가 추가되었으며, REPLICATION_SQL_APPLY_ENABLE 프로퍼티 값을 1로 설정하여 사용할 수 있다.
 
-REPLICATION_SQL_APPLY_ENABLE 프로퍼티 값을 1로 설정하여 사용할 수 있다.
+> 제약사항 : 
+>
+> LAZY 모드에서만 SQL 반영모드로 동작한다. 테이블에 보안칼럼이 존재하면 SQL 반영모드로 동작하지 않는다.
 
-> 제약사항 : LAZY 모드에서만 SQL 반영모드로 동작한다. 테이블에 보안칼럼이 존재하면 SQL
-> 반영모드로 동작하지 않는다.
+###### 이중화 대상 테이블에 수행 가능한 DDL 추가
 
-이중화 대상 테이블에 수행 가능한 DDL 추가
+REPLICATION_DDL_ENABLE_LEVEL 프로퍼티를 추가하여, DDL 구문 수행을REPLICATION_DDL_ENABLE_LEVEL에 따라 허용하도록 하였다.
 
-REPLICATION_DDL_ENABLE_LEVEL 프로퍼티를 추가하여, DDL 구문
-수행을REPLICATION_DDL_ENABLE_LEVEL에 따라 허용하도록 하였다.
-
->  제약사항 : 이중화 복구 옵션이 지정된 테이블에는 DDL 문을 실행할 수 없다. 또한, 이중화가
-> EAGER모드로 실행 중일 때도 DDL문을 실행할 수 없다.
+>  제약사항 : 
+>
+>  이중화 복구 옵션이 지정된 테이블에는 DDL 문을 실행할 수 없다. 또한, 이중화가
+>  EAGER모드로 실행 중일 때도 DDL문을 실행할 수 없다.
 
 ##### 2.1.3.3 DBLink Two-Phase Commit (2PC) Level 지원 및 기능개선
 
@@ -829,7 +830,11 @@ Altibase 7.1부터 샤딩 기능을 제공한다.
 #### 프로퍼티
 
 Altibase 7.1.0.1.2 에서는 아래의 프로퍼티들이 추가, 변경, 삭제되었다.  
-각 프로퍼티에 대한 자세한 내용은 General Reference를 참고하기 바란다.
+각 프로퍼티에 대한 자세한 내용은 *
+
+[General]: https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md
+
+*를 참고하기 바란다.
 
 ##### 새로운 프로퍼티
 
@@ -1020,7 +1025,11 @@ Altibase 7.1.0.1.2 에서는 아래의 프로퍼티들이 추가, 변경, 삭제
 
 아래의 성능 뷰 들이 추가되었다.  
 
-각 성능 뷰에 대한 자세한 내용은 *General Reference*를 참고하기 바란다.
+각 성능 뷰에 대한 자세한 내용은 
+
+[*General]: https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md
+
+를 참고하기 바란다.
 
 ##### 새로운 성능 뷰
 
@@ -1112,13 +1121,7 @@ Altibase 7.1.0.1.2 에서는 아래의 프로퍼티들이 추가, 변경, 삭제
 
 | Column name     | 변경내역                                                     |
 | --------------- | ------------------------------------------------------------ |
-| ISOLATION_LEVEL | 추가됨 (INTEGER) 트랜잭션의 격리 수준(isolation level)</br>0: READ COMMITED</br> 1: REPEATABLE READ </br> 2: SERIALIZABLE |
-
--   0: READ COMMITED
-
--   1: REPEATABLE READ
-
--   2: SERIALIZABLE
+| ISOLATION_LEVEL | 추가됨 (INTEGER) </br>트랜잭션의 격리 수준(isolation level)</br>0: READ COMMITED</br> 1: REPEATABLE READ </br> 2: SERIALIZABLE |
 
 ### 2.3 패키지
 
