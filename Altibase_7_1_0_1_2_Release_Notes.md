@@ -232,13 +232,6 @@ Fetch 구문에서 BULK COLLECT INTO기능을 지원한다.
 OPEN FOR구문에서 동적 SQL뿐만 아니라 정적 SQL을 사용할 수 있다. 정적SQL은 USING
 절과 함께 사용할 수 없다.
 
-###### 자율 트랜잭션 및 예외 초기화 프라그마 지원
-
-컴파일 옵션을 지정하는 프라그마(Pragma)를 지원한다. 지원하는 프라그마는
-PSM객체가 트랜잭션 내에서 독립적으로 작동하는 자율 트랜잭션
-프라그마(Autonomous_Transaction Pragma)와 예외 변수를 Altibase의 에러 코드로
-초기화 할 수 있는 예외 초기화 프라그마(Exception_Init Pragma)가 있다.
-
 ###### 집계 함수 및 윈도우 함수 추가
 
 집계 함수와 윈도우 함수에서 사용할 수 있는 백분율 순위, 비율 분석 함수, 그룹의
@@ -523,6 +516,13 @@ EMAIL을 사용할 수 있도록 SMTP 프로토콜을 수행하는 UTL_SMTP 저�
 * NCHAR_DEFAULT_PRECISION  
 * NVARCHAR_DEFAULT_PRECISION  
 * VARCHAR_DEFAULT_PRECISION
+
+###### pragma autonomous_transaction , pragma exception_init 구문 지원
+
+저장 프로시저, 함수 및 저장 패키지 생성 구문에서 프라그마(Pragma) 구문을 지원한다. 
+
+* pragma autonomous_transaction : 자율 트랜잭션 프라그마. PSM 객체가 트랜잭션 내에서 동작하는 방식을 변경할 수 있다.
+* pragma exception_init : 예외 초기화 프라그마. 사용자가 예외 변수를 Altibase의 에러코드로 초기화 할 수 있는 기능이다.
 
 ##### 2.1.3.6 클라이언트 툴
 
@@ -830,11 +830,7 @@ Altibase 7.1부터 샤딩 기능을 제공한다.
 #### 프로퍼티
 
 Altibase 7.1.0.1.2 에서는 아래의 프로퍼티들이 추가, 변경, 삭제되었다.  
-각 프로퍼티에 대한 자세한 내용은 *
-
-[General]: https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md
-
-*를 참고하기 바란다.
+각 프로퍼티에 대한 자세한 내용은 [*General Reference*](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md) 를 참고하기 바란다.
 
 ##### 새로운 프로퍼티
 
@@ -954,65 +950,35 @@ Altibase 7.1.0.1.2 에서는 아래의 프로퍼티들이 추가, 변경, 삭제
 ##### 삭제된 프로퍼티
 
 -   CHAR_DEFAULT_PRECISION
-
 -   NCHAR_DEFAULT_PRECISION
-
 -   VARCHAR_DEFAULT_PRECISION
-
 -   NVARCHAR_DEFAULT_PRECISION
-
 -   DATAPORT_FILE_DIRECTORY
-
 -   DATAPORT_IMPORT_COMMIT_UNIT
-
 -   DATAPORT_IMPORT_STATEMENT_UNIT
-
 -   DR_ENABLE
-
 -   DR_RM_PORT_NO
-
 -   DR_PORT_NO
-
 -   DR_CONNECT_TIMEOUT
-
 -   DR_RECEIVE_TIMEOUT
-
 -   DR_SENDER_SLEEP_TIME
-
 -   DR_SENDER_NEXT_CONNECTION_TIMEOUT
-
 -   DR_HBT_DETECT_TIME
-
 -   DR_HBT_DETECT_HIGHWATER_MARK
-
 -   DR_CONNECT_RECEIVE_TIMEOUT
-
 -   DR PREFETCH_LOGFILE_COUNT
-
 -   DR_KEEP_ALIVE_CNT
-
 -   DR_MAX_LOGFILE
-
 -   DR_STANDBY_WAIT_TIMEOUT
-
 -   IPC_PORT_NO
-
 -   MAX_THREAD_COUNT
-
 -   SHM_DB_KEY
-
 -   SHM_PAGE_COUNT_PER_KEY
-
 -   SHM_POLICY
-
 -   SHM_MAX_SIZE
-
 -   SHM_STARTUP_SIZE
-
 -   SHM_CHUNK_SIZE
-
 -   SHM_CHUNK_ALIGN_SIZE
-
 -   STARTUP_SHM_CHUNK_SIZE
 
 #### 메타 테이블
@@ -1025,11 +991,7 @@ Altibase 7.1.0.1.2 에서는 아래의 프로퍼티들이 추가, 변경, 삭제
 
 아래의 성능 뷰 들이 추가되었다.  
 
-각 성능 뷰에 대한 자세한 내용은 
-
-[*General]: https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md
-
-를 참고하기 바란다.
+각 성능 뷰에 대한 자세한 내용은 [*General Reference*](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md)를 참고하기 바란다. 
 
 ##### 새로운 성능 뷰
 
