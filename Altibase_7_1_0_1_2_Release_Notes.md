@@ -37,7 +37,7 @@
           - [Two-Phase Commit(2PC) Level 지원](#two-phase-commit2pc-level-%EC%A7%80%EC%9B%90)
           - [DBLink 에서 일괄처리(Batch) 지원 REMOTE 함수](#dblink-%EC%97%90%EC%84%9C-%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%ACbatch-%EC%A7%80%EC%9B%90-remote-%ED%95%A8%EC%88%98)
         - [2.1.3.4 응용 프로그램 개발 인터페이스 확장 및 개선](#2134-%EC%9D%91%EC%9A%A9-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EA%B0%9C%EB%B0%9C-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%ED%99%95%EC%9E%A5-%EB%B0%8F-%EA%B0%9C%EC%84%A0)
-          - [PDO 드라이버](#pdo-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84)
+          - [PDO 드라이버 지원](#pdo-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%A7%80%EC%9B%90)
           - [내장 SQL에서 FOR절에서 FETCH 구문 지원](#%EB%82%B4%EC%9E%A5-sql%EC%97%90%EC%84%9C-for%EC%A0%88%EC%97%90%EC%84%9C-fetch-%EA%B5%AC%EB%AC%B8-%EC%A7%80%EC%9B%90)
         - [2.1.3.5 내장 패키지 및 함수](#2135-%EB%82%B4%EC%9E%A5-%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B0%8F-%ED%95%A8%EC%88%98)
           - [저장 프로시저에서 AUTHID 지원](#%EC%A0%80%EC%9E%A5-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80%EC%97%90%EC%84%9C-authid-%EC%A7%80%EC%9B%90)
@@ -49,9 +49,9 @@
           - [패키지 서브프로그램 다중정의(overloading) 지원](#%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%9C%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%8B%A4%EC%A4%91%EC%A0%95%EC%9D%98overloading-%EC%A7%80%EC%9B%90)
           - [PSM 문자형 데이터 크기 결정](#psm-%EB%AC%B8%EC%9E%90%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%81%AC%EA%B8%B0-%EA%B2%B0%EC%A0%95)
         - [2.1.3.6 클라이언트 툴](#2136-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%ED%88%B4)
-          - [JDBC Adapter](#jdbc-adapter)
+          - [JDBC Adapter 지원](#jdbc-adapter-%EC%A7%80%EC%9B%90)
           - [SQuirreL SQL 클라이언트 연동](#squirrel-sql-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%97%B0%EB%8F%99)
-          - [Shard Manager](#shard-manager)
+          - [Shard Manager 지원](#shard-manager-%EC%A7%80%EC%9B%90)
           - [altimon.sh 개선](#altimonsh-%EA%B0%9C%EC%84%A0)
           - [iSQL 호스트 변수 선언에서 INPUT/OUTPUT 타입관련 동작 변경](#isql-%ED%98%B8%EC%8A%A4%ED%8A%B8-%EB%B3%80%EC%88%98-%EC%84%A0%EC%96%B8%EC%97%90%EC%84%9C-inputoutput-%ED%83%80%EC%9E%85%EA%B4%80%EB%A0%A8-%EB%8F%99%EC%9E%91-%EB%B3%80%EA%B2%BD)
           - [isql 명령어 추가](#isql-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%B6%94%EA%B0%80)
@@ -392,10 +392,9 @@ DBLINK_GLOBAL_TRANSACTION_LEVEL프로퍼티를 Two-Phase Commit Level로 설정�
 
 ##### 2.1.3.4 응용 프로그램 개발 인터페이스 확장 및 개선
 
-###### PDO 드라이버
+###### PDO 드라이버 지원
 
-PHP 응용프로그램에서 Altibase와 연동을 위하여 Altibase PDO 드라이버가
-추가되었다.
+PHP 응용프로그램에서 Altibase와 연동을 위하여 Altibase PDO 드라이버가 추가되었다.
 
 ###### 내장 SQL에서 FOR절에서 FETCH 구문 지원
 
@@ -405,14 +404,12 @@ PHP 응용프로그램에서 Altibase와 연동을 위하여 Altibase PDO 드라
 
 ###### 저장 프로시저에서 AUTHID 지원
 
-저장 프로시저 내의 프로시저, 함수, 패키지를 실행하는 권한을 명시할 수 있다.
-
-CREATE PROCEDURE, CREATE FUNCTION, CREATE PACKAGE 구문에서 다음의 절을 추가하여
+저장 프로시저 내의 프로시저, 함수, 패키지를 실행하는 권한을 명시할 수 있다. CREATE PROCEDURE, CREATE FUNCTION, CREATE PACKAGE 구문에서 다음의 절을 추가하여
 명시할 수 있다.
 
-AUTHID CURRENT_USER : 사용자 권한으로 실행하도록 명시
+* AUTHID CURRENT_USER : 사용자 권한으로 실행하도록 명시
 
-AUTHID DEFINER : 생성자의 권한으로 실행할 것을 명시
+* AUTHID DEFINER : 생성자의 권한으로 실행할 것을 명시
 
 ###### STANDARD시스템 패키지 제공
 
@@ -454,50 +451,61 @@ EMAIL을 사용할 수 있도록 SMTP 프로토콜을 수행하는 UTL_SMTP 저�
 
 그 외에 Altibase에서 추가된 시스템 정의 저장 패키지는 아래와 같다.
 
--   DBMS_ALERT: 데이터베이스에서 발생하는 이벤트를 다른 사용자에게 알리는
-    기능으로 인터페이스로 제공한다.
--   DBMS_APPLICATION_INFO  
-    클라이언트의 애플리케이션 정보를 관리하기 위해 성능 뷰의 값을 설정한다.
--   DBMS_CONCURRENT_EXEC  
-    프로시저를 동시에 실행할 수 있다.
--   DBMS_LOCK  
-    사용자가 잠금(Lock)을 요청하거나 해제할 수 있는 인터페이스를 제공한다.
--   DBMS_OUTPUT  
-    버퍼에 저장된 문자열을 사용자가 클라이언트에게 출력한다.
--   DBMS_RANDOM  
-    임의의 숫자를 생성한다.
--   DBMS_SQL  
-    동적 SQL을 사용하는 프로시저와 함수를 제공한다.
--   DBMS_STATS  
-    다양한 데이터베이스 통계 정보를 사용할 수 있는 서브프로그램을 제공한다.
--   DBMS_RECYCLEBIN  
-    삭제(Drop)되어 휴지통에서 관리되고 있는 테이블을 시스템에서 완전히
-    삭제(Purge)할 수 있다.
--   DBMS_UTILITY  
-    다양한 유틸리티의 서브프로그램을 제공한다.
--   UTL_FILE  
-    운영 체제에서 관리하는 텍스트 파일에 접근하여 읽기, 쓰기를 할 수 있다.
--   UTL_RAW  
-    RAW(VARBYTE) 타입의 데이터를 다른 데이터 타입으로 변환하거나 조작할 수 있다.
--   UTL_TCP  
-    저장 프로시저에서 TCP 접속을 제어한다.
+- DBMS_ALERT: 데이터베이스에서 발생하는 이벤트를 다른 사용자에게 알리는
+  기능으로 인터페이스로 제공한다.
+
+- DBMS_APPLICATION_INFO  
+  클라이언트의 애플리케이션 정보를 관리하기 위해 성능 뷰의 값을 설정한다.
+
+- DBMS_CONCURRENT_EXEC  
+  프로시저를 동시에 실행할 수 있다.
+
+- DBMS_LOCK  
+  사용자가 잠금(Lock)을 요청하거나 해제할 수 있는 인터페이스를 제공한다.
+
+- DBMS_OUTPUT  
+  버퍼에 저장된 문자열을 사용자가 클라이언트에게 출력한다.
+
+- DBMS_RANDOM  
+  임의의 숫자를 생성한다.
+
+- DBMS_SQL  
+  동적 SQL을 사용하는 프로시저와 함수를 제공한다.
+
+- DBMS_STATS  
+  다양한 데이터베이스 통계 정보를 사용할 수 있는 서브프로그램을 제공한다.
+
+- DBMS_RECYCLEBIN  
+  삭제(Drop)되어 휴지통에서 관리되고 있는 테이블을 시스템에서 완전히
+  삭제(Purge)할 수 있다.
+
+- DBMS_UTILITY  
+  다양한 유틸리티의 서브프로그램을 제공한다.
+
+- UTL_FILE  
+  운영 체제에서 관리하는 텍스트 파일에 접근하여 읽기, 쓰기를 할 수 있다.
+
+- UTL_RAW  
+
+  RAW(VARBYTE) 타입의 데이터를 다른 데이터 타입으로 변환하거나 조작할 수 있다.
+
+- UTL_TCP  
+
+  저장 프로시저에서 TCP 접속을 제어한다.
 
 ###### NOCOPY 옵션 지원
 
-저장 프로시저와 저장 함수에서 사용되는 매개 변수 및 지역 변수에 NOCOPY옵션을
-지원한다. 이 옵션은 참조(reference)값을 활용하여 인자를 할당하는 방식이다.
-NOCOPY옵션은 ASSOCIATIVE ARRAY타입만 지원한다.
+저장 프로시저와 저장 함수에서 사용되는 매개 변수 및 지역 변수에 NOCOPY옵션을 지원한다. 이 옵션은 참조(reference)값을 활용하여 인자를 할당하는 방식이다. 
+
+> NOCOPY옵션은 ASSOCIATIVE ARRAY타입만 지원한다.
 
 ###### 패키지 서브프로그램 다중정의(overloading) 지원
 
-저장패키지에서 서브프로그램을 다중정의(overloading)할 수 있다. 즉,
-서브프로그램의 이름은 같지만, 인자이름 및 데이터 타입 등을 다르게 정의할 수
-있다.
+저장패키지에서 서브프로그램을 다중정의(overloading)할 수 있다. 즉, 서브프로그램의 이름은 같지만 인자이름 및 데이터 타입 등을 다르게 정의할 수 있다.
 
 ###### PSM 문자형 데이터 크기 결정
 
-저장 프로시저와 저장 함수에서 사용하는 문자형 데이터 타입의 크기를 결정하는
-프로퍼티가 추가되었다.  
+저장 프로시저와 저장 함수에서 사용하는 문자형 데이터 타입의 크기를 결정하는 프로퍼티가 추가되었다.  
 
 * PSM_CHAR_DEFAULT_PRECISION  
 * PSM_NCHAR_UTF8_DEFAULT_PRECISION  
@@ -506,7 +514,9 @@ NOCOPY옵션은 ASSOCIATIVE ARRAY타입만 지원한다.
 * PSM_NVARCHAR_UTF16_DEFAULT_PRECISION
 * PSM_PARAM_AND_RETURN_WITHOUT_PRECISION_ENABLE  
 * PSM_VARCHAR_DEFAULT_PRECISION  
-  문자형 데이터 타입의 기본 크기를 설정하는 아래의 프로퍼티는 제거되었다.  
+
+문자형 데이터 타입의 기본 크기를 설정하는 아래의 프로퍼티는 제거되었다.  
+
 * CHAR_DEFAULT_PRECISION  
 * NCHAR_DEFAULT_PRECISION  
 * NVARCHAR_DEFAULT_PRECISION  
@@ -514,7 +524,7 @@ NOCOPY옵션은 ASSOCIATIVE ARRAY타입만 지원한다.
 
 ##### 2.1.3.6 클라이언트 툴
 
-###### JDBC Adapter
+###### JDBC Adapter 지원
 
 JDBC Adapter는 알티베이스 데이터베이스에서 변경된 데이터를 JDBC를 지원하는
 다른(타사의) 데이터베이스에 적용하는 유틸리티 이다. 이는 알티베이스에서 제공하는
@@ -528,7 +538,7 @@ ALA(Altibase Log Analysis API) 와 JDBC(Java DataBase Connectivity) 를 이용�
 DB 객체 브라우징과 SQL 수행을 위한 오픈소스 제품인 SQuirreL SQL 클라이언트를
 Altibase와 연동하여 사용할 수 있다. 
 
-###### Shard Manager
+###### Shard Manager 지원
 
 Shard Manager는 Altibase Sharding의 데이터 노드와 샤드 객체에 대한 구성 및
 관리를 돕는 도구이다. Altibase Sharding은 다수의 데이터베이스로 구성되기 때문에,
@@ -549,8 +559,7 @@ Altibase 서버와 altiMon이 설치된 호스트 장비를 모니터링 하기 
 
 ###### isql 명령어 추가
 
-iSQL에서 SELECT 결과의 칼럼에 대한 표시 형식을 설정할 수 있는 명령어가
-추가되었다.  
+iSQL에서 SELECT 결과의 칼럼에 대한 표시 형식을 설정할 수 있는 명령어가 추가되었다.  
 
 * SET NUMF[ORMAT] : 숫자 데이터 타입의 표시 형식 설정  
 * COLUMN : 문자형 또는 숫자형 타입의 칼럼 표시 형식 설정  
@@ -702,40 +711,34 @@ TABLE FUNCTION은 사용자 정의 함수에서 반환하는 associative array �
 
 ###### 동적 SQL의 메소드4추가
 
-동적SQL에 메소드4를 추가한다. 이 메소드는 프로그램 실행 중에 사용자가 파라미터
-마커의 값을 입력할 수 있다. BIND VARIABLES, SELECT LIST, ARRAY SIZE SET함수가
-추가되었고 OPEN, FETCH, EXECUTE함수가 개선되었다.
+동적SQL에 메소드4를 추가한다. 이 메소드는 프로그램 실행 중에 사용자가 파라미터 마커의 값을 입력할 수 있다. BIND VARIABLES, SELECT LIST, ARRAY SIZE SET함수가 추가되었고 OPEN, FETCH, EXECUTE함수가 개선되었다.
 
 ###### Hibernate와 연동지원
 
 Altibase가 비표준SQL을 제공할 수 있도록 Hibernate의 dialect클래스를 지원한다.
-Hibernate 공식 라이브러리는 AltibaseDialect.class을 포함하지 않기 때문에
-AltibaseDialect.java파일을 컴파일하고 포팅해야 사용할 수 있다.
+
+> Hibernate 공식 라이브러리는 AltibaseDialect.class을 포함하지 않기 때문에, AltibaseDialect.java파일을 컴파일하고 포팅해야 사용할 수 있다.
 
 ###### 로드밸런스 로깅 기능 추가
 
-로드밴런서의 주요동작에 대해서 로그를 기록하는 기능이 추가되었다.
+로드밴런서의 주요동작에 대해서 로그를 기록하는 기능이 추가되었다. LB_MSGLOG_FLAG 프로퍼티를 통해 로그의 레벨을 설정하고, \$ALTIBASE_HOME/trc/altibase_lb.log 에 관련 메시지가 기록된다. 
 
-LB_MSGLOG_FLAG 프로퍼티를 통해 로그의 레벨을 설정하고,
-\$ALTIBASE_HOME/trc/altibase_lb.log 에 관련 메시지가 기록된다.
+또한, V\$tracelog에서 module_name에 "LB"가 추가되어 조회가 가능하다.
 
-V\$tracelog에 module_name에 “LB:가 추가되어 조회가 가능하다.
+Service Thread 의 메시지로그관련하여 아래의 프로퍼티가 추가되었다.
 
-Service Thread 의 메시지로그관련 프로퍼티가 추가되었다.
+* LB_MSGLOG_FLAG
 
-LB_MSGLOG_FLAG
+* LB_MSGLOG_COUNT
 
-LB_MSGLOG_COUNT
+* LB_MSGLOG_FILE
 
-LB_MSGLOG_FILE
-
-LB_MSGLOG_SIZE
+* LB_MSGLOG_SIZE
 
 ###### Autoextend 모드 ON에서 테이블스페이스의 자동확장 크기 변경을 지원
 
 Autoextend 모드가 ON일 때 테이블스페이스의 자동확장 크기(extend size)를 변경하기
-위해서 기존에는 autoextend off를 수행한 다음 변경해야 했으나, autoextend on
-모드에서도 변경할 수 있다.
+위해서 기존에는 autoextend off를 수행한 다음 변경해야 했으나, autoextend on 모드에서도 변경할 수 있다.
 
 ###### JRE 1.5 지원
 
