@@ -113,7 +113,8 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# **Altibase 7.1.0.1.2 Release Note**
+Altibase 7.1.0.1.2 Release Note
+===============================
 
 **(2018.02)**
 
