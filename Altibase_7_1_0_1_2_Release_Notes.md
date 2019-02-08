@@ -160,7 +160,7 @@ Altibase 7.1.0.1.2는 아래 표에 나열된 운영체제와 플랫폼 상에�
 
 ### 2.1 새로운 기능
 
-#### 2.1.1 Altibase Sharding 2.0
+#### 	2.1.1 Altibase Sharding 2.0
 
 Altibase 7.1부터 Altibase Sharding 기능을 제공한다. Altibase Sharding은
 Altibase에 샤딩 기술을 도입하여, 저장 용량과 시간당 처리량을 향상시키고,
@@ -216,7 +216,7 @@ ALTER TABLE 구문을 이용하여, 테이블의 테이블스페이스를 다른
 테이블스페이스에서 메모리/휘발성 테이블스페이스로, 메모리/휘발성
 테이블스페이스에서 디스크 테이블스페이스로 데이터를 이동할 수 있다. 
 
-> 제약사항:
+> **제약사항**
 >
 >  글로벌 인덱스(Global Index)는 지원되지 않는다.
 
@@ -339,7 +339,7 @@ ROUND(date), TRUNC(date) 등의 날짜 함수에서 아래의 날짜형 데이�
 
 REPLICATION_SQL_APPLY_ENABLE 가 추가되었으며, REPLICATION_SQL_APPLY_ENABLE 프로퍼티 값을 1로 설정하여 사용할 수 있다.
 
-> 제약사항 : 
+> **제약사항** 
 >
 > LAZY 모드에서만 SQL 반영모드로 동작한다. 테이블에 보안칼럼이 존재하면 SQL 반영모드로 동작하지 않는다.
 
