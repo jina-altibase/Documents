@@ -58,7 +58,7 @@ Replication Manager is a graphical tool for managing replication on Altibase mor
 #### 	2.1.1 New Features
 
 | PK        | SYNOPSIS                                    |
-| --------- | ------------------------------------------- |
+| :---------: | :-------------------------------------------: |
 | BUG-46683 | Need to support database with multiple IPs. |
 
 
