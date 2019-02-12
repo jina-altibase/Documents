@@ -1,3 +1,5 @@
+
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -42,8 +44,6 @@ Altibase Replication Manager 1.2.0 Release Notes
 
 ### 1.2 Supported Operating Systems and Platforms
 
-Altibase 7.1.0.1.2는 아래 표에 나열된 운영체제와 플랫폼 상에서 운영 가능하다.
-
 | OS                 | CPU  | Windows System | Bit (Client) | JRE              |
 | ------------------ | ---- | -------------- | ------------ | ---------------- |
 | Windows XP Vista 7 | x86  | Win32          | 32bit        | Java 6 or higher |
@@ -53,11 +53,13 @@ Altibase 7.1.0.1.2는 아래 표에 나열된 운영체제와 플랫폼 상에�
 
 ### 2.1 Altibase Replication Manager 1.2.0
 
+Replication Manager is a graphical tool for managing replication on Altibase more easily and quickly. 
+
 #### 	2.1.1 New Features
 
-| PK        | SYNOPSIS                                   |
-| --------- | ------------------------------------------ |
-| BUG-46683 | Need to support database with multiple IPs |
+| PK        | SYNOPSIS                                    |
+| --------- | ------------------------------------------- |
+| BUG-46683 | Need to support database with multiple IPs. |
 
 
 
@@ -104,17 +106,11 @@ licenses are distributed in a text file format along with Replication Manager.
 
 | Library           | Open Source License                                          |
 | ----------------- | ------------------------------------------------------------ |
-| balcosqlformatter | Homepage: http://www.igapyon.jp/blanco/blancosqlformatter.html </br>
-License: LGPL (http://www.gnu.org/licenses/lgpl-3.0.txt) |
+| balcosqlformatter | Homepage: http://www.igapyon.jp/blanco/blancosqlformatter.html </br>License: LGPL (http://www.gnu.org/licenses/lgpl-3.0.txt) |
 | Eclipse           | Homepage: http://www.eclipse.org <br/>License: Eclipse Public License (http://www.eclipse.org/legal/epl-v10.html) |
-| JDOM              | Homepage: http://www.jfree.org/jfreechart/) 
-<br/>License: LGPL (http://www.gnu.org/licenses/lgpl-3.0.txt) |
-| JFreeChart        | Homepage: http://www.jfree.org/jfreechart/) 
-<br/>License: LGPL (http://www.gnu.org/licenses/lgpl-3.0.txt) |
-| Log4j             | Homepage: http://logging.apache.org/index.html
-License: Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0.txt) |
-
-
+| JDOM              | Homepage: http://www.jfree.org/jfreechart/) <br/>License: LGPL (http://www.gnu.org/licenses/lgpl-3.0.txt) |
+| JFreeChart        | Homepage: http://www.jfree.org/jfreechart/) <br/>License: LGPL (http://www.gnu.org/licenses/lgpl-3.0.txt) |
+| Log4j             | Homepage: http://logging.apache.org/index.html<br/>License: Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0.txt) |
 
 | Library                   | Royalty-Free Images                        |
 | ------------------------- | ------------------------------------------ |
