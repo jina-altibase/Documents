@@ -1,3 +1,31 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Altibase 7.1.0.1.8 Patch Notes](#altibase-71018-patch-notes)
+  - [New Features](#new-features)
+    - [BUG-46174 저장 프로시저내 insert, update 구문에서 레코드 타입변수 사용하도록 기능 확장](#bug-46174-%EC%A0%80%EC%9E%A5-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80%EB%82%B4-insert-update-%EA%B5%AC%EB%AC%B8%EC%97%90%EC%84%9C-%EB%A0%88%EC%BD%94%EB%93%9C-%ED%83%80%EC%9E%85%EB%B3%80%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8F%84%EB%A1%9D-%EA%B8%B0%EB%8A%A5-%ED%99%95%EC%9E%A5)
+  - [Fixed Bugs](#fixed-bugs)
+    - [BUG-46120 Active Server의 hash partition 이 order 는 같고 partition 의 개수가 다를 경우 성공 합니다.](#bug-46120-active-server%EC%9D%98-hash-partition-%EC%9D%B4-order-%EB%8A%94-%EA%B0%99%EA%B3%A0-partition-%EC%9D%98-%EA%B0%9C%EC%88%98%EA%B0%80-%EB%8B%A4%EB%A5%BC-%EA%B2%BD%EC%9A%B0-%EC%84%B1%EA%B3%B5-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46396 aexport가 생성하는 DDL 마지막 라인에 덧붙이는 newline으로 인해 iSQL에서 Syntax Error가 발생할 수 있습니다.](#bug-46396-aexport%EA%B0%80-%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94-ddl-%EB%A7%88%EC%A7%80%EB%A7%89-%EB%9D%BC%EC%9D%B8%EC%97%90-%EB%8D%A7%EB%B6%99%EC%9D%B4%EB%8A%94-newline%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%B4-isql%EC%97%90%EC%84%9C-syntax-error%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46515 dumptrc을 사용해서 콜스택 출력시 altibase_error.log의 콜스택이 생략되는 경우가 있어, 이를 수정하였습니다.](#bug-46515-dumptrc%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%BD%9C%EC%8A%A4%ED%83%9D-%EC%B6%9C%EB%A0%A5%EC%8B%9C-altibase_errorlog%EC%9D%98-%EC%BD%9C%EC%8A%A4%ED%83%9D%EC%9D%B4-%EC%83%9D%EB%9E%B5%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0%EA%B0%80-%EC%9E%88%EC%96%B4-%EC%9D%B4%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46539 merge 구문에 parser conflicts 발생](#bug-46539-merge-%EA%B5%AC%EB%AC%B8%EC%97%90-parser-conflicts-%EB%B0%9C%EC%83%9D)
+    - [BUG-46550 JDBC 드라이버에서 addBatch시에 directByteBuffer 사용시 메모리 증가하는 문제가 있습니다.](#bug-46550-jdbc-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%97%90%EC%84%9C-addbatch%EC%8B%9C%EC%97%90-directbytebuffer-%EC%82%AC%EC%9A%A9%EC%8B%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%A6%9D%EA%B0%80%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46551  jdbcAdapter로 altibase 5.5.1 에 데이터 전송시 ArrayIndexOutOfBoundsException 이 발생하는 경우가 있습니다.](#bug-46551--jdbcadapter%EB%A1%9C-altibase-551-%EC%97%90-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1%EC%8B%9C-arrayindexoutofboundsexception-%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46552 isql에서 /dev/null을 사용하지 않아야 합니다.](#bug-46552-isql%EC%97%90%EC%84%9C-devnull%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%95%84%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46567 dumpStack의 동시성 문제 수정](#bug-46567-dumpstack%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EB%AC%B8%EC%A0%9C-%EC%88%98%EC%A0%95)
+    - [BUG-46572 APRE에서 packge를 사용시 psm array가 제대로 인식되지 않습니다.](#bug-46572-apre%EC%97%90%EC%84%9C-packge%EB%A5%BC-%EC%82%AC%EC%9A%A9%EC%8B%9C-psm-array%EA%B0%80-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%9D%B8%EC%8B%9D%EB%90%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46574 Checkpoint Image 생성 도중에 서버가 비정상 종료되면 재구동에 실패 합니다.](#bug-46574-checkpoint-image-%EC%83%9D%EC%84%B1-%EB%8F%84%EC%A4%91%EC%97%90-%EC%84%9C%EB%B2%84%EA%B0%80-%EB%B9%84%EC%A0%95%EC%83%81-%EC%A2%85%EB%A3%8C%EB%90%98%EB%A9%B4-%EC%9E%AC%EA%B5%AC%EB%8F%99%EC%97%90-%EC%8B%A4%ED%8C%A8-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46586 STF(Service Time Failover) 상황에서 재시도 횟수만큼 에러가 출력되는 문제가 있습니다.](#bug-46586-stfservice-time-failover-%EC%83%81%ED%99%A9%EC%97%90%EC%84%9C-%EC%9E%AC%EC%8B%9C%EB%8F%84-%ED%9A%9F%EC%88%98%EB%A7%8C%ED%81%BC-%EC%97%90%EB%9F%AC%EA%B0%80-%EC%B6%9C%EB%A0%A5%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46598 V$REPGAP 퍼포먼스뷰의 REP_GAP 컬럼을 size 단위로 변경합니다.](#bug-46598-vrepgap-%ED%8D%BC%ED%8F%AC%EB%A8%BC%EC%8A%A4%EB%B7%B0%EC%9D%98-rep_gap-%EC%BB%AC%EB%9F%BC%EC%9D%84-size-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%A9%EB%8B%88%EB%8B%A4)
+  - [Changes](#changes)
+    - [Version histories](#version-histories)
+    - [호환성](#%ED%98%B8%ED%99%98%EC%84%B1)
+    - [프로퍼티](#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0)
+    - [성능 뷰](#%EC%84%B1%EB%8A%A5-%EB%B7%B0)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Altibase 7.1.0.1.8 Patch Notes
 
 *이 문서는 Sample patch notes입니다.*
