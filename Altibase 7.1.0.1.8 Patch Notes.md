@@ -34,16 +34,16 @@ BTS의 functionality, Efficiency, Usability, Reliability, Maintainability, Porta
   create table t1( c1 int, c2 int );
   insert into t1 values( 0, 0);
   create or replace procedure proc1 as
-  type tr is record ( c1 int, c2 int );
-  var tr;
-  begin
-  var.c1 := 1;
-  var.c2 :=2;
-  update t1 set row = var;
-  var.c1 := 3;
-  var.c2 :=4;
-  insert into t1 values var;
-  end;
+  	type tr is record ( c1 int, c2 int );
+  	var tr;
+    begin
+  	var.c1 := 1;
+  	var.c2 :=2;
+    update t1 set row = var;
+  	var.c1 := 3;
+  	var.c2 :=4;
+    insert into t1 values var;
+    end;
   /
   exec proc1;
   select * from t1;
