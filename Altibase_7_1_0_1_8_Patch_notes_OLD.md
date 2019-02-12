@@ -3,7 +3,7 @@
 
 
 - [Altibase 7.1.0.1.8 Patch Notes](#altibase-71018-patch-notes)
-    - [BUG-46120 Active Server의 hash partition 이 order 는 같고 partition 의 개수가 다를 경우 성공 합니다.](#bug-46120%C2%A0active-server%EC%9D%98-hash-partition-%EC%9D%B4-order-%EB%8A%94-%EA%B0%99%EA%B3%A0-partition-%EC%9D%98-%EA%B0%9C%EC%88%98%EA%B0%80-%EB%8B%A4%EB%A5%BC-%EA%B2%BD%EC%9A%B0-%EC%84%B1%EA%B3%B5-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46120 Active Server와 Standby Server의 해시 파티션드 테이블의 파티션 개수가 다른 경우, 이중화가 실패해야 합니다.](#bug-46120%C2%A0active-server%EC%99%80-standby-server%EC%9D%98-%ED%95%B4%EC%8B%9C-%ED%8C%8C%ED%8B%B0%EC%85%98%EB%93%9C-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-%ED%8C%8C%ED%8B%B0%EC%85%98-%EA%B0%9C%EC%88%98%EA%B0%80-%EB%8B%A4%EB%A5%B8-%EA%B2%BD%EC%9A%B0-%EC%9D%B4%EC%A4%91%ED%99%94%EA%B0%80-%EC%8B%A4%ED%8C%A8%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46174 저장 프로시저내 insert, update 구문에서 레코드 타입변수 사용하도록 기능 확장](#bug-46174%C2%A0%EC%A0%80%EC%9E%A5-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80%EB%82%B4-insert-update-%EA%B5%AC%EB%AC%B8%EC%97%90%EC%84%9C-%EB%A0%88%EC%BD%94%EB%93%9C-%ED%83%80%EC%9E%85%EB%B3%80%EC%88%98-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8F%84%EB%A1%9D-%EA%B8%B0%EB%8A%A5-%ED%99%95%EC%9E%A5)
     - [BUG-46396 aexport가 생성하는 DDL 마지막 라인에 덧붙이는 newline으로 인해 iSQL에서 Syntax Error가 발생할 수 있습니다.](#bug-46396%C2%A0aexport%EA%B0%80-%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94-ddl-%EB%A7%88%EC%A7%80%EB%A7%89-%EB%9D%BC%EC%9D%B8%EC%97%90-%EB%8D%A7%EB%B6%99%EC%9D%B4%EB%8A%94-newline%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%B4-isql%EC%97%90%EC%84%9C-syntax-error%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46515 dumptrc을 사용해서 콜스택 출력시 altibase_error.log의 콜스택이 생략되는 경우가 있어, 이를 수정하였습니다.](#bug-46515%C2%A0dumptrc%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%BD%9C%EC%8A%A4%ED%83%9D-%EC%B6%9C%EB%A0%A5%EC%8B%9C-altibase_errorlog%EC%9D%98-%EC%BD%9C%EC%8A%A4%ED%83%9D%EC%9D%B4-%EC%83%9D%EB%9E%B5%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0%EA%B0%80-%EC%9E%88%EC%96%B4-%EC%9D%B4%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4)
@@ -24,7 +24,7 @@
 
 # Altibase 7.1.0.1.8 Patch Notes
 
-<h3><br />BUG-46120&nbsp;Active Server의 hash partition 이 order 는 같고 partition 의 개수가 다를 경우 성공 합니다.</h3>
+<h3><br />BUG-46120&nbsp;Active Server와 Standby Server의 해시 파티션드 테이블의 파티션 개수가 다른 경우, 이중화가 실패해야 합니다.</h3>
 <table width="100%">
 <tbody>
 <tr>
@@ -83,7 +83,7 @@
 <p><strong>증상</strong></p>
 </td>
 <td width="378">
-<p>해시파티션 이중화시 파티션갯수가 다를 경우 에러가 발생하도록 수정한다.&nbsp;&nbsp;</p>
+<p>Active Server와 Standby Server의 해시 파티션드 테이블의 파티션 개수가 다른 경우, 이중화 실패 에러가 발생하도록 수정하였습니다. 이로 인해 replication protocol version이 7.4.3 에서 7.4.4 로 변경되었습니다.&nbsp;&nbsp;</p>
 </td>
 </tr>
 <tr>
