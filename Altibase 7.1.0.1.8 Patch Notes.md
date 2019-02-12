@@ -11,6 +11,95 @@ new features 에 해당하는 버그 list 와 changes 만 추출하여 new featu
 BTS의 functionality, Efficiency, Usability, Reliability, Maintainability, Portability, Enhancement ?
 
 개선된 기능은?
+
+### BUG-46174 저장 프로시저내 insert, update 구문에서 레코드 타입변수 사용하도록 기능 확장
+
+* module : qp-psm-trigger-execute
+
+* Category: Functionality
+
+* 재현 빈도 : Always
+
+* 증상: 저장 프로시저 내에서 insert update 구문에서도
+  레코드타입 변수를 사용할수 있도록 합니다.
+  이때, 레코드 변수의 칼럼의 개수와 명시한 테이블의 칼럼의 개수가 동일해야 합니다. 또한 레코드 타입 내부에 정의한 칼럼은 명시한 테이블 칼럼의 타입과 순서대로 정확히 일치하거나 호환이 가능해야
+  합니다. 만약 테이블의 칼럼에 NOT NULL 제약조건이
+  있으면 대응되는 레코드의 칼럼에 NULL 값을 사용할 수 없습니다.  
+
+* 재현 방법
+
+  * 재현 절차
+
+  ```
+  create table t1( c1 int, c2 int );
+  insert into t1 values( 0, 0);
+  create or replace procedure proc1 as
+  type tr is record ( c1 int, c2 int );
+  var tr;
+  begin
+  var.c1 := 1;
+  var.c2 :=2;
+  update t1 set row = var;
+  var.c1 := 3;
+  var.c2 :=4;
+  insert into t1 values var;
+  end;
+  /
+  exec proc1;
+  select * from t1;
+  ```
+
+  * 수행 결과
+
+    ```
+    [ERR-31001 : SQL syntax error
+    
+    line 7: missing or invalid syntax
+    update T1 set row = var;
+                  ^ ^
+    
+    ]
+    iSQL> exec proc1;
+    [ERR-31129 : Procedure or function not found :
+    0001 : exec PROC1
+               ^    ^
+    .]
+    iSQL> select * from t1;
+    C1          C2
+    ---------------------------
+    0           0
+    1 row selected.
+    ```
+
+  * 예상 결과
+
+    ```
+    exec proc1;
+    Execute success.
+    select * from t1;
+    C1 C2 
+    ---------------------------
+    1 2 
+    3 4 
+    2 rows selected.
+    
+    ```
+
+* Workaround : 없음
+
+* 변경사항 : 없음
+
+  * Performance view
+
+  * Property
+
+  * Compile Option
+
+  * Error Code
+
+    ------
+
+
 <table width="100%">
 <tbody>
 <tr>
