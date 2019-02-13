@@ -577,13 +577,9 @@
 
 ### Version Info
 
-| altibase version                   | database binary version        | meta version                   | cm protocol version            | replication protocol version   | sharding version               |
-| ---------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| <font color="red">7.1.0.1.8</font> | <font color="red">6.5.1</font> | <font color="red">8.7.1</font> | <font color="red">7.1.6</font> | <font color="red">7.4.4</font> | <font color="red">2.1.0</font> |
-
 | altibase version | database binary version | meta version | cm protocol version | replication protocol version | sharding version |
-| ---------------- | ----------------------- | ------------ | ------------------- | ---------------------------- | ---------------- |
-| 7.1.0.1.8        | 6.5.1                   | 8.7.1        | 7.1.6               | 7.4.4                        | 2.1.0            |
+| :--------------: | :---------------------: | :----------: | :-----------------: | :--------------------------: | :--------------: |
+|    7.1.0.1.8     |          6.5.1          |    8.7.1     |        7.1.6        |            7.4.4             |      2.1.0       |
 
 
 
