@@ -167,7 +167,7 @@
 <p><strong>재현절차</strong></p>
 </td>
 <td width="378">
-<p>create table t1( c1 int, c2 int );<br /> insert into t1 values( 0, 0);<br /> create or replace procedure proc1 as<br /> type tr is record ( c1 int, c2 int );<br /> var tr;<br /> begin<br /> var.c1 := 1;<br /> var.c2 :=2;<br /> update t1 set row = var;<br /> var.c1 := 3;<br /> var.c2 :=4;<br /> insert into t1 values var;<br /> end;<br /> /<br /> exec proc1;<br /> select * from t1;</p>
+<p>create table t1( c1 int, c2 int );<br /> insert into t1 values( 0, 0);<br /> create or replace procedure proc1 as<br /> type tr is record ( c1 int, c2 int );<br /> var tr;<br /> begin<br /> &nbsp;&nbsp;&nbsp;&nbsp; var.c1 := 1;<br /> &nbsp;&nbsp;&nbsp;&nbsp; var.c2 :=2;<br /> update t1 set row = var;<br /> &nbsp;&nbsp;&nbsp;&nbsp; var.c1 := 3;<br /> &nbsp;&nbsp;&nbsp;&nbsp; var.c2 :=4;<br /> insert into t1 values var;<br /> end;<br /> /<br /> exec proc1;<br /> select * from t1;</p>
 </td>
 </tr>
 <tr>
@@ -203,49 +203,6 @@
 </td>
 <td width="378">
 <p>저장 프로시저 내에서 insert update 구문에서도 레코드타입 변수를 사용할수 있도록 합니다.<br /> 이때, 레코드 변수의 칼럼의 개수와 명시한 테이블의 칼럼의 개수가 동일해야 합니다. 또한 레코드 타입 내부에 정의한 칼럼은 명시한 테이블 칼럼의 타입과 순서대로 정확히 일치하거나 호환이 가능해야 합니다. 만약 테이블의 칼럼에 NOT NULL 제약조건이 있으면 대응되는 레코드의 칼럼에 NULL 값을 사용할 수 없습니다.&nbsp;&nbsp;</p>
-</td>
-</tr>
-<tr>
-<td rowspan="4" width="86">
-<p><strong>변경사항</strong></p>
-</td>
-<td width="109">
-<p><strong>Performance View</strong></p>
-</td>
-<td width="378">
-<p>N/A</p>
-</td>
-</tr>
-<tr>
-<td width="109">
-<p><strong>Property</strong></p>
-</td>
-<td width="378">
-<p>N/A</p>
-</td>
-</tr>
-<tr>
-<td width="109">
-<p><strong>Compile Option</strong></p>
-</td>
-<td width="378">
-<p>N/A</p>
-</td>
-</tr>
-<tr>
-<td width="109">
-<p><strong>Error Code</strong></p>
-</td>
-<td width="378">
-<p>N/A</p>
-</td>
-</tr>
-<tr>
-<td colspan="2" width="189">
-<p><strong>Workaround</strong></p>
-</td>
-<td width="378">
-<p>N/A</p>
 </td>
 </tr>
 </tbody>
