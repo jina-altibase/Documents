@@ -67,7 +67,7 @@ Replication Manager is a graphical tool for managing replication on Altibase mor
 
 | PK        | SYNOPSIS                                                     |
 | --------- | ------------------------------------------------------------ |
-| BUG-46677 | need to update the status of Sender and pop-up window, after SYNC has been completed. |
+| BUG-46677 | need to update GUI after SYNC has been completed. |
 
 
 
