@@ -19,7 +19,7 @@
     - [BUG-46586 STF(Service Time Failover) 상황에서 재시도 횟수만큼 에러가 출력되는 문제가 있습니다.](#bug-46586-stfservice-time-failover-%EC%83%81%ED%99%A9%EC%97%90%EC%84%9C-%EC%9E%AC%EC%8B%9C%EB%8F%84-%ED%9A%9F%EC%88%98%EB%A7%8C%ED%81%BC-%EC%97%90%EB%9F%AC%EA%B0%80-%EC%B6%9C%EB%A0%A5%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46598 V$REPGAP 퍼포먼스뷰의 REP_GAP 컬럼을 size 단위로 변경합니다.](#bug-46598-vrepgap-%ED%8D%BC%ED%8F%AC%EB%A8%BC%EC%8A%A4%EB%B7%B0%EC%9D%98-rep_gap-%EC%BB%AC%EB%9F%BC%EC%9D%84-size-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%A9%EB%8B%88%EB%8B%A4)
   - [Changes](#changes)
-    - [Version histories](#version-histories)
+    - [Version Info](#version-info)
     - [호환성](#%ED%98%B8%ED%99%98%EC%84%B1)
     - [프로퍼티](#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0)
     - [성능 뷰](#%EC%84%B1%EB%8A%A5-%EB%B7%B0)
@@ -28,9 +28,7 @@
 
 # Altibase 7.1.0.1.8 Patch Notes
 
-*이 문서는 Sample patch notes입니다.*
 
-기존의 패치노트는 신규 기능과 버그 fix 가 섞여서 보여졌으나, 아래와 같이 구별하려고 함.
 
 ## New Features
 
@@ -55,17 +53,18 @@
     ```
     create table t1( c1 int, c2 int );
     insert into t1 values( 0, 0);
-    create or replace procedure proc1 as
+    create or replace procedure proc1 
+    as
     	type tr is record ( c1 int, c2 int );
     	var tr;
-      begin
+    begin
     	var.c1 := 1;
-    	var.c2 :=2;
-      update t1 set row = var;
-    	var.c1 := 3;
-    	var.c2 :=4;
-      insert into t1 values var;
-      end;
+     	var.c2 :=2;
+     	update t1 set row = var;
+     	var.c1 := 3;
+     	var.c2 :=4;
+        insert into t1 values var;
+    end;
     /
     exec proc1;
     select * from t1;
@@ -204,20 +203,15 @@
     iSQL> CREATE VIEW "V1" AS SELECT SYSDATE FROM dual
         2
     iSQL> ;
-    [ERR-91010 : Syntax Error]
     ```
 
   - **수행 결과**
 
     ```
-    없음
+    [ERR-91010 : Syntax Error]
     ```
 
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -242,21 +236,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -354,21 +336,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -394,21 +364,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -433,21 +391,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -472,21 +418,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -511,21 +445,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -550,21 +472,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -589,21 +499,9 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
 
-    ```
-    없음 
-    ```
-
   - **예상 결과**
-
-    ```
-    없음
-    ```
 
 - **Workaround** : 없음
 
@@ -636,25 +534,13 @@
 
   - **재현 절차** 
 
-    ```
-    없음
-    ```
-
   - **수행 결과**
-
-    ```
-    없음 
-    ```
 
   - **예상 결과**
 
-    ```
-    없음
-    ```
-
 - **Workaround** : 없음
 
-- **변경사항** : 없음
+- **변경사항** 
 
   - Performance view
 
@@ -676,7 +562,7 @@
 
     - **추가**
 
-      REPLICATION_GAP_UNIT (단위: 바이트)
+      - REPLICATION_GAP_UNIT (단위: 바이트)
 
        데이터 타입 : Unsigned Long
 
@@ -696,16 +582,10 @@
 
 ## Changes
 
-### Version histories
+### Version Info
 
 | altibase version                   | database binary version        | meta version                   | cm protocol version            | replication protocol version   | sharding version               |
 | ---------------------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| 7.1.0.1.2</br>(Released)           | 6.5.1                          | 8.5.1                          | 7.1.6                          | 7.4.2                          | 2.0.0                          |
-| 7.1.0.1.3                          | 6.5.1                          | 8.5.1                          | 7.1.6                          | 7.4.2                          | 2.0.0                          |
-| 7.1.0.1.4                          | 6.5.1                          | 8.6.1                          | 7.1.6                          | 7.4.3                          | 2.1.0                          |
-| 7.1.0.1.5                          | 6.5.1                          | 8.6.1                          | 7.1.6                          | 7.4.3                          | 2.1.0                          |
-| 7.1.0.1.6                          | 6.5.1                          | 8.6.1                          | 7.1.6                          | 7.4.3                          | 2.1.0                          |
-| 7.1.0.1.7                          | 6.5.1                          | 8.6.1                          | 7.1.6                          | 7.4.3                          | 2.1.0                          |
 | <font color="red">7.1.0.1.8</font> | <font color="red">6.5.1</font> | <font color="red">8.7.1</font> | <font color="red">7.1.6</font> | <font color="red">7.4.4</font> | <font color="red">2.1.0</font> |
 
 ### 호환성
@@ -728,15 +608,11 @@
 
 ### 프로퍼티
 
-요약해서, 추가된,수정된,삭제된 프로퍼티 보여준다. (추후 자동 가능)
-
 #### 추가된 프로퍼티
 
 * REPLICATION_GAP_UNIT
 
 ### 성능 뷰
-
-요약해서, 추가된,수정된,삭제된 성능뷰 보여준다. (추후 자동 가능)
 
 #### 수정된 성능 뷰
 
