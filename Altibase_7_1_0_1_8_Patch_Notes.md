@@ -544,7 +544,7 @@
 
   - Performance view
 
-    - V$REPGAP, V$REPGAP_PARALLEL
+    - [V$REPGAP](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md#vrepgap), [V$REPGAP_PARALLEL](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md#vrepgap_parallel)
 
       컬럼 수정) 
 
@@ -562,19 +562,12 @@
 
     - **추가**
 
-      - REPLICATION_GAP_UNIT (단위: 바이트)
-
-       데이터 타입 : Unsigned Long
-
-       기본값 : 1048576 (1MB)
-
-       속성: 변경 가능, 단일 값
-
-       값의 범위 : [1, 2^64 -1]
-
-       설명 : 이중화 갭의 크기를 조회하는 REP_GAP의 값을 표현하는 단위를 설정한다. REP_GAP의 값은 REP_GAP_SIZE의 값을 이 프로퍼티로 나눈 결과값이며, 나머지는 올림한다.
-
-      기본값이면 V$REPGAP의 REP_GAP_SIZE는 바이트 단위로, REP_GAP은 메가바이트 단위로 조회된다.
+      - [REPLICATION_GAP_UNIT](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md#replication_gap_unit-%EB%8B%A8%EC%9C%84-%EB%B0%94%EC%9D%B4%ED%8A%B8) (단위: 바이트)
+        - 데이터 타입 : Unsigned Long
+        - 기본값 : 1048576 (1MB)
+        -  속성: 변경 가능, 단일 값
+        - 값의 범위 : [1, 2^64 -1]
+        - 설명 : 이중화 갭의 크기를 조회하는 REP_GAP의 값을 표현하는 단위를 설정한다. REP_GAP의 값은 REP_GAP_SIZE의 값을 이 프로퍼티로 나눈 결과값이며, 나머지는 올림한다. 기본값이면 V$REPGAP의 REP_GAP_SIZE는 바이트 단위로, REP_GAP은 메가바이트 단위로 조회된다.
 
   - Compile Option
 
@@ -590,11 +583,21 @@
 
 ### 호환성
 
+#### Database binary version
+
+데이터베이스 바이너리 버전은 변경되지 않았다. 
+
+> 데이터베이스 바이너리 버전은 데이터베이스 이미지 파일과 로그파일의 호환성을 나타낸다. 이 버전이 다른 경우의 패치(업그레이드 포함)는 데이터베이스를 재구성해야 한다.
+
 #### 	Meta Version
 
 메타 버전이 8.6.1 에서 8.7.1로 변경되었다. 7.1.0.1.7 이하에서 7.1.0.1.8로 패치하면, 자동으로 메타 업그레이드가 수행된다. 
 
 > 패치를 롤백하려는 경우, [메타다운그레이드](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/Installation.md#%EB%A9%94%ED%83%80-%EB%8B%A4%EC%9A%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9Cmeta-downgrade)를 참고한다.
+
+#### CM protocol Version
+
+통신 프로토콜 버전은 변경되지 않았다.
 
 #### 	Replication protocol Version
 
@@ -610,11 +613,11 @@
 
 #### 추가된 프로퍼티
 
-* REPLICATION_GAP_UNIT
+* [REPLICATION_GAP_UNIT](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md#replication_gap_unit-%EB%8B%A8%EC%9C%84-%EB%B0%94%EC%9D%B4%ED%8A%B8)
 
 ### 성능 뷰
 
 #### 수정된 성능 뷰
 
-* V$REPGAP
-* V$REPGAP_PARALLEL
+* [V$REPGAP](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md#vrepgap)
+* [V$REPGAP_PARALLEL](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_4.md#vrepgap_parallel)
