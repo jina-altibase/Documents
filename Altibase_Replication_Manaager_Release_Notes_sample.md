@@ -81,7 +81,7 @@ Replication Manager Version
 
 | Altibase Replication Manager Version |
 | :----------------------------------: |
-|                 1.1                  |
+|                 1.2                  |
 
 
 
