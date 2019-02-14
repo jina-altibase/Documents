@@ -4,12 +4,12 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Altibase Replication Manager 1.2.0 Release Notes](#altibase-replication-manager-120-release-notes)
+- [Altibase Replication Manager 1.2 Release Notes](#altibase-replication-manager-12-release-notes)
   - [1.Abstract](#1abstract)
     - [1.1 System Requirements](#11-system-requirements)
     - [1.2 Supported Operating Systems and Platforms](#12-supported-operating-systems-and-platforms)
   - [2. Release Information](#2-release-information)
-    - [2.1 Altibase Replication Manager 1.2.0](#21-altibase-replication-manager-120)
+    - [2.1 Altibase Replication Manager 1.2](#21-altibase-replication-manager-12)
     - [2.2 Changes](#22-changes)
     - [2.3 Open Source Libraries](#23-open-source-libraries)
     - [2.4 Packages](#24-packages)
@@ -23,7 +23,7 @@
 
 </br>
 
-Altibase Replication Manager 1.2.0 Release Notes
+Altibase Replication Manager 1.2 Release Notes
 ===============================
 
 **(Feburary 18, 2019)**
@@ -51,7 +51,7 @@ Altibase Replication Manager 1.2.0 Release Notes
 
 ## 2. Release Information
 
-### 2.1 Altibase Replication Manager 1.2.0
+### 2.1 Altibase Replication Manager 1.2
 
 Replication Manager is a graphical tool for managing replication on Altibase more easily and quickly. 
 
