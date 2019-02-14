@@ -67,7 +67,7 @@ Replication Manager is a graphical tool for managing replication on Altibase mor
 
 | PK        | SYNOPSIS                                                     |
 | --------- | ------------------------------------------------------------ |
-| BUG-46677 | need to update GUI after SYNC has been completed. |
+| BUG-46677 | Need to update GUI after SYNC has been completed. |
 
 
 
@@ -122,8 +122,8 @@ licenses are distributed in a text file format along with Replication Manager.
 
 | OS          | CPU  | Archive Name |
 | ----------- | ---- | ------------ |
-| Linux/glibc | x86  |              |
-| Windows     | x86  |              |
+| Linux/glibc | x86  |      ReplicationManager-linux.gtk.x86.zip        |
+| Windows     | x86  |     ReplicationManager-win32.win32.x86.zip         |
 
 ### 2.5 Downloads
 
@@ -133,7 +133,7 @@ licenses are distributed in a text file format along with Replication Manager.
 
 #### 2.5.2 Manual
 
-https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/README.md
+https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/ReplicationManager.md
 
 #### 2.5.3 Installation
 
