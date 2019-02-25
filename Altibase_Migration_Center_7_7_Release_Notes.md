@@ -26,7 +26,7 @@
 Altibase Migration Center 7.7 Release Notes
 ===============================
 
-**(Feburary 28, 2019)**
+**(March 22, 2019)**
 
 
 
