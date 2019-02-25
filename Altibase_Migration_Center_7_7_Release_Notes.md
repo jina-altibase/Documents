@@ -147,14 +147,10 @@ Migration Center is based on the following open-source libraries. The licenses a
 | Java Help System           | Homepage: http://javahelp.java.net/<br/>License: GPL linking exception(http://en.wikipedia.org/wiki/GPL_linking_exception) |
 | JDOM                       | Homepage: http://www.jdom.org/<br/>License: Apache-style Open Source License(http://www.jdom.org/docs/faq.html#a0030) |
 | JUniversalChardet          | Homepage: http://wwwarchive.mozilla.org/projects/intl/UniversalCharsetDetection.html<br/>License: Mozilla Public License Version 1.1(http://www.mozilla.org/MPL/1.1/) |
-| JGraphT                    | Homepage: http://jgrapht.org/<br/>License: GNU Lesser General Public License
-(http://jgrapht.org/LGPL.html) |
-| Log4J                      | Homepage: http://logging.apache.org/index.html<br/>License: Apache License 2.0
-(http://www.apache.org/licenses/LICENSE-2.0.txt) |
-| OpenCSV                    | Homepage: http://opencsv.sourceforge.net/<br/>License: Apache License 2.0
-(http://www.apache.org/licenses/LICENSE-2.0.txt) |
-| Oracle JDBC Driver         | Homepage: http://www.oracle.com<br/>License: OTN
-(http://www.oracle.com/technetwork/licenses/distribution-license152002.html) |
+| JGraphT                    | Homepage: http://jgrapht.org/<br/>License: GNU Lesser General Public License(http://jgrapht.org/LGPL.html) |
+| Log4J                      | Homepage: http://logging.apache.org/index.html<br/>License: Apache License 2.0(http://www.apache.org/licenses/LICENSE-2.0.txt) |
+| OpenCSV                    | Homepage: http://opencsv.sourceforge.net/<br/>License: Apache License 2.0(http://www.apache.org/licenses/LICENSE-2.0.txt) |
+| Oracle JDBC Driver         | Homepage: http://www.oracle.com<br/>License: OTN(http://www.oracle.com/technetwork/licenses/distribution-license152002.html) |
 
 | Library                  | Royalty-Free Images                                 |
 | ------------------------ | --------------------------------------------------- |
