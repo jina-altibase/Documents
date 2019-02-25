@@ -104,17 +104,14 @@ Migration Center Version
 ##### Destination Database: Altibase
 
 * Source Database
-
-| Database | Compatible version                                   |
-| -------- | ---------------------------------------------------- |
-| Altibase | Altibase 4.3.9 or higher                             |
-| ORACLE   | Oracle 9i~11g                                        |
-| MS-SQL   | MS-SQL 2005-2012                                     |
-| MySQL    | MySQL 5.0 ~5.5                                       |
-| Informix | Informix 11.50                                       |
-| TimesTen | TimesTen 7.0, TimesTen 11.2                          |
-| CUBRID   | CUBRID 8.4.1 ~ 9.3.5<br/>(ISO-8859-1, UTF-8 charset) |
-| Tibero   | Tibero 5 ~ 6                                         |
+  * Altibase : Altibase 4.3.9 or higher
+  * ORACLE : Oracle 9i ~ 11g
+  * MS-SQL :  MS-SQL 2005-2012
+  * MySQL : MySQL 5.0 ~ 5.5
+  * Informix : Informix 11.50
+  * TimesTen : TimesTen 7.0, TimesTen 11.2
+  * CUBRID : CUBRID 8.4.1 ~ 9.3.5 (ISO-8859-1, UTF-8 charset)
+  * Tibero : Tibero 5 ~ 6
 
 * Destination Database
   * Altibase : Altibase 5.5.1 or higher
@@ -125,7 +122,7 @@ Migration Center Version
   - Altibase : Altibase 4.3.9 or higher
 
 * Destination Database
-  * ORACLE : Oracle 10g ~11g
+  * ORACLE : Oracle 10g ~ 11g
 
 
 
