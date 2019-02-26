@@ -154,7 +154,7 @@ Migration Center is based on the following open-source libraries. The licenses a
 | OpenCSV                    | Homepage: http://opencsv.sourceforge.net/<br/>License: Apache License 2.0(http://www.apache.org/licenses/LICENSE-2.0.txt) |
 | Oracle JDBC Driver         | Homepage: http://www.oracle.com<br/>License: OTN(http://www.oracle.com/technetwork/licenses/distribution-license152002.html) |
 
-* Royalty-Free Images
+* Royalty-Free Images</br>
 
 | Library                  | Royalty-Free Images                                 |
 | ------------------------ | --------------------------------------------------- |
