@@ -11,7 +11,7 @@
   - [2. Release Information](#2-release-information)
     - [2.1 Altibase Migration Center 7.7](#21-altibase-migration-center-77)
     - [2.2 Changes](#22-changes)
-    - [2.3 Open Source Libraries](#23-open-source-libraries)
+    - [2.3 Open Source Libraries / Royalty-Free Images Used](#23-open-source-libraries--royalty-free-images-used)
     - [2.4 Packages](#24-packages)
     - [2.5 Downloads](#25-downloads)
 
@@ -134,9 +134,11 @@ NONE
 
 NONE
 
-### 2.3 Open Source Libraries 
+### 2.3 Open Source Libraries / Royalty-Free Images Used
 
 Migration Center is based on the following open-source libraries. The licenses are distributed in a text file format along with Migration Center.
+
+* Open Source Library
 
 | Library                    | Open Source License                                          |
 | -------------------------- | ------------------------------------------------------------ |
@@ -152,6 +154,7 @@ Migration Center is based on the following open-source libraries. The licenses a
 | OpenCSV                    | Homepage: http://opencsv.sourceforge.net/<br/>License: Apache License 2.0(http://www.apache.org/licenses/LICENSE-2.0.txt) |
 | Oracle JDBC Driver         | Homepage: http://www.oracle.com<br/>License: OTN(http://www.oracle.com/technetwork/licenses/distribution-license152002.html) |
 
+* Royalty-Free Images
 | Library                  | Royalty-Free Images                                 |
 | ------------------------ | --------------------------------------------------- |
 | org.eclipse.datatools    | Homepage: www.eclipse.org                           |
