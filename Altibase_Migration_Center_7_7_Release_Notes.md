@@ -155,6 +155,7 @@ Migration Center is based on the following open-source libraries. The licenses a
 | Oracle JDBC Driver         | Homepage: http://www.oracle.com<br/>License: OTN(http://www.oracle.com/technetwork/licenses/distribution-license152002.html) |
 
 * Royalty-Free Images
+
 | Library                  | Royalty-Free Images                                 |
 | ------------------------ | --------------------------------------------------- |
 | org.eclipse.datatools    | Homepage: www.eclipse.org                           |
