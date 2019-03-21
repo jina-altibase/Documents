@@ -259,28 +259,30 @@ Fixed Bugs
 -   **증상** : IPCDA에서 host 변수에 matching 되는 컬럼이 없을 경우
     비정상 종료 하는 경우가 있어, 이를 수정하였습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            환경변수 설정
-            export ISQL_CONNECTION=IPCDA
-            export ALTIBASE_IPCDA_CHANNEL_COUNT=10
-            export ALTIBASE_EXECUTOR_FAST_SIMPLE_QUERY=1
-            drop table t1;
-            CREATE TABLE T1(I1 INTEGER) ;
-            INSERT INTO T1 VALUES(1);
-            INSERT INTO T1 VALUES(2);
-            INSERT INTO T1 VALUES(3);
-             UPDATE T1 SET I1 = ?;
+        환경변수 설정
+        export ISQL_CONNECTION=IPCDA
+        export ALTIBASE_IPCDA_CHANNEL_COUNT=10
+        export ALTIBASE_EXECUTOR_FAST_SIMPLE_QUERY=1
+        
+        drop table t1;
+        CREATE TABLE T1(I1 INTEGER) ;
+        INSERT INTO T1 VALUES(1);
+        INSERT INTO T1 VALUES(2);
+        INSERT INTO T1 VALUES(3);
+         UPDATE T1 SET I1 = ?;
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-            서버 비정상 종료
+          서버 비정상 종료
 
-    -   **예상 결과**
+  - **예상 결과**
 
-            iSQL>  UPDATE T1 SET I1 = ?;[ERR-31248 : Mismatched bind column count]
+        iSQL>  UPDATE T1 SET I1 = ?;
+         [ERR-31248 : Mismatched bind column count]
 
 -   **Workaround**
 
@@ -297,8 +299,8 @@ Changes
 ### Version Info
 
   altibase version   database binary version   meta version   cm protocol version   replication protocol version   sharding version
-  ------------------ ------------------------- -------------- --------------------- ------------------------------ ------------------
-  7.1.0.1.8          6.5.1                     8.7.1          7.1.6                 7.4.4                          2.1.0
+------------------ ------------------------- -------------- --------------------- ------------------------------ ------------------
+  7.1.0.1.9          6.5.1                     8.7.1          7.1.6                 7.4.4                          2.1.0
 
 > Altibase 7.1 패치 버전별 히스토리는
 > [Version\_Histories](https://github.com/ALTIBASE/Documents/blob/master/PatchNotes/Altibase_7_1_Version_Histories.md)
