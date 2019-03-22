@@ -4,7 +4,7 @@
 
 - [Altibase 7.1.0.1.9 Patch Notes](#altibase-71019-patch-notes)
   - [Fixed Bugs](#fixed-bugs)
-    - [BUG-45623 HBT에서 연결확인작업시 허용된 갯수 이상의 소켓을 사용하는 문제로 인해 에러가 발생합니다.(HP-UX)](#bug-45623%C2%A0hbt%EC%97%90%EC%84%9C-%EC%97%B0%EA%B2%B0%ED%99%95%EC%9D%B8%EC%9E%91%EC%97%85%EC%8B%9C-%ED%97%88%EC%9A%A9%EB%90%9C-%EA%B0%AF%EC%88%98-%EC%9D%B4%EC%83%81%EC%9D%98-%EC%86%8C%EC%BC%93%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EB%A1%9C-%EC%9D%B8%ED%95%B4-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4hp-ux)
+    - [BUG-45623 HBT에서 연결확인작업시 허용된 갯수 이상의 소켓을 사용하는 문제로 인해 에러가 발생합니다.(HP-UX)](#bug-45623hbt에서-연결확인작업시-허용된-갯수-이상의-소켓을-사용하는-문제로-인해-에러가-발생합니다hp-ux)
     - [BUG-46296 OTHER\_DATABASE\_SKIP\_ERROR 가 1일때 connection error가 발생하면 skip하지 않도록 수정](#bug-46296%C2%A0other%5C_database%5C_skip%5C_error-%EA%B0%80-1%EC%9D%BC%EB%95%8C-connection-error%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%A9%B4-skip%ED%95%98%EC%A7%80-%EC%95%8A%EB%8F%84%EB%A1%9D-%EC%88%98%EC%A0%95)
     - [BUG-46453 STF(Service Time Failover) 수행시 AlternateServers가 설정되어 있지 않으면 ASSERT 에러가 발생합니다.](#bug-46453%C2%A0stfservice-time-failover-%EC%88%98%ED%96%89%EC%8B%9C-alternateservers%EA%B0%80-%EC%84%A4%EC%A0%95%EB%90%98%EC%96%B4-%EC%9E%88%EC%A7%80-%EC%95%8A%EC%9C%BC%EB%A9%B4-assert-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46593 PSM 호출시 host variable의 array size의 동일 여부를 확인하는 로직 추가](#bug-46593%C2%A0psm-%ED%98%B8%EC%B6%9C%EC%8B%9C-host-variable%EC%9D%98-array-size%EC%9D%98-%EB%8F%99%EC%9D%BC-%EC%97%AC%EB%B6%80%EB%A5%BC-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%EB%A1%9C%EC%A7%81-%EC%B6%94%EA%B0%80)
