@@ -1,6 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Altibase 7.1.0.2.0 Patch Notes](#altibase-71020-patch-notes)
   - [Fixed Bugs](#fixed-bugs)
     - [BUG-46502 IPCDA PowerPC 안정성 개선](#bug-46502%C2%A0ipcda-powerpc-%EC%95%88%EC%A0%95%EC%84%B1-%EA%B0%9C%EC%84%A0)
