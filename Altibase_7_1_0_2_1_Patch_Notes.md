@@ -1,3 +1,43 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Altibase 7.1.0.2.1 Patch Notes](#altibase-71021-patch-notes)
+  - [New Features](#new-features)
+    - [BUG-46702 with rollup 구문 지원](#bug-46702%C2%A0with-rollup-%EA%B5%AC%EB%AC%B8-%EC%A7%80%EC%9B%90)
+    - [BUG-46703 limit clause에 simple expression 지원.](#bug-46703%C2%A0limit-clause%EC%97%90-simple-expression-%EC%A7%80%EC%9B%90)
+    - [BUG-46719 SYSDATETIME 지원](#bug-46719%C2%A0sysdatetime-%EC%A7%80%EC%9B%90)
+    - [BUG-46727 ISO 표준 기준 년 IYYY format 지원](#bug-46727%C2%A0iso-%ED%91%9C%EC%A4%80-%EA%B8%B0%EC%A4%80-%EB%85%84-iyyy-format-%EC%A7%80%EC%9B%90)
+    - [BUG-46755 호스트 네임으로 발급된 라이선스 적용](#bug-46755%C2%A0%ED%98%B8%EC%8A%A4%ED%8A%B8-%EB%84%A4%EC%9E%84%EC%9C%BC%EB%A1%9C-%EB%B0%9C%EA%B8%89%EB%90%9C-%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4-%EC%A0%81%EC%9A%A9)
+    - [BUG-46781 이중화 DDL 안전성 개선](#bug-46781%C2%A0%EC%9D%B4%EC%A4%91%ED%99%94-ddl-%EC%95%88%EC%A0%84%EC%84%B1-%EA%B0%9C%EC%84%A0)
+    - [BUG-46825 OTHER\_DATABASE\_SKIP\_ERROR 와 ORACLE\_SKIP\_ERROR 정책변경 따라 수정이 필요 합니다.](#bug-46825%C2%A0other%5C_database%5C_skip%5C_error-%EC%99%80-oracle%5C_skip%5C_error-%EC%A0%95%EC%B1%85%EB%B3%80%EA%B2%BD-%EB%94%B0%EB%9D%BC-%EC%88%98%EC%A0%95%EC%9D%B4-%ED%95%84%EC%9A%94-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46832 memory partition table 의 simple query 최적화](#bug-46832%C2%A0memory-partition-table-%EC%9D%98-simple-query-%EC%B5%9C%EC%A0%81%ED%99%94)
+    - [BUG-46806 INSERT 구문에 alias 지원](#bug-46806%C2%A0insert-%EA%B5%AC%EB%AC%B8%EC%97%90-alias-%EC%A7%80%EC%9B%90)
+  - [Fixed Bugs](#fixed-bugs)
+    - [BUG-46208 REPLICATION\_SENDER\_AUTO\_START 값이 설정되어 있는 상태에서 서버 시작를 못할수 있습니다.](#bug-46208%C2%A0replication%5C_sender%5C_auto%5C_start-%EA%B0%92%EC%9D%B4-%EC%84%A4%EC%A0%95%EB%90%98%EC%96%B4-%EC%9E%88%EB%8A%94-%EC%83%81%ED%83%9C%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84-%EC%8B%9C%EC%9E%91%EB%A5%BC-%EB%AA%BB%ED%95%A0%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46670 temp flusher에서 이미 free된 temp table header에 접근 할 수 있습니다.](#bug-46670%C2%A0temp-flusher%EC%97%90%EC%84%9C-%EC%9D%B4%EB%AF%B8-free%EB%90%9C-temp-table-header%EC%97%90-%EC%A0%91%EA%B7%BC-%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46680 INSERT\_REPLACE가 1로 되어 있을때 CLOB이 포함된 Table에 Replcation SYNC를 두번 수행하면 lock timeout이 발생합니다.](#bug-46680%C2%A0insert%5C_replace%EA%B0%80-1%EB%A1%9C-%EB%90%98%EC%96%B4-%EC%9E%88%EC%9D%84%EB%95%8C-clob%EC%9D%B4-%ED%8F%AC%ED%95%A8%EB%90%9C-table%EC%97%90-replcation-sync%EB%A5%BC-%EB%91%90%EB%B2%88-%EC%88%98%ED%96%89%ED%95%98%EB%A9%B4-lock-timeout%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46697 hash partition 이중화 시 이중화 재시작을 하면 partition 갯수를 찾지 못해 handshake 가 되지 않습니다.](#bug-46697%C2%A0hash-partition-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%8B%9C-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%9E%AC%EC%8B%9C%EC%9E%91%EC%9D%84-%ED%95%98%EB%A9%B4-partition-%EA%B0%AF%EC%88%98%EB%A5%BC-%EC%B0%BE%EC%A7%80-%EB%AA%BB%ED%95%B4-handshake-%EA%B0%80-%EB%90%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46700 메모리 테이블의 LOB컬럼 UPDATE시 메모리 테이블 사이즈가 계속 증가할 수 있는 문제 수정](#bug-46700%C2%A0%EB%A9%94%EB%AA%A8%EB%A6%AC-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-lob%EC%BB%AC%EB%9F%BC-update%EC%8B%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%82%AC%EC%9D%B4%EC%A6%88%EA%B0%80-%EA%B3%84%EC%86%8D-%EC%A6%9D%EA%B0%80%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EB%AC%B8%EC%A0%9C-%EC%88%98%EC%A0%95)
+    - [BUG-46708 윈도우 OS에서는 altilinker 실행시 java파일이 아니라 java.exe파일을 찾도록 수정해야 합니다.](#bug-46708%C2%A0%EC%9C%88%EB%8F%84%EC%9A%B0-os%EC%97%90%EC%84%9C%EB%8A%94-altilinker-%EC%8B%A4%ED%96%89%EC%8B%9C-java%ED%8C%8C%EC%9D%BC%EC%9D%B4-%EC%95%84%EB%8B%88%EB%9D%BC-javaexe%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%B0%BE%EB%8F%84%EB%A1%9D-%EC%88%98%EC%A0%95%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46728 order by 절에 사용된 host 변수를 target과 같은 varchar로 지정하도록 수정](#bug-46728%C2%A0order-by-%EC%A0%88%EC%97%90-%EC%82%AC%EC%9A%A9%EB%90%9C-host-%EB%B3%80%EC%88%98%EB%A5%BC-target%EA%B3%BC-%EA%B0%99%EC%9D%80-varchar%EB%A1%9C-%EC%A7%80%EC%A0%95%ED%95%98%EB%8F%84%EB%A1%9D-%EC%88%98%EC%A0%95)
+    - [BUG-46731 simple query를 사용하는 insert문에도 nowait에 대한 고려가 필요합니다.](#bug-46731%C2%A0simple-query%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-insert%EB%AC%B8%EC%97%90%EB%8F%84-nowait%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EB%A0%A4%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46754 server restart 시 logfile0 이 없어서 서버가 시작 하지 못 합니다.](#bug-46754%C2%A0server-restart-%EC%8B%9C-logfile0-%EC%9D%B4-%EC%97%86%EC%96%B4%EC%84%9C-%EC%84%9C%EB%B2%84%EA%B0%80-%EC%8B%9C%EC%9E%91-%ED%95%98%EC%A7%80-%EB%AA%BB-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46757 V\$DB\_PROTOCOL 조회시 이상한 문자가 출력됩니다.](#bug-46757%C2%A0v%5Cdb%5C_protocol-%EC%A1%B0%ED%9A%8C%EC%8B%9C-%EC%9D%B4%EC%83%81%ED%95%9C-%EB%AC%B8%EC%9E%90%EA%B0%80-%EC%B6%9C%EB%A0%A5%EB%90%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46782 Begin transaction 디버깅 정보 추가.](#bug-46782%C2%A0begin-transaction-%EB%94%94%EB%B2%84%EA%B9%85-%EC%A0%95%EB%B3%B4-%EC%B6%94%EA%B0%80)
+    - [BUG-46800 ANTI JOIN시 INVERSE HASH로 PLAN생성 시 CONSTANT FILTER 처리](#bug-46800%C2%A0anti-join%EC%8B%9C-inverse-hash%EB%A1%9C-plan%EC%83%9D%EC%84%B1-%EC%8B%9C-constant-filter-%EC%B2%98%EB%A6%AC)
+    - [BUG-46805 target에 index를 타는 subquery 2개가 where문을 제외한 다른 부분이 같을 경우 결과 오류](#bug-46805%C2%A0target%EC%97%90-index%EB%A5%BC-%ED%83%80%EB%8A%94-subquery-2%EA%B0%9C%EA%B0%80-where%EB%AC%B8%EC%9D%84-%EC%A0%9C%EC%99%B8%ED%95%9C-%EB%8B%A4%EB%A5%B8-%EB%B6%80%EB%B6%84%EC%9D%B4-%EA%B0%99%EC%9D%84-%EA%B2%BD%EC%9A%B0-%EA%B2%B0%EA%B3%BC-%EC%98%A4%EB%A5%98)
+    - [BUG-46816 table name과 username이 128자 이상일 경우 메모리 침범이 발생합니다.](#bug-46816%C2%A0table-name%EA%B3%BC-username%EC%9D%B4-128%EC%9E%90-%EC%9D%B4%EC%83%81%EC%9D%BC-%EA%B2%BD%EC%9A%B0-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B9%A8%EB%B2%94%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46826 DDL PVO 안정성 개선](#bug-46826%C2%A0ddl-pvo-%EC%95%88%EC%A0%95%EC%84%B1-%EA%B0%9C%EC%84%A0)
+    - [BUG-46836 simple query 최적화를 사용하는 환경에서 select for update 시에 nowait option 적용되지 않는 문제가 있습니다.](#bug-46836%C2%A0simple-query-%EC%B5%9C%EC%A0%81%ED%99%94%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-select-for-update-%EC%8B%9C%EC%97%90-nowait-option-%EC%A0%81%EC%9A%A9%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+  - [Changes](#changes)
+    - [Version Info](#version-info)
+    - [호환성](#%ED%98%B8%ED%99%98%EC%84%B1)
+    - [프로퍼티](#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0)
+    - [성능 뷰](#%EC%84%B1%EB%8A%A5-%EB%B7%B0)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 Altibase 7.1.0.2.1 Patch Notes
 ==============================
 
