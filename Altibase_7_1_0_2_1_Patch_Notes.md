@@ -216,10 +216,11 @@ New Features
 
   - **예상 결과**
 
-        SQL> SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL; 
-        TO_CHAR(TO_DAT
-        --------------
+        iSQL> SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL;
+        TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD')
+        ----------------------------------------------
         2019-01
+        1 row selected.
 
 -   **Workaround**
 
@@ -238,11 +239,11 @@ New Features
 
 -   **재현 빈도** : Always
 
--   **증상** : 라이센스정책 변경(hostname으로도 License 발급가능)으로
+-   **증상** : 라이선스정책 변경(hostname으로도 License 발급가능)으로
     변경된 라이선스가 적용되도록 수정하였습니다. 기존에 MAC Address 를
-    기반으로 License 를 발급하였는데,
+    기반으로 발급하였는데,
 
-    MAC Address 또는 HOST Name 을 이용해서 License 를 발급할 수 있도록
+    MAC Address 또는 HOST Name 을 이용해서 라이선스를 발급할 수 있도록
     변경되었습니다.
 
 -   **재현 방법**
@@ -289,8 +290,8 @@ New Features
     -   Error Code
         -   399,rpERR\_ABORT\_FAULT\_TOLERATED = Failed to work because
             an internal exception occurred from an OS.[Contact
-            Altibase's Support Center]
-             \# \*Cause: An internal exception occurred from an OS.
+            Altibase's Support Center]</br>
+             \# \*Cause: An internal exception occurred from an OS.</br>
              \# \*Action: Check the error number from the trace log for
             more detailed information. And contact Altibase's Support
             Center (http://support.altibase.com).
@@ -385,7 +386,8 @@ New Features
   - **예상 결과**
 
     ```
-    iSQL> insert into t1 a (a.i1) values (1);1 row inserted.
+    iSQL> insert into t1 a (a.i1) values (1);
+    1 row inserted.
     ```
 
 - **Workaround**
@@ -620,7 +622,8 @@ Fixed Bugs
         NAME                 TYPE                 VALUE
         -------------------------------------------------------
         V1                   VARCHAR(100)         KO
-        iSQL> PREPARE SELECT CASE WHEN :v1 ='KO' THEN 1 ELSE 2 END FROM DUAL; CASEWHEN:V1='KO'THEN1ELSE2END 
+        iSQL> PREPARE SELECT CASE WHEN :v1 ='KO' THEN 1 ELSE 2 END FROM DUAL;
+        CASEWHEN:V1='KO'THEN1ELSE2END 
         --------------------------------
         1           
         1 row selected.
@@ -641,7 +644,8 @@ Fixed Bugs
         NAME                 TYPE                 VALUE
         -------------------------------------------------------
         V1                   VARCHAR(100)         KO
-        iSQL> PREPARE SELECT CASE WHEN :v1 ='KO' THEN 1 ELSE 2 END FROM DUAL; CASEWHEN:V1='KO'THEN1ELSE2END 
+        iSQL> PREPARE SELECT CASE WHEN :v1 ='KO' THEN 1 ELSE 2 END FROM DUAL;
+        CASEWHEN:V1='KO'THEN1ELSE2END 
         --------------------------------
         1           
         1 row selected.
@@ -672,7 +676,6 @@ Fixed Bugs
     않는 문제를 수정하였습니다.
 
 -   **재현 방법**
-
     -   **재현 절차**
 
     -   **수행 결과**
@@ -682,7 +685,6 @@ Fixed Bugs
 -   **Workaround**
 
 -   **변경사항**
-
     -   Performance view
     -   Property
     -   Compile Option
@@ -759,9 +761,27 @@ Fixed Bugs
         0                    
         101 rows selected.
 
-  -   **예상 결과**
+  - **예상 결과**
 
-          Correct protocols.
+        CMP_OP_DB_ShardNodeGetListResult                    92
+        0
+        CMP_OP_DB_ShardHandshake                            93
+        0
+        CMP_OP_DB_ShardHandshakeResult                      94
+        0
+        CMP_OP_DB_ShardTransaction                          95
+        0
+        CMP_OP_DB_ShardTransactionResult                    96
+        0
+        CMP_OP_DB_ShardPrepare                              97
+        0
+        CMP_OP_DB_ShardPrepareResult                        98
+        0
+        CMP_OP_DB_ShardEndPendingTx                         99
+        0
+        CMP_OP_DB_ShardEndPendingTxResult                   100
+        0
+        101 rows selected.
 
 -   **Workaround**
 
@@ -930,42 +950,34 @@ Fixed Bugs
 
 ### BUG-46816 table name과 username이 128자 이상일 경우 메모리 침범이 발생합니다.
 
--   **module** : dm
+- **module** : dm
 
--   **Category** : Other
+- **Category** : Other
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : table name과 username의 메모리 할당 사이즈를 작게
-    할당하여 128자 이상일 경우 메모리 침범이 발생하였습니다.
+- **증상** : table name과 username의 메모리 할당 사이즈를 작게
+  할당하여 128자 이상일 경우 메모리 침범이 발생하였습니다.
 
-    메모리 할당 사이즈를 늘여 주어 메모리 침범이 발생하지 않도록
-    수정하였습니다.
+  메모리 할당 사이즈를 늘여 주어 메모리 침범이 발생하지 않도록
+  수정하였습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  -   **재현 절차**
 
-            n/a
+  -   **수행 결과**
 
-    -   **수행 결과**
+  -   **예상 결과**
 
-            n/a
+- **Workaround**
 
-    -   **예상 결과**
+- **변경사항**
 
-            n/a
-
--   **Workaround**
-
-        n/a
-
--   **변경사항**
-
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 ### BUG-46826 DDL PVO 안정성 개선
 
@@ -1025,9 +1037,9 @@ Fixed Bugs
 
            타임아웃때까지 대기
 
-  -   **예상 결과**
+  - **예상 결과**
 
-          대기없이 실패
+        대기없이 실패
 
 -   **Workaround**
 
