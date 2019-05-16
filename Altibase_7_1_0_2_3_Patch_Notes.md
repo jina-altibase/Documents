@@ -146,24 +146,25 @@ New Features
 
 -   **증상** : QUEUE 생성시 tablespace를 지정하는 구문이 추가되었습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  -   **재현 절차**
 
-            create queue q1(40) maxrows 100 tablespace sys_tbs_disk_data;
+          create queue q1(40) maxrows 100 tablespace sys_tbs_disk_data;
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-            iSQL> create queue q1(40) maxrows 100 tablespace sys_tbs_disk_data;
-            [ERR-31001 : SQL syntax error
-            line 1: missing or invalid syntax
-            create queue Q1(40) maxrows 100 tablespace sys_tbs_disk_data
-                                            ^        ^
-            ]
+          iSQL> create queue q1(40) maxrows 100 tablespace sys_tbs_disk_data;
+          [ERR-31001 : SQL syntax error
+          line 1: missing or invalid syntax
+          create queue Q1(40) maxrows 100 tablespace sys_tbs_disk_data
+                                          ^        ^
+          ]
 
-    -   **예상 결과**
+  - **예상 결과**
 
-            iSQL> create queue q1(40) maxrows 100 tablespace sys_tbs_disk_data;Create success.
+        iSQL> create queue q1(40) maxrows 100 tablespace sys_tbs_disk_data;
+        Create success.
 
 -   **Workaround**
 
@@ -206,39 +207,49 @@ Fixed Bugs
 
 ### BUG-46529 REPLICATION\_DDL\_ENABLE 옵션에 따라 REPLICATION\_DDL\_ENABLE\_LEVEL 관련 에러 메세지가 틀리게 출력됩니다.
 
--   **module** : dm
+- **module** : dm
 
--   **Category** : Functional Error
+- **Category** : Functional Error
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : REPLICATION\_DDL\_ENABLE\_LEVEL 관련 에러메세지에 설정된
-    프로퍼티값이 올바르게 출력되도록 수정하였습니다.
+- **증상** : REPLICATION\_DDL\_ENABLE\_LEVEL 관련 에러메세지에 설정된
+  프로퍼티값이 올바르게 출력되도록 수정하였습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            $T1> CREATE TABLE T1( i1 varchar(10) primary key, i2 varchar(10) )        PARTITION BY RANGE( I1 )        (             PARTITION p1 VALUES LESS THAN ('300'),             PARTITION p2 VALUES LESS THAN ('700'),             PARTITION p0 VALUES DEFAULT        );Create success.$T1> CREATE REPLICATION REP1 WITH '${HOST_IP@DB2}',${ALTIBASE_REPLICATION_PORT_NO@DB2}               FROM SYS.T1 TO SYS.T1;Create success.
+        $T1> CREATE TABLE T1( i1 varchar(10) primary key, i2 varchar(10) )
+                PARTITION BY RANGE( I1 )
+                (
+                     PARTITION p1 VALUES LESS THAN ('300'),
+                     PARTITION p2 VALUES LESS THAN ('700'),
+                     PARTITION p0 VALUES DEFAULT
+                );
+        Create success.
+        $T1> CREATE REPLICATION REP1 WITH '${HOST_IP@DB2}',${ALTIBASE_REPLICATION_PORT_NO@DB2}
+                       FROM SYS.T1 TO SYS.T1;
+        Create success.
 
-    -   **수행 결과**
+  - **수행 결과**
 
-            $T1> ALTER TABLE SYS.T1 SPLIT PARTITION P2 AT ('500') INTO (PARTITION P3, PARTITION P2);[ERR-6117F : Cannot execute this DDL on a replicated table when the system property REPLICATION_DDL_ENABLE_LEVEL is 1.]
+        $T1> ALTER TABLE SYS.T1 SPLIT PARTITION P2 AT ('500') INTO (PARTITION P3, PARTITION P2);
+        [ERR-6117F : Cannot execute this DDL on a replicated table when the system property REPLICATION_DDL_ENABLE_LEVEL is 1.]
 
-    -   **예상 결과**
+  - **예상 결과**
 
-            $T1> ALTER TABLE SYS.T1 SPLIT PARTITION P2 AT ('500') INTO (PARTITION P3, PARTITION P2);[ERR-6117F : Cannot execute this DDL on a replicated table when the system property REPLICATION_DDL_ENABLE_LEVEL is 0.]
+        $T1> ALTER TABLE SYS.T1 SPLIT PARTITION P2 AT ('500') INTO (PARTITION P3, PARTITION P2);
+        [ERR-6117F : Cannot execute this DDL on a replicated table when the system property REPLICATION_DDL_ENABLE_LEVEL is 0.]
 
--   **Workaround**
+- **Workaround**
 
-        None.
+- **변경사항**
 
--   **변경사항**
-
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 ### BUG-46661 이중화 걸린 테이블에 Online DDL 수행 시 간헐적으로 Receiver data conflict 발생
 
@@ -330,18 +341,11 @@ Fixed Bugs
 -   **증상** : IPCDA fast simple query execute시 통계 정보 추가
 
 -   **재현 방법**
-
     -   **재현 절차**
-
-            Step 1. execute IPCDA simple queryStep 2. select name,value from v$sysstat where seqnum between 24 and 35 order by seqnum;
 
     -   **수행 결과**
 
-            Nothing do
-
     -   **예상 결과**
-
-            Added 1 to execute success count
 
 -   **Workaround**
 
@@ -354,56 +358,50 @@ Fixed Bugs
 
 ### BUG-46885 CLI 함수에 NULL handle이 전달되었을 때 Segmentation fault가 발생합니다.
 
--   **module** : mm-cli
+- **module** : mm-cli
 
--   **Category** : Fatal
+- **Category** : Fatal
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : CLI 함수에 NULL handle이 전달되었을 때 Segmentation
-    fault가 발생합니다.
+- **증상** : CLI 함수에 NULL handle이 전달되었을 때 Segmentation
+  fault가 발생합니다.
 
-    핸들 유효성을 검사하기 전에 핸들에 접근하기 때문이며 해당 부분
-    수정하였습니다.
+  핸들 유효성을 검사하기 전에 핸들에 접근하기 때문이며 해당 부분
+  수정하였습니다.
 
-    SQLProcedureColumns
+  SQLProcedureColumns
 
-    SQLProcedures
+  SQLProcedures
 
-    SQLSpecialColumns
+  SQLSpecialColumns
 
-    SQLStatistics
+  SQLStatistics
 
-    SQLTablePrivileges
+  SQLTablePrivileges
 
-    SQLBulkOperations
+  SQLBulkOperations
 
-    SQLCancel
+  SQLCancel
 
-    SQLSetPos
+  SQLSetPos
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  -   **재현 절차**
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-            Fatal errors.
+  -   **예상 결과**
 
-    -   **예상 결과**
+- **Workaround**
 
-            No errors.
+- **변경사항**
 
--   **Workaround**
-
-        Do not pass NULL handle
-
--   **변경사항**
-
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 ### BUG-46889 SQLFetch() 전에 LOB 함수를 호출하면 Segmentation fault가 발생합니다.
 
@@ -418,19 +416,22 @@ Fixed Bugs
 
     Segmentation fault 에러가 발생하는 문제를 수정하였습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            SQLPrepare()</br>SQLExecute()</br>Do not call SQLFetch()</br>SQLGetLobLength()
+        SQLPrepare()
+        SQLExecute()
+        Do not call SQLFetch()
+        SQLGetLobLength()
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-            FATAL Error
+          FATAL Error
 
-    -   **예상 결과**
+  -   **예상 결과**
 
-            Raise Errors
+          Raise Errors
 
 -   **Workaround**
 
@@ -672,5 +673,3 @@ Replication 프로토콜 버전은 변경되지 않았다..
 ### 성능 뷰
 
 추가/변경/삭제된 성능 뷰 없음
-
-#### 삭제된 성능 뷰
