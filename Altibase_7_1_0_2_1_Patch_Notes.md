@@ -1,6 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Altibase 7.1.0.2.1 Patch Notes](#altibase-71021-patch-notes)
   - [New Features](#new-features)
     - [BUG-46702 with rollup 구문 지원](#bug-46702with-rollup-%EA%B5%AC%EB%AC%B8-%EC%A7%80%EC%9B%90)
@@ -9,7 +10,7 @@
     - [BUG-46727 ISO 표준 기준 년 IYYY format 지원](#bug-46727iso-%ED%91%9C%EC%A4%80-%EA%B8%B0%EC%A4%80-%EB%85%84-iyyy-format-%EC%A7%80%EC%9B%90)
     - [BUG-46755 호스트 네임으로 발급된 라이선스 적용](#bug-46755%ED%98%B8%EC%8A%A4%ED%8A%B8-%EB%84%A4%EC%9E%84%EC%9C%BC%EB%A1%9C-%EB%B0%9C%EA%B8%89%EB%90%9C-%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4-%EC%A0%81%EC%9A%A9)
     - [BUG-46781 이중화 DDL 안전성 개선](#bug-46781%EC%9D%B4%EC%A4%91%ED%99%94-ddl-%EC%95%88%EC%A0%84%EC%84%B1-%EA%B0%9C%EC%84%A0)
-    - [BUG-46825 OTHER\_DATABASE\_SKIP\_ERROR 와 ORACLE\_SKIP\_ERROR 정책변경 따라 수정이 필요 합니다.](#bug-46825other%5C_database%5C_skip%5C_error-%EC%99%80-oracle%5C_skip%5C_error-%EC%A0%95%EC%B1%85%EB%B3%80%EA%B2%BD-%EB%94%B0%EB%9D%BC-%EC%88%98%EC%A0%95%EC%9D%B4-%ED%95%84%EC%9A%94-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46825 OTHER\_DATABASE\_SKIP\_ERROR 와 ORACLE\_SKIP\_ERROR 정책변경](#bug-46825other%5C_database%5C_skip%5C_error-%EC%99%80-oracle%5C_skip%5C_error-%EC%A0%95%EC%B1%85%EB%B3%80%EA%B2%BD)
     - [BUG-46832 memory partition table 의 simple query 최적화](#bug-46832memory-partition-table-%EC%9D%98-simple-query-%EC%B5%9C%EC%A0%81%ED%99%94)
     - [BUG-46806 INSERT 구문에 alias 지원](#bug-46806insert-%EA%B5%AC%EB%AC%B8%EC%97%90-alias-%EC%A7%80%EC%9B%90)
   - [Fixed Bugs](#fixed-bugs)
@@ -335,7 +336,7 @@ New Features
             more detailed information. And contact Altibase's Support
             Center (http://support.altibase.com).
 
-### BUG-46825 OTHER\_DATABASE\_SKIP\_ERROR 와 ORACLE\_SKIP\_ERROR 정책변경 따라 수정이 필요 합니다.
+### BUG-46825 OTHER\_DATABASE\_SKIP\_ERROR 와 ORACLE\_SKIP\_ERROR 정책변경
 
 -   **module** : rp-jdbcAdapter
 
