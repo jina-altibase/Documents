@@ -15,7 +15,6 @@ New Features
 -   **증상** : C사 rollup syntax 지원
 
 -   **재현 방법**
-
     -   **재현 절차**
 
     -   **수행 결과**
@@ -347,33 +346,6 @@ Fixed Bugs
     server start중에 이중화 sender를 start 시키는 경우에는 lock
     timeout을 무한대로 설정하여 receiver가 lock을 반환 할때 까지
     대기해서 server start가 실패하지 않도록 수정하였습니다.
-
--   **재현 방법**
-
-    -   **재현 절차**
-
-    -   **수행 결과**
-
-    -   **예상 결과**
-
--   **Workaround**
-
--   **변경사항**
-
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
-
-### BUG-46647 msg에서 LSN의 Global No 를 제거해야 합니다.
-
--   **module** : sm\_resource
-
--   **Category** : Message Error
-
--   **재현 빈도** : Always
-
--   **증상** :
 
 -   **재현 방법**
 
