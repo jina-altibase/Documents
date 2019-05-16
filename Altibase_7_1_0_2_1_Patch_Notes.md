@@ -4,68 +4,130 @@ Altibase 7.1.0.2.1 Patch Notes
 New Features
 ------------
 
-### BUG-46702 C사 rollup syntax 지원
+### BUG-46702 with rollup 구문 지원
 
--   **module** : qp-dml-execute
+- **module** : qp-dml-execute
 
--   **Category** : Other
+- **Category** : Other
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : C사 rollup syntax 지원
+- **증상** : with rollup 구문을 지원합니다.
 
--   **재현 방법**
-    -   **재현 절차**
+- **재현 방법**
+  - **재현 절차**
 
-    -   **수행 결과**
+    ```
+    drop table t1;
+    create table t1 (i1 int,i2 int, i3 int, i4 int);
+    insert into t1 values (1 , 2 , 3 , 0);
+    insert into t1 values (1 , 2 , 3 , 0);
+    insert into t1 values (1 , 2 , 5 , 0);
+    insert into t1 values (1 , 3 , 7 , 0);
+    insert into t1 values (2 , 3 , 9 , 0);
+    select i1, i2, count( i4 ) from t1 group by i1,i2 with rollup  order by i2;
+    ```
 
-    -   **예상 결과**
+  - **수행 결과**
 
--   **Workaround**
+    ```
+    	
+    iSQL> select i1, i2, count( i4 ) from t1 group by i1,i2 with rollup  order by i2;
+    [ERR-31001 : SQL syntax error
+    
+    line 1: missing or invalid syntax
+    select I1, I2, COUNT( I4 ) from T1 group by I1,I2 with rollup  order by i2
+                                                           ^    ^
+    
+    ]
+    ```
 
--   **변경사항**
+  - **예상 결과**
 
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+    ```
+    iSQL> select i1, i2, count( i4 ) from t1 group by i1,i2 with rollup  order by i2;
+    I1          I2          COUNT( I4 )
+    -------------------------------------------------
+    1           2           3
+    1           3           1
+    2           3           1
+    1                       4
+    2                       1
+                            5
+    6 rows selected.
+    ```
+
+- **Workaround**
+
+  ```
+  iSQL> select i1, i2, count( i4 ) from t1 group by rollup(i1,i2)  order by i2;
+  I1          I2          COUNT( I4 )
+  -------------------------------------------------
+  1           2           3
+  1           3           1
+  2           3           1
+  1                       4
+  2                       1
+                          5
+  6 rows selected.
+  ```
+
+- **변경사항**
+
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 ### BUG-46703 limit clause에 simple expression 지원.
 
--   **module** : qp-dml-pvo
+- **module** : qp-dml-pvo
 
--   **Category** : Functionality
+- **Category** : Functionality
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : Limit clause에 연산, function 호출, package 변수
-    접근 등이 가능하도록 개선합니다.
+- **증상** : Limit clause에 연산, function 호출, package 변수
+  접근 등이 가능하도록 개선합니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            iSQL> select * from t1 limit 1+1;
-            [ERR-31001 : SQL syntax error
-            line 1: parse error
-            select * from T1 limit 1+1
+        drop table t1;
+        create table t1 (i1 int,i2 int);
+        insert into t1 values (1,1);
+        insert into t1 values (2,2);
+        select * from t1 limit 1+1;
 
-    -   **수행 결과**
+  - **수행 결과**
 
-    -   **예상 결과**
+    ```
+    iSQL> select * from t1 limit 1+1;
+    [ERR-31001 : SQL syntax error
+    line 1: parse error
+    select * from T1 limit 1+1
+    ```
 
-            iSQL> select * from t1 limit 1+1;I1          I2---------------------------1           12           22 rows selected.
+  - **예상 결과**
 
--   **Workaround**
+        iSQL> select * from t1 limit 1+1;
+        I1          I2
+        ---------------------------
+        1           1
+        2           2
+        2 rows selected.
 
--   **변경사항**
+- **Workaround**
 
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+- **변경사항**
 
-### BUG-46719 C사 SYSDATETIME 지원
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
+
+### BUG-46719 SYSDATETIME 지원
 
 -   **module** : qp
 
@@ -78,17 +140,25 @@ New Features
     altibase의 SYSDATE와 동일하며, 운영중인 시스템의 현재시간 날짜
     출력합니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            iSQL> select sysdatetime from dual;[ERR-31058 : Column not found0001 : select SYSDATETIME from DUAL             ^^]
+        iSQL> select sysdatetime from dual;
+        [ERR-31058 : Column not found
+        0001 : select SYSDATETIME from DUAL
+                     ^^
+        ]
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-    -   **예상 결과**
+  - **예상 결과**
 
-            iSQL> select sysdatetime from dual;SYSDATETIME---------------21-JAN-20191 row selected.
+        iSQL> select sysdatetime from dual;
+        SYSDATETIME
+        ---------------
+        21-JAN-2019
+        1 row selected.
 
 -   **Workaround**
 
@@ -128,19 +198,28 @@ New Features
 
         (3) SQLBindCol & Fetch : SQL\_C\_CHAR
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            iSQL> SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL;[ERR-21039 : The date format ( IYYY-IW ) was not recognized. 0001 : SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL             ^                                                     ^]
+        iSQL> SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL;
+        [ERR-21039 : The date format ( IYYY-IW ) was not recognized. 
+        0001 : SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL
+                     ^                                                     ^
+        ]
 
-    -   **수행 결과**
+  - **수행 결과**
 
-            [ERR-21039 : The date format ( IYYY-IW ) was not recognized. 0001 : SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL             ^                                                     ^
+        [ERR-21039 : The date format ( IYYY-IW ) was not recognized. 
+        0001 : SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL
+                     ^                                                     ^
 
-    -   **예상 결과**
+  - **예상 결과**
 
-            SQL> SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL; TO_CHAR(TO_DAT--------------2019-01
+        SQL> SELECT TO_CHAR(TO_DATE('2018-12-31','YYYY-MM-DD'), 'IYYY-IW') FROM DUAL; 
+        TO_CHAR(TO_DAT
+        --------------
+        2019-01
 
 -   **Workaround**
 
@@ -273,53 +352,50 @@ New Features
 
 - **변경사항**
 
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
+
+### BUG-46806 INSERT 구문에 alias 지원
+
+- **module** : qp-dml-execute
+
+- **Category** : Other
+
+- **재현 빈도** : Always
+
+- **증상** : INSERT 구문에 alias를 사용할 수 있도록 수정하였습니다.
+
+- **재현 방법**
+
+  - **재현 절차**
+
+    ```
+    iSQL> insert into t1 a (a.i1) values (1);
+    [ERR-31001 : SQL syntax error
+    line 1: parse error
+    insert into T1 A (A.I1) values (1)
+                                   ^
+    ]
+    ```
+
+  - **수행 결과**
+
+  - **예상 결과**
+
+    ```
+    iSQL> insert into t1 a (a.i1) values (1);1 row inserted.
+    ```
+
+- **Workaround**
+
+- **변경사항**
+
   - Performance view
-
   - Property
-
   - Compile Option
-
   - Error Code
-
-    ### BUG-46806 INSERT 구문에 alias 지원
-
-    - **module** : qp-dml-execute
-
-    - **Category** : Other
-
-    - **재현 빈도** : Always
-
-    - **증상** :
-
-    - **재현 방법**
-
-      - **재현 절차**
-
-        ```
-        iSQL> insert into t1 a (a.i1) values (1);
-        [ERR-31001 : SQL syntax error
-        line 1: parse error
-        insert into T1 A (A.I1) values (1)
-                                       ^
-        ]
-        ```
-
-      - **수행 결과**
-
-      - **예상 결과**
-
-        ```
-        iSQL> insert into t1 a (a.i1) values (1);1 row inserted.
-        ```
-
-    - **Workaround**
-
-    - **변경사항**
-
-      - Performance view
-      - Property
-      - Compile Option
-      - Error Code
 
 Fixed Bugs
 ----------
@@ -749,37 +825,44 @@ Fixed Bugs
 -   **증상** : INVERSE HASH로 PLAN생성 시 CONSTANT FILTER 가 잘못
     처리되는 현상 수정
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  -   **재현 절차**
 
-            drop table t1;
-            drop table t2;
-            create table t1(i1 integer , i2 integer);
-            create index t1_i2_idx on t1(i2);
-            create table t2(i1 integer, i2 integer);
-            create index t2_i2_idx on t2(i2); 
-            insert into t1 select level, mod(level, 10)+1 from dual connect by level <= 100;
-            insert into t1 values (999, 999);
-            insert into t1 values (1000, null); 
-            insert into t2 select level, level+1 from dual connect by level <= 20;
-            insert into t2 values (99, 99);
-            insert into t2 values (100, null);
-            iSQL> SELECT t1.*
-                2   FROM t1
-                3  WHERE 'N' = 'Y' AND NOT EXISTS (SELECT  /*+ INVERSE_JOIN */  1
-                4                      FROM t2
-                5                     WHERE t2.i1 = t1.i2);
-                I1          I2
-            ---------------------------
-            ...
-            102 rows selected.
+          drop table t1;
+          drop table t2;
+          create table t1(i1 integer , i2 integer);
+          create index t1_i2_idx on t1(i2);
+          create table t2(i1 integer, i2 integer);
+          create index t2_i2_idx on t2(i2); 
+          insert into t1 select level, mod(level, 10)+1 from dual connect by level <= 100;
+          insert into t1 values (999, 999);
+          insert into t1 values (1000, null); 
+          insert into t2 select level, level+1 from dual connect by level <= 20;
+          insert into t2 values (99, 99);
+          insert into t2 values (100, null);
+          iSQL> SELECT t1.*
+              2   FROM t1
+              3  WHERE 'N' = 'Y' AND NOT EXISTS (SELECT  /*+ INVERSE_JOIN */  1
+              4                      FROM t2
+              5                     WHERE t2.i1 = t1.i2);
+              I1          I2
+          ---------------------------
+          ...
+          102 rows selected.
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-    -   **예상 결과**
+  - **예상 결과**
 
-            iSQL> SELECT t1.*    2   FROM t1    3  WHERE 'N' = 'Y' AND NOT EXISTS (SELECT  /*+ INVERSE_JOIN */  1    4                      FROM t2    5                     WHERE t2.i1 = t1.i2);I1          I2---------------------------No rows selected.
+        iSQL> SELECT t1.*
+            2   FROM t1
+            3  WHERE 'N' = 'Y' AND NOT EXISTS (SELECT  /*+ INVERSE_JOIN */  1
+            4                      FROM t2
+            5                     WHERE t2.i1 = t1.i2);
+        I1          I2
+        ---------------------------
+        No rows selected.
 
 -   **Workaround**
 
@@ -924,69 +1007,27 @@ Fixed Bugs
     시에 nowait option 이 적용되지 않고, timeout 까지 대기하는 문제가
     있습니다. 이를 수정하였습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-            include stdFunc.i;
-            DEF MAIN ()
-            {
-                SKIP BEGIN;
-                drop table t1;
-                SKIP END;
-                create table t1 (c1 int primary key, c2 char(200) );
-                insert into t1 values (1,'1');
-                commit;
-                ALTER SYSTEM SET EXECUTOR_FAST_SIMPLE_QUERY = 0;
-                THREAD T1 C0
-                {
-                    autocommit off;
-                    select * from t1 where c1 =1 for update nowait;
-                }
-                THREAD T2 C0
-                {
-                    autocommit off;
-                    select * from t1 where c1 =1 for update nowait;
-                }
-                JOIN;
-                THREAD T1 C0
-                {
-                    rollback;
-                }
-                THREAD T2 C0
-                {
-                    rollback;
-                }
-                ALTER SYSTEM SET EXECUTOR_FAST_SIMPLE_QUERY = 1;
-                THREAD T1 C0
-                {
-                    autocommit off;
-                    select * from t1 where c1 =1 for update nowait;
-                }
-                THREAD T2 C0
-                {
-                    autocommit off;
-                    select * from t1 where c1 =1 for update nowait;
-                }
-                JOIN;
-                THREAD T1 C0
-                {
-                    rollback;
-                }
-                THREAD T2 C0
-                {
-                    rollback;
-                }
-                DROP TABLE T1;
-            }
+        ALTER SYSTEM SET EXECUTOR_FAST_SIMPLE_QUERY = 1;
+        drop table t1;
+        create table t1 (c1 int primary key, c2 char(200) );
+        insert into t1 values (1,'1');
+        autocommit off;
+        update t1 set c2 = '0' where c1 = 1;
+        
+        다른 세션으로 접속
+        select * from t1 where c1 =1 for update nowait;
 
-    -   **수행 결과**
+  -   **수행 결과**
 
-             타임아웃때까지 대기
+           타임아웃때까지 대기
 
-    -   **예상 결과**
+  -   **예상 결과**
 
-            대기없이 실패
+          대기없이 실패
 
 -   **Workaround**
 
@@ -1004,9 +1045,9 @@ Changes
 
 ### Version Info
 
-  altibase version   database binary version   meta version   cm protocol version   replication protocol version   sharding version
------------------- ------------------------- -------------- --------------------- ------------------------------ ------------------
-  7.1.0.1.8          6.5.1                     8.7.1          7.1.6                 7.4.4                          2.1.0
+| altibase version | database binary version | meta version | cm protocol version | replication protocol version | sharding version |
+| ---------------- | ----------------------- | ------------ | ------------------- | ---------------------------- | ---------------- |
+| 7.1.0.2.1        | 6.5.1                   | 8.7.1        | 7.1.6               | 7.4.4                        | 2.2.1            |
 
 > Altibase 7.1 패치 버전별 히스토리는
 > [Version\_Histories](https://github.com/ALTIBASE/Documents/blob/master/PatchNotes/Altibase_7_1_Version_Histories.md)
@@ -1047,16 +1088,9 @@ Replication 프로토콜 버전은 변경되지 않았다..
 
 ### 프로퍼티
 
-#### 추가된 프로퍼티
-
 #### 변경된 프로퍼티
 
-#### 삭제된 프로퍼티
+* [EXECUTOR_FAST_SIMPLE_QUERY](<https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_1.md#executor_fast_simple_query>)
 
 ### 성능 뷰
 
-#### 추가된 성능 뷰
-
-#### 변경된 성능 뷰
-
-#### 삭제된 성능 뷰
