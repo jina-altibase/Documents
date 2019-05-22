@@ -20,43 +20,41 @@ Altibase 7.1.0.1.7 Patch Notes
 New Features
 ------------
 
-### BUG-46418 호스트 변수 데이터 타입 APRE\_BINARY2를 지원해야 합니다.
+### BUG-46418 호스트 변수 데이터 타입 APRE\_BINARY2를 지원
 
--   **module** : mm-apre
+- **module** : mm-apre
 
--   **Category** : Efficiency
+- **Category** : Efficiency
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : BLOB insert의 성능 개선을 위해 호스트 변수 타입
-    APRE\_BINARY2를 추가하였다.
+- **증상** : BLOB insert의 성능 개선을 위해 호스트 변수 타입
+  [APRE\_BINARY2](<https://github.com/ALTIBASE/Documents/blob/13554fc3e4451721db8a50f08fbabce281dcb5b5/Manuals/Altibase_7.1/kor/Precompiler_1.md#apre_binary2>)를 추가하였습니다. 128KB 이하의 작은 LOB 데이터를 Insert 할 때 유용합니다. 
 
-    128KB 이하의 작은 LOB 데이터를 Insert 할 때 유용하다.
+- **재현 방법**
 
--   **재현 방법**
+  -   **재현 절차**
 
-    -   **재현 절차**
+          CREATE TABLE T1 (C1 BLOB)
+          APRE_BINARY v_val[N];
+          EXEC SQL INSERT INTO T1 VALUES(:v_val :blob_ind);
 
-            CREATE TABLE T1 (C1 BLOB)
-            APRE_BINARY v_val[N];
-            EXEC SQL INSERT INTO T1 VALUES(:v_val :blob_ind);
+  -   **수행 결과**
 
-    -   **수행 결과**
+          binding as SQL_BLOB
 
-            binding as SQL_BLOB
+  -   **예상 결과**
 
-    -   **예상 결과**
+          binding as SQL_BINARY
 
-            binding as SQL_BINARY
+- **Workaround**
 
--   **Workaround**
+- **변경사항**
 
--   **변경사항**
-
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 Fixed Bugs
 ----------
@@ -90,33 +88,58 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46526 aix grep에 -m 옵션이 없는데 사용하는 코드가 있어서 isql시 에러메시지가 발생.
+### BUG-46526 AIX에서 iSQL 접속 시, "grep: Not a recognized flag: m" 에러 메시지 발생
 
--   **module** : id
+- **module** : id
 
--   **Category** : Functionality
+- **Category** : Functionality
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** : aix에 없는 grep 옵션(-m)이 사용되어져서 내부적으로 에러가
-    발생하여 에러메시지가 출력되는 것을 수정합니다.
+- **증상** : 내부 코드에서 aix에서 사용할수 없는 명령어(grep 명령어의
+  -m 옵션)가 사용되고 있어, isql 수행시 에러메시지가 발생합니다. 이를
+  수정하였습니다.
 
--   **재현 방법**
+- **재현 방법**
 
-    -   **재현 절차**
+  - **재현 절차**
 
-    -   **수행 결과**
+    ```
+    $ is
+    -----------------------------------------------------------------
+         Altibase Client Query utility.
+         Release Version 7.1.0.1.2
+         Copyright 2000, ALTIBASE Corporation or its subsidiaries.
+         All Rights Reserved.
+    -----------------------------------------------------------------
+    grep: Not a recognized flag: m
+    Usage: grep [-r] [-R] [-H] [-L] [-E|-F] [-c|-l|-q] [-insvxbhwyu] [-p[parasep]] -e pattern_list...
+            [-f pattern_file...] [file...]
+    Usage: grep [-r] [-R] [-H] [-L]  [-E|-F] [-c|-l|-q] [-insvxbhwyu] [-p[parasep]] [-e pattern_list...]
+            -f pattern_file... [file...]
+    Usage: grep [-r] [-R] [-H] [-L] [-E|-F] [-c|-l|-q] [-insvxbhwyu] [-p[parasep]] pattern_list [file...]
+    grep: Not a recognized flag: m
+    Usage: grep [-r] [-R] [-H] [-L] [-E|-F] [-c|-l|-q] [-insvxbhwyu] [-p[parasep]] -e pattern_list...
+            [-f pattern_file...] [file...]
+    Usage: grep [-r] [-R] [-H] [-L]  [-E|-F] [-c|-l|-q] [-insvxbhwyu] [-p[parasep]] [-e pattern_list...]
+            -f pattern_file... [file...]
+    Usage: grep [-r] [-R] [-H] [-L] [-E|-F] [-c|-l|-q] [-insvxbhwyu] [-p[parasep]] pattern_list [file...]
+    ISQL_CONNECTION = TCP, SERVER = localhost, PORT_NO = 20300
+    iSQL> exit
+    ```
 
-    -   **예상 결과**
+  - **수행 결과**
 
--   **Workaround**
+  - **예상 결과**
 
--   **변경사항**
+- **Workaround**
 
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+- **변경사항**
+
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 Changes
 -------
@@ -125,7 +148,7 @@ Changes
 
   altibase version   database binary version   meta version   cm protocol version   replication protocol version   sharding version
 ------------------ ------------------------- -------------- --------------------- ------------------------------ ------------------
-  7.1.0.1.8          6.5.1                     8.7.1          7.1.6                 7.4.4                          2.1.0
+  7.1.0.1.7          6.5.1                     8.6.1          7.1.6                 7.4.3                          2.1.0
 
 > Altibase 7.1 패치 버전별 히스토리는
 > [Version\_Histories](https://github.com/ALTIBASE/Documents/blob/master/PatchNotes/Altibase_7_1_Version_Histories.md)
@@ -166,16 +189,8 @@ Replication 프로토콜 버전은 변경되지 않았다..
 
 ### 프로퍼티
 
-#### 추가된 프로퍼티
-
-#### 변경된 프로퍼티
-
-#### 삭제된 프로퍼티
+추가/변경/삭제된 프로퍼티 없음
 
 ### 성능 뷰
 
-#### 추가된 성능 뷰
-
-#### 변경된 성능 뷰
-
-#### 삭제된 성능 뷰
+추가/변경/삭제된 프로퍼티 없음
