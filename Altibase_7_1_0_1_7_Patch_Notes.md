@@ -146,9 +146,9 @@ Changes
 
 ### Version Info
 
-  altibase version   database binary version   meta version   cm protocol version   replication protocol version   sharding version
------------------- ------------------------- -------------- --------------------- ------------------------------ ------------------
-  7.1.0.1.7          6.5.1                     8.6.1          7.1.6                 7.4.3                          2.1.0
+| altibase version | database binary version | meta version | cm protocol version | replication protocol version | sharding version |
+| ---------------- | ----------------------- | ------------ | ------------------- | ---------------------------- | ---------------- |
+| 7.1.0.1.7        | 6.5.1                   | 8.6.1        | 7.1.6               | 7.4.3                        | 2.1.0            |
 
 > Altibase 7.1 패치 버전별 히스토리는
 > [Version\_Histories](https://github.com/ALTIBASE/Documents/blob/master/PatchNotes/Altibase_7_1_Version_Histories.md)
