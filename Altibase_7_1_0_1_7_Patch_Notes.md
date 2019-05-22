@@ -3,7 +3,7 @@
 
 - [Altibase 7.1.0.1.7 Patch Notes](#altibase-71017-patch-notes)
   - [New Features](#new-features)
-    - [BUG-46418 호스트 변수 데이터 타입 APRE\_BINARY2를 지원해야 합니다.](#bug-46418%C2%A0%ED%98%B8%EC%8A%A4%ED%8A%B8-%EB%B3%80%EC%88%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85-apre%5C_binary2%EB%A5%BC-%EC%A7%80%EC%9B%90%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46418 호스트 변수 데이터 타입 APRE\_BINARY2를 지원해야 합니다.](#bug-46418호스트-변수-데이터-타입-apre_binary2를-지원)
   - [Fixed Bugs](#fixed-bugs)
     - [BUG-46519 메모리 부족인 상황에서 메모리 할당 실패시 예외처리에서, 할당되지 않은 메모리를 해제하는 경우 비정상 종료하는 문제를 수정하였습니다.](#bug-46519%C2%A0%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B6%80%EC%A1%B1%EC%9D%B8-%EC%83%81%ED%99%A9%EC%97%90%EC%84%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%ED%95%A0%EB%8B%B9-%EC%8B%A4%ED%8C%A8%EC%8B%9C-%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC%EC%97%90%EC%84%9C-%ED%95%A0%EB%8B%B9%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EB%A9%94%EB%AA%A8%EB%A6%AC%EB%A5%BC-%ED%95%B4%EC%A0%9C%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-%EB%B9%84%EC%A0%95%EC%83%81-%EC%A2%85%EB%A3%8C%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46526 aix grep에 -m 옵션이 없는데 사용하는 코드가 있어서 isql시 에러메시지가 발생.](#bug-46526%C2%A0aix-grep%EC%97%90--m-%EC%98%B5%EC%85%98%EC%9D%B4-%EC%97%86%EB%8A%94%EB%8D%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%BD%94%EB%93%9C%EA%B0%80-%EC%9E%88%EC%96%B4%EC%84%9C-isql%EC%8B%9C-%EC%97%90%EB%9F%AC%EB%A9%94%EC%8B%9C%EC%A7%80%EA%B0%80-%EB%B0%9C%EC%83%9D)
