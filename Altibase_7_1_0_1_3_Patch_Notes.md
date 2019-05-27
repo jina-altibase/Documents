@@ -789,50 +789,47 @@ Fixed Bugs
 
 ### BUG-45864  dblink 에 설정된 altilinker.jar 파일을 찾을 수 없거나 권한이 적절하지 않을때 발생하는 에러메시지에 대한 Action 내용 수정
 
--   **module** : dblink
+- **module** : dblink
 
--   **Category** : Other
+- **Category** : Other
 
--   **재현 빈도** : Always
+- **재현 빈도** : Always
 
--   **증상** :
+- **증상** :
 
-    dblink 사용시에 altilinker.jar를 찾는 과정에서 해당 파일을 찾을 수
-    없거나 권한이 적절하지 않을때 발생하는 에러메시지에 대한 Action을
-    아래와 같이 수정한다.
+  dblink 사용시에 altilinker.jar를 찾는 과정에서 해당 파일을 찾을 수
+  없거나 권한이 적절하지 않을때 발생하는 에러메시지에 대한 Action을
+  아래와 같이 수정한다.
 
-    (변경전)
+  (변경전)
 
-    \# \*Action:
+  \# *Action:
 
-    \#   - Check the property of 'ALTILINKER\_TRACE\_LOG\_DIR' in the
-    dblink.conf property file. 
+  \#   - Check the property of 'ALTILINKER\_TRACE\_LOG\_DIR' in the dblink.conf property file. 
 
-     
+  (변경후)
 
-    (변경후)
+  \# *Action:
 
-    \# \*Action:
+  \#   - Can not find or access 'ALTIBASE\_HOME/bin/altilinker.jar'
+  file. 
 
-    \#   - Can not find or access 'ALTIBASE\_HOME/bin/altilinker.jar'
-    file. 
+- **재현 방법**
 
--   **재현 방법**
+  -   **재현 절차**
 
-    -   **재현 절차**
+  -   **수행 결과**
 
-    -   **수행 결과**
+  -   **예상 결과**
 
-    -   **예상 결과**
+- **Workaround**
 
--   **Workaround**
+- **변경사항**
 
--   **변경사항**
-
-    -   Performance view
-    -   Property
-    -   Compile Option
-    -   Error Code
+  -   Performance view
+  -   Property
+  -   Compile Option
+  -   Error Code
 
 ### BUG-45872  altiComp 의 비교(Diff)기능 수행시, LOB 데이터의 길이가 4096 보다 클 때 Invalid Lob range 에러 발생하는 문제 수정
 
