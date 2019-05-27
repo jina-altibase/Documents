@@ -664,11 +664,13 @@ Fixed Bugs
 
   -   **수행 결과**
 
-          iSQL> update t1 set i1 = nvl(lag( i3 ) over ( partition by i1 order by i2 ),0) ;[ERR-31318 : Unexpected errors may have occurred: qtc::estimate4OverClause: Invalid callback]
+          iSQL> update t1 set i1 = nvl(lag( i3 ) over ( partition by i1 order by i2 ),0) ;
+          [ERR-31318 : Unexpected errors may have occurred: qtc::estimate4OverClause: Invalid callback]
 
   -   **예상 결과**
 
-          iSQL> update t1 set i1 = nvl(lag( i3 ) over ( partition by i1 order by i2 ),0) ;[ERR-3146D : An analytic function is not allowed here. 0001 : update T1 set I1 = NVL(LAG( I3 ) over ( partition by I1 order by I2 ),0)                              ^                                             ^]
+          iSQL> update t1 set i1 = nvl(lag( i3 ) over ( partition by i1 order by i2 ),0) ;
+          [ERR-3146D : An analytic function is not allowed here. 0001 : update T1 set I1 = NVL(LAG( I3 ) over ( partition by I1 order by I2 ),0)                              ^                                             ^]
 
 - **Workaround**
 
