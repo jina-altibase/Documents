@@ -2339,7 +2339,7 @@ Changes
 샤딩 버전이 2.0.0에서 2.1.0으로 변경되었다. 샤딩에서 사용하는 메타 테이블 및 패키지(프로시저)가 변경되었으므로, 패치 후 샤딩 재구성해야 한다.
 
 > 알티베이스 샤딩 프로토콜 및 메타는 상위, 하위 호환성을 보장하지
-> 않는다. 즉, 샤딩 버전이 다른 경우, 재구성해야 한다.
+> 않는다. 즉, 샤딩 버전이 다른 경우, 재구성해야 한다. 샤딩 설정은 *[Altibase Sharding 설치와 설정](<https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/Sharding.md#2altibase-sharding-%EC%84%A4%EC%B9%98%EC%99%80-%EC%84%A4%EC%A0%95>)*을 참고한다.
 
 ### 프로퍼티
 
