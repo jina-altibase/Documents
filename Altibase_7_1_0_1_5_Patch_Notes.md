@@ -5,6 +5,7 @@
 - [Altibase 7.1.0.1.5 Patch Notes](#altibase-71015-patch-notes)
   - [New Features](#new-features)
     - [BUG-46475  HP-UX, AIX용 JDBC adapter를 지원 해야 합니다.](#bug-46475-hp-ux-aix%EC%9A%A9-jdbc-adapter%EB%A5%BC-%EC%A7%80%EC%9B%90-%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46216  updatable join view 에서 key reserved 체크 기능 추가](#bug-46216--updatable-join-view-%EC%97%90%EC%84%9C-key-reserved-%EC%B2%B4%ED%81%AC-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80)
     - [BUG-46425  JDBC Driver 에 sharding 기능 추가](#bug-46425-jdbc-driver-%EC%97%90-sharding-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80)
     - [BUG-46352  OpenSSL 로딩시 버전을 출력해 주어야 합니다.](#bug-46352-openssl-%EB%A1%9C%EB%94%A9%EC%8B%9C-%EB%B2%84%EC%A0%84%EC%9D%84-%EC%B6%9C%EB%A0%A5%ED%95%B4-%EC%A3%BC%EC%96%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46411  LOB Fetch 성능향상을 위해, LOB\_CACHE\_THRESHOLD 프로퍼티의 MAX값 변경](#bug-46411-lob-fetch-%EC%84%B1%EB%8A%A5%ED%96%A5%EC%83%81%EC%9D%84-%EC%9C%84%ED%95%B4-lob%5C_cache%5C_threshold-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%EC%9D%98-max%EA%B0%92-%EB%B3%80%EA%B2%BD)
@@ -13,11 +14,10 @@
   - [Fixed Bugs](#fixed-bugs)
     - [BUG-46309  PSM안에서 dequeue 호출시 into 절을 누락하면 서버가 비정상 종료할 수 있습니다.](#bug-46309-psm%EC%95%88%EC%97%90%EC%84%9C-dequeue-%ED%98%B8%EC%B6%9C%EC%8B%9C-into-%EC%A0%88%EC%9D%84-%EB%88%84%EB%9D%BD%ED%95%98%EB%A9%B4-%EC%84%9C%EB%B2%84%EA%B0%80-%EB%B9%84%EC%A0%95%EC%83%81-%EC%A2%85%EB%A3%8C%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46392  order by 절의 표현식이 target 절에서 중복으로 참조되는 경우 비정상 종료가 발생할 수 있습니다.](#bug-46392-order-by-%EC%A0%88%EC%9D%98-%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%B4-target-%EC%A0%88%EC%97%90%EC%84%9C-%EC%A4%91%EB%B3%B5%EC%9C%BC%EB%A1%9C-%EC%B0%B8%EC%A1%B0%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-%EB%B9%84%EC%A0%95%EC%83%81-%EC%A2%85%EB%A3%8C%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46124  Key Preserved 프로퍼티 0 에서 Updatable View의 하위 View DML를 지원](#bug-46124--key-preserved-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-0-%EC%97%90%EC%84%9C-updatable-view%EC%9D%98-%ED%95%98%EC%9C%84-view-dml%EB%A5%BC-%EC%A7%80%EC%9B%90)
     - [BUG-46416  view가 function, view에서 동시에 참조되는 경우 무한 대기 상태에 빠질 수 있습니다.](#bug-46416-view%EA%B0%80-function-view%EC%97%90%EC%84%9C-%EB%8F%99%EC%8B%9C%EC%97%90-%EC%B0%B8%EC%A1%B0%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-%EB%AC%B4%ED%95%9C-%EB%8C%80%EA%B8%B0-%EC%83%81%ED%83%9C%EC%97%90-%EB%B9%A0%EC%A7%88-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46424  디스크 템프 테이블 생성시 상위 플랜 노드에서 필요한 값이 저장되지 않는 경우가 있습니다.](#bug-46424-%EB%94%94%EC%8A%A4%ED%81%AC-%ED%85%9C%ED%94%84-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%9D%EC%84%B1%EC%8B%9C-%EC%83%81%EC%9C%84-%ED%94%8C%EB%9E%9C-%EB%85%B8%EB%93%9C%EC%97%90%EC%84%9C-%ED%95%84%EC%9A%94%ED%95%9C-%EA%B0%92%EC%9D%B4-%EC%A0%80%EC%9E%A5%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EA%B2%BD%EC%9A%B0%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46183  DEQUEUE의 WAIT TIME이 1초 미만인 경우, 설정한 시간만큼 대기하지 않는 문제가 있습니다.](#bug-46183-dequeue%EC%9D%98-wait-time%EC%9D%B4-1%EC%B4%88-%EB%AF%B8%EB%A7%8C%EC%9D%B8-%EA%B2%BD%EC%9A%B0-%EC%84%A4%EC%A0%95%ED%95%9C-%EC%8B%9C%EA%B0%84%EB%A7%8C%ED%81%BC-%EB%8C%80%EA%B8%B0%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46217  v\$table 에서 성능뷰만 조회되어야 합니다.](#bug-46217-v%5Ctable-%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5%EB%B7%B0%EB%A7%8C-%EC%A1%B0%ED%9A%8C%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46217  v$table 에서 성능뷰만 조회되어야 합니다.](#bug-46217-vtable-%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5%EB%B7%B0%EB%A7%8C-%EC%A1%B0%ED%9A%8C%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46266  V$LFG에서 삭제된 logfile 번호 컬럼(FIRST\_DELETED\_LOGFILE, LAST\_DELETED\_LOGFILE) 값이 잘못 출력됩니다.](#bug-46266--vlfg%EC%97%90%EC%84%9C-%EC%82%AD%EC%A0%9C%EB%90%9C-logfile-%EB%B2%88%ED%98%B8-%EC%BB%AC%EB%9F%BCfirst%5C_deleted%5C_logfile-last%5C_deleted%5C_logfile-%EA%B0%92%EC%9D%B4-%EC%9E%98%EB%AA%BB-%EC%B6%9C%EB%A0%A5%EB%90%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46383  disk sort temp table 에서 잘못된 Page를 읽어서 hang이 걸리는 문제를 수정하였습니다.](#bug-46383-disk-sort-temp-table-%EC%97%90%EC%84%9C-%EC%9E%98%EB%AA%BB%EB%90%9C-page%EB%A5%BC-%EC%9D%BD%EC%96%B4%EC%84%9C-hang%EC%9D%B4-%EA%B1%B8%EB%A6%AC%EB%8A%94-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46384  Disk Sort Temp Table에서 작업 완료되지 않은 page가 다른 page로 변경되어 오작동 하거나 hang이 발생하는 문제를 수정합니다.](#bug-46384-disk-sort-temp-table%EC%97%90%EC%84%9C-%EC%9E%91%EC%97%85-%EC%99%84%EB%A3%8C%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%80-page%EA%B0%80-%EB%8B%A4%EB%A5%B8-page%EB%A1%9C-%EB%B3%80%EA%B2%BD%EB%90%98%EC%96%B4-%EC%98%A4%EC%9E%91%EB%8F%99-%ED%95%98%EA%B1%B0%EB%82%98-hang%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%A9%EB%8B%88%EB%8B%A4)
@@ -31,8 +31,8 @@
     - [BUG-46354  HBT에서 socket open 실패시 에러메시지를 출력해야 합니다.](#bug-46354-hbt%EC%97%90%EC%84%9C-socket-open-%EC%8B%A4%ED%8C%A8%EC%8B%9C-%EC%97%90%EB%9F%AC%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%B6%9C%EB%A0%A5%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46369  이중화 중 tablespace full이 발생했을때 SenderApply가 계속 restart 를 시도합니다.](#bug-46369-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A4%91-tablespace-full%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%96%88%EC%9D%84%EB%95%8C-senderapply%EA%B0%80-%EA%B3%84%EC%86%8D-restart-%EB%A5%BC-%EC%8B%9C%EB%8F%84%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46385  eager replication 으로 사용시 create 순서로 start 하지 않으면 hang 이 발생 합니다.](#bug-46385-eager-replication-%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%EC%8B%9C-create-%EC%88%9C%EC%84%9C%EB%A1%9C-start-%ED%95%98%EC%A7%80-%EC%95%8A%EC%9C%BC%EB%A9%B4-hang-%EC%9D%B4-%EB%B0%9C%EC%83%9D-%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-46276  eager replication failback flush 상태 이전에 발생한 transaction 이 있으면 hang 이 발생 합니다.](#bug-46276-eager-replication-failback-flush-%EC%83%81%ED%83%9C-%EC%9D%B4%EC%A0%84%EC%97%90-%EB%B0%9C%EC%83%9D%ED%95%9C-transaction-%EC%9D%B4-%EC%9E%88%EC%9C%BC%EB%A9%B4-hang-%EC%9D%B4-%EB%B0%9C%EC%83%9D-%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-46393  lazy 이중화관련 테이블에만 트랜잭션이 발생하였는데 eager 이중화가 FLUSH FAILBACK 상태면 Commit 시 대기를 합니다.](#bug-46393-lazy-%EC%9D%B4%EC%A4%91%ED%99%94%EA%B4%80%EB%A0%A8-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90%EB%A7%8C-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%98%EC%98%80%EB%8A%94%EB%8D%B0-eager-%EC%9D%B4%EC%A4%91%ED%99%94%EA%B0%80-flush-failback-%EC%83%81%ED%83%9C%EB%A9%B4-commit-%EC%8B%9C-%EB%8C%80%EA%B8%B0%EB%A5%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46276  eager replication flush failback 상태 이전에 발생한 트랜잭션이 있으면 hang 이 발생 합니다.](#bug-46276-eager-replication-flush-failback-%EC%83%81%ED%83%9C-%EC%9D%B4%EC%A0%84%EC%97%90-%EB%B0%9C%EC%83%9D%ED%95%9C-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%B4-%EC%9E%88%EC%9C%BC%EB%A9%B4-hang-%EC%9D%B4-%EB%B0%9C%EC%83%9D-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46393  lazy 이중화관련 테이블에만 트랜잭션이 발생하였는데 eager 이중화가 flush failback 상태면 Commit 시 대기를 합니다.](#bug-46393-lazy-%EC%9D%B4%EC%A4%91%ED%99%94%EA%B4%80%EB%A0%A8-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90%EB%A7%8C-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%98%EC%98%80%EB%8A%94%EB%8D%B0-eager-%EC%9D%B4%EC%A4%91%ED%99%94%EA%B0%80-flush-failback-%EC%83%81%ED%83%9C%EB%A9%B4-commit-%EC%8B%9C-%EB%8C%80%EA%B8%B0%EB%A5%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46400  클라이언트 통신 모듈 콜백 함수 리스트를 모두 초기화 해야 합니다.](#bug-46400-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%ED%86%B5%EC%8B%A0-%EB%AA%A8%EB%93%88-%EC%BD%9C%EB%B0%B1-%ED%95%A8%EC%88%98-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC-%EB%AA%A8%EB%91%90-%EC%B4%88%EA%B8%B0%ED%99%94-%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46277  oraAdapter 연결후 oracle 서버가 종료되면 connection error를 skip하여 계속 connection error가 발생합니다.](#bug-46277-oraadapter-%EC%97%B0%EA%B2%B0%ED%9B%84-oracle-%EC%84%9C%EB%B2%84%EA%B0%80-%EC%A2%85%EB%A3%8C%EB%90%98%EB%A9%B4-connection-error%EB%A5%BC-skip%ED%95%98%EC%97%AC-%EA%B3%84%EC%86%8D-connection-error%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46403  oraAdapter가 oracle의 timestamp 타입을 지원 할 수 있도록 수정 해야 합니다.](#bug-46403-oraadapter%EA%B0%80-oracle%EC%9D%98-timestamp-%ED%83%80%EC%9E%85%EC%9D%84-%EC%A7%80%EC%9B%90-%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EC%88%98%EC%A0%95-%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
@@ -729,7 +729,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46217  v\$table 에서 성능뷰만 조회되어야 합니다.
+### BUG-46217  v$table 에서 성능뷰만 조회되어야 합니다.
 
 -   **module** : ux-isql
 
@@ -1279,7 +1279,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46276  eager replication failback flush 상태 이전에 발생한 transaction 이 있으면 hang 이 발생 합니다.
+### BUG-46276  eager replication flush failback 상태 이전에 발생한 트랜잭션이 있으면 hang 이 발생 합니다.
 
 - **module** : rp-control
 
@@ -1287,25 +1287,9 @@ Fixed Bugs
 
 - **재현 빈도** : Frequence
 
-- **증상** :  flush failback 상태 이전에는 상대편 서버에 복제여부를
-  확인하는 테이블에 update 를 수행하지 않습니다.
+- **증상** :  eager replication flush failback 상태 이전에 발생한 트랜잭션이 있으면 hang(무한 대기하는 현상)이 발생하는 경우가 있어, 이를 수정하였습니다.
 
-  그렇기 때문에 Flush failback 상태 이전에 시작된 transaction 이
-  생성되어 DML 이 수행되고 Flush failback 상태로 변경이 되면 Commit
-  시에 그 이전 DML 이 반영 여부를 확인 합니다.
-
-  이 확인 할때 복제여부를 확인하는 테이블에 update 가 되지 않어 
-  복제가 되지 않다라고 판단하고 계속 대기 하게 됩니다.
-
-  Flush failback 상태 이전에 발생한 Transaction 에 대해서는 상대편
-  서버가 어느 SN 까지 반영 되었는지 확인 하고 대기여부를 결정 하게
-  수정 하였습니다.
-
-  (Flush failback  상태 이전에 발생한 Transaction 은 parent Sender
-  Thread 에서 전담해서 처리 하므로 Serialization 이 보장 됩니다.)
-
-  flush failback  상태 이전에 복제여부를 확인하는 테이블을
-  업데이트하는것은 성능한 이슈로 고려 하지 않았습니다.
+  Flush failback 상태 이전에 발생한 Transaction 에 대해서는 상대편 서버가 어느 SN 까지 반영 되었는지 확인 하고 대기여부를 결정하도록 수정 하였습니다.
 
 - **재현 방법**
 
@@ -1322,7 +1306,7 @@ Fixed Bugs
   - Compile Option
   - Error Code
 
-### BUG-46393  lazy 이중화관련 테이블에만 트랜잭션이 발생하였는데 eager 이중화가 FLUSH FAILBACK 상태면 Commit 시 대기를 합니다.
+### BUG-46393  lazy 이중화관련 테이블에만 트랜잭션이 발생하였는데 eager 이중화가 flush failback 상태면 Commit 시 대기를 합니다.
 
 -   **module** : rp
 
@@ -1330,25 +1314,7 @@ Fixed Bugs
 
 -   **재현 빈도** : Always
 
--   **증상** : lazy 이중화와 eager 이중화가 각 다른 테이블에 생성 되어
-    있고
-
-    lazy 이중화 관련 테이블에만 트랜잭션이 발생하였는데 eager 이중화가
-    flush failback 상태면 commit 시 대기를 하였습니다.
-
-    eager 이중화가 Flush Failback 상태면 commit 시 대기를 상대편에서
-    어느로그까지 처리 되었는지에 따라 대기 하고 있습니다.
-
-    문제가 된 점은 eager 이중화에서 내가 보내도 되지 않은 로그이면
-    로그정보에 대한 업데이트를 수행하지 않습니다.
-
-    그렇기 때문에 lazy 이중화 관련 테이블에 트랜잭션이 발생시 eager
-    이중화는 읽고 지나갔지만 로그 정보를 업데이트하지 않어 commit 대기시
-    처리하지 못한 로그로 판단하고 대기하였습니다.
-
-    이를 eage 이중화에서 내가 처리 하지 않는 로그도 읽었으면 로그 정보를
-    업데이트 하여 lazy 이중화 관련 테이블에만 트랜잭션 발생시도 commit
-    시 대기하지 않도록 수정 하였습니다.
+-   **증상** : 이중화 객체가 여러개일때, 이중화 대상 특정 테이블(lazy 이중화관련 테이블)에 트랜잭션 발생시, eager 이중화가 flush failback 상태인경우 무한대기하는 문제가 있습니다.관련이 없는 이중화 테이블의 경우, 트랜잭션 발생시에 commit 대기하지 않도록 수정하였습니다.
 
 -   **재현 방법**
 
