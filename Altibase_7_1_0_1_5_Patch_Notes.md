@@ -478,11 +478,11 @@ Fixed Bugs
 
     ```
     iSQL> select
-        2 substr(max(c2), 1, 3) as a1,
-        3 decode(max(c2), '', 'null', substr(max(c2), 1, 3)) a2
-        4 from t1
-        5 group by c1
-        6 order by a1;
+         substr(max(c2), 1, 3) as a1,
+         decode(max(c2), '', 'null', substr(max(c2), 1, 3)) a2
+         from t1
+         group by c1
+         order by a1;
     A1          A2          
     ---------------------------
     11          11          
@@ -550,15 +550,15 @@ Fixed Bugs
     ```
     create or replace view v2 as select func1 c1 from v1; -- Create success
     create or replace view v1 as select dummy c1 from dual; -- Hang
-    
     ```
 
   - **예상 결과**
 
     ```
-    create or replace view v2 as select func1 c1 from v1; -- Create success
-    create or replace view v1 as select dummy c1 from dual; -- Create success
-    
+    iSQL> create or replace view v2 as select func1 c1 from v1;
+    Create success.
+    iSQL> create or replace view v1 as select dummy c1 from dual;
+    Create success.    
     ```
 
 - **Workaround**
@@ -701,7 +701,7 @@ Fixed Bugs
         DROP QUEUE Q1;
         CREATE QUEUE Q1(16);
         SET TIMING ON;
-        DEQUEUE /*+ NO_PLAN_CACHE */ MESSAGE FROM Q1 WAIT 100MSEC;
+        DEQUEUE /*+ NO_PLAN_CACHE */ MESSAGE FROM Q1 WAIT 900MSEC;
 
   - **수행 결과**
 
