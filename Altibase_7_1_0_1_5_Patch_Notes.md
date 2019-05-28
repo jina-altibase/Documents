@@ -17,8 +17,8 @@
     - [BUG-46416  view가 function, view에서 동시에 참조되는 경우 무한 대기 상태에 빠질 수 있습니다.](#bug-46416-view%EA%B0%80-function-view%EC%97%90%EC%84%9C-%EB%8F%99%EC%8B%9C%EC%97%90-%EC%B0%B8%EC%A1%B0%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-%EB%AC%B4%ED%95%9C-%EB%8C%80%EA%B8%B0-%EC%83%81%ED%83%9C%EC%97%90-%EB%B9%A0%EC%A7%88-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46424  디스크 템프 테이블 생성시 상위 플랜 노드에서 필요한 값이 저장되지 않는 경우가 있습니다.](#bug-46424-%EB%94%94%EC%8A%A4%ED%81%AC-%ED%85%9C%ED%94%84-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%9D%EC%84%B1%EC%8B%9C-%EC%83%81%EC%9C%84-%ED%94%8C%EB%9E%9C-%EB%85%B8%EB%93%9C%EC%97%90%EC%84%9C-%ED%95%84%EC%9A%94%ED%95%9C-%EA%B0%92%EC%9D%B4-%EC%A0%80%EC%9E%A5%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EA%B2%BD%EC%9A%B0%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46183  DEQUEUE의 WAIT TIME이 1초 미만인 경우, 설정한 시간만큼 대기하지 않는 문제가 있습니다.](#bug-46183-dequeue%EC%9D%98-wait-time%EC%9D%B4-1%EC%B4%88-%EB%AF%B8%EB%A7%8C%EC%9D%B8-%EA%B2%BD%EC%9A%B0-%EC%84%A4%EC%A0%95%ED%95%9C-%EC%8B%9C%EA%B0%84%EB%A7%8C%ED%81%BC-%EB%8C%80%EA%B8%B0%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46217  v\$table 에서 성능뷰만 조회되어야 합니다.](#bug-46217-vtable-%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5%EB%B7%B0%EB%A7%8C-%EC%A1%B0%ED%9A%8C%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-46266  V$LFG에서 삭제된 logfile 번호 컬럼(FIRST_DELETED_LOGFILE, LAST_DELETED_LOGFILE) 값이 잘못 출력됩니다.](#bug-46266--vlfg에서-삭제된-logfile-번호-컬럼first_deleted_logfile-last_deleted_logfile-값이-잘못-출력됩니다)
+    - [BUG-46217  v\$table 에서 성능뷰만 조회되어야 합니다.](#bug-46217-v%5Ctable-%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5%EB%B7%B0%EB%A7%8C-%EC%A1%B0%ED%9A%8C%EB%90%98%EC%96%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46266  V$LFG에서 삭제된 logfile 번호 컬럼(FIRST\_DELETED\_LOGFILE, LAST\_DELETED\_LOGFILE) 값이 잘못 출력됩니다.](#bug-46266--vlfg%EC%97%90%EC%84%9C-%EC%82%AD%EC%A0%9C%EB%90%9C-logfile-%EB%B2%88%ED%98%B8-%EC%BB%AC%EB%9F%BCfirst%5C_deleted%5C_logfile-last%5C_deleted%5C_logfile-%EA%B0%92%EC%9D%B4-%EC%9E%98%EB%AA%BB-%EC%B6%9C%EB%A0%A5%EB%90%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46383  disk sort temp table 에서 잘못된 Page를 읽어서 hang이 걸리는 문제를 수정하였습니다.](#bug-46383-disk-sort-temp-table-%EC%97%90%EC%84%9C-%EC%9E%98%EB%AA%BB%EB%90%9C-page%EB%A5%BC-%EC%9D%BD%EC%96%B4%EC%84%9C-hang%EC%9D%B4-%EA%B1%B8%EB%A6%AC%EB%8A%94-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46384  Disk Sort Temp Table에서 작업 완료되지 않은 page가 다른 page로 변경되어 오작동 하거나 hang이 발생하는 문제를 수정합니다.](#bug-46384-disk-sort-temp-table%EC%97%90%EC%84%9C-%EC%9E%91%EC%97%85-%EC%99%84%EB%A3%8C%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%80-page%EA%B0%80-%EB%8B%A4%EB%A5%B8-page%EB%A1%9C-%EB%B3%80%EA%B2%BD%EB%90%98%EC%96%B4-%EC%98%A4%EC%9E%91%EB%8F%99-%ED%95%98%EA%B1%B0%EB%82%98-hang%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46322  disk sort temp table 중 특정 merge join에서 정상 상황임에도 비정상으로 판단하여 오류를 잘못 반환하는 문제 수정](#bug-46322-disk-sort-temp-table-%EC%A4%91-%ED%8A%B9%EC%A0%95-merge-join%EC%97%90%EC%84%9C-%EC%A0%95%EC%83%81-%EC%83%81%ED%99%A9%EC%9E%84%EC%97%90%EB%8F%84-%EB%B9%84%EC%A0%95%EC%83%81%EC%9C%BC%EB%A1%9C-%ED%8C%90%EB%8B%A8%ED%95%98%EC%97%AC-%EC%98%A4%EB%A5%98%EB%A5%BC-%EC%9E%98%EB%AA%BB-%EB%B0%98%ED%99%98%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C-%EC%88%98%EC%A0%95)
@@ -26,7 +26,7 @@
     - [BUG-46442  파일에서 읽은 컬럼 값이 유효하지 않을 때 에러 메시지가 셋팅되지 않는 경우가 있습니다.](#bug-46442-%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EC%9D%BD%EC%9D%80-%EC%BB%AC%EB%9F%BC-%EA%B0%92%EC%9D%B4-%EC%9C%A0%ED%9A%A8%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%84-%EB%95%8C-%EC%97%90%EB%9F%AC-%EB%A9%94%EC%8B%9C%EC%A7%80%EA%B0%80-%EC%85%8B%ED%8C%85%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EA%B2%BD%EC%9A%B0%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46292  aexport 에서 객체를 생성할때, BIGINT 타입의 Object Id가 integer 타입으로 바인딩되어 Numeric value out of range 에러가 발생합니다.](#bug-46292-aexport-%EC%97%90%EC%84%9C-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%95%A0%EB%95%8C-bigint-%ED%83%80%EC%9E%85%EC%9D%98-object-id%EA%B0%80-integer-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EB%B0%94%EC%9D%B8%EB%94%A9%EB%90%98%EC%96%B4-numeric-value-out-of-range-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46295  뷰 생성문 마지막 라인에 단일 행 주석이 포함될 경우, 생성된 SQL 파일이 정상적으로 실행되지 않습니다.](#bug-46295-%EB%B7%B0-%EC%83%9D%EC%84%B1%EB%AC%B8-%EB%A7%88%EC%A7%80%EB%A7%89-%EB%9D%BC%EC%9D%B8%EC%97%90-%EB%8B%A8%EC%9D%BC-%ED%96%89-%EC%A3%BC%EC%84%9D%EC%9D%B4-%ED%8F%AC%ED%95%A8%EB%90%A0-%EA%B2%BD%EC%9A%B0-%EC%83%9D%EC%84%B1%EB%90%9C-sql-%ED%8C%8C%EC%9D%BC%EC%9D%B4-%EC%A0%95%EC%83%81%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%8B%A4%ED%96%89%EB%90%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46310  receiver에서 stop중 V$REPRECEIVER\_TRANSTBL을 조회 하면 잘못된 메모리를 참조 할수 있습니다.](#bug-46310-receiver에서-stop중-vrepreceiver_transtbl을-조회-하면-잘못된-메모리를-참조-할수-있습니다)
+    - [BUG-46310  receiver에서 stop중 V$REPRECEIVER\_TRANSTBL을 조회 하면 잘못된 메모리를 참조 할수 있습니다.](#bug-46310-receiver%EC%97%90%EC%84%9C-stop%EC%A4%91-vrepreceiver%5C_transtbl%EC%9D%84-%EC%A1%B0%ED%9A%8C-%ED%95%98%EB%A9%B4-%EC%9E%98%EB%AA%BB%EB%90%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC%EB%A5%BC-%EC%B0%B8%EC%A1%B0-%ED%95%A0%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46314  각 서버에서 이중화 대상 table 의 컬럼순서가 다른경우, update 수행시 이중화가 정상적으로 수행되지 않습니다.](#bug-46314-%EA%B0%81-%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EC%9D%B4%EC%A4%91%ED%99%94-%EB%8C%80%EC%83%81-table-%EC%9D%98-%EC%BB%AC%EB%9F%BC%EC%88%9C%EC%84%9C%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B2%BD%EC%9A%B0-update-%EC%88%98%ED%96%89%EC%8B%9C-%EC%9D%B4%EC%A4%91%ED%99%94%EA%B0%80-%EC%A0%95%EC%83%81%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%88%98%ED%96%89%EB%90%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46354  HBT에서 socket open 실패시 에러메시지를 출력해야 합니다.](#bug-46354-hbt%EC%97%90%EC%84%9C-socket-open-%EC%8B%A4%ED%8C%A8%EC%8B%9C-%EC%97%90%EB%9F%AC%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%B6%9C%EB%A0%A5%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46369  이중화 중 tablespace full이 발생했을때 SenderApply가 계속 restart 를 시도합니다.](#bug-46369-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A4%91-tablespace-full%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%96%88%EC%9D%84%EB%95%8C-senderapply%EA%B0%80-%EA%B3%84%EC%86%8D-restart-%EB%A5%BC-%EC%8B%9C%EB%8F%84%ED%95%A9%EB%8B%88%EB%8B%A4)
@@ -66,6 +66,125 @@ New Features
   - **예상 결과**
 - **Workaround**
 - **변경사항**
+  - Performance view
+  - Property
+  - Compile Option
+  - Error Code
+
+### BUG-46216  updatable join view 에서 key reserved 체크 기능 추가
+
+- **module** : qp-dml-execute
+
+- **Category** : Enhancement
+
+- **재현 빈도** : Always
+
+- **증상** : updatable join view 에서 key reserved 체크 기능 추가. 
+
+- **재현 방법**
+
+  - **재현 절차**
+
+    ```
+    drop table t1;
+    drop table t2;
+    drop view v1;
+    create table t1
+    ( 
+      i1 integer,
+      i2 integer,
+      i3 integer,
+      i4 integer
+    );
+    create table t2
+    ( 
+      i1 integer,
+      i2 integer,
+      i3 integer,
+      i4 integer
+    );
+    create view v1 as
+    select t1.i1 a, t1.i2 b, t1.i3 c, t2.i1 d, t2.i2 e, t2.i3 f
+    from t1, t2
+    where t1.i1 = t2.i3;
+    
+    select t.table_name, c.column_name, c.is_key_preserved
+    from system_.sys_users_ u, system_.sys_tables_ t, system_.sys_columns_ c
+    where u.user_id = t.user_id and t.table_id = c.table_id and
+    u.user_name = 'SYS' and t.table_name = 'V1'
+    order by c.column_order;
+    ```
+
+  - **수행 결과**
+
+    ```
+    TABLE_NAME       : V1
+    COLUMN_NAME      : A
+    IS_KEY_PRESERVED : T
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : B
+    IS_KEY_PRESERVED : T
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : C
+    IS_KEY_PRESERVED : T
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : D
+    IS_KEY_PRESERVED : T
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : E
+    IS_KEY_PRESERVED : T
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : F
+    IS_KEY_PRESERVED : T
+    
+    6 rows selected.
+    ```
+
+  - **예상 결과**
+
+    ```
+    select t.table_name, c.column_name, c.is_key_preserved
+    from system_.sys_users_ u, system_.sys_tables_ t, system_.sys_columns_ c
+    where u.user_id = t.user_id and t.table_id = c.table_id and
+    u.user_name = 'SYS' and t.table_name = 'V1'
+    order by c.column_order;
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : A
+    IS_KEY_PRESERVED : F
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : B
+    IS_KEY_PRESERVED : F
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : C
+    IS_KEY_PRESERVED : F
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : D
+    IS_KEY_PRESERVED : F
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : E
+    IS_KEY_PRESERVED : F
+    
+    TABLE_NAME       : V1
+    COLUMN_NAME      : F
+    IS_KEY_PRESERVED : F
+    
+    6 rows selected.
+    ```
+
+- **Workaround**
+
+- **변경사항**
+
   - Performance view
   - Property
   - Compile Option
@@ -383,105 +502,6 @@ Fixed Bugs
   - Property
   - Compile Option
   - Error Code
-
-### BUG-46124  Key Preserved 프로퍼티 0 에서 Updatable View의 하위 View DML를 지원
-
-- **module** : qp-dml-pvo
-
-- **Category** : Enhancement
-
-- **재현 빈도** : Always
-
-- **증상** : Key Preserved 프로퍼티 0 인 상태에서, 하위 View를 지니는
-  중접된 상위 View에서도 Updatable View 기능을 지원합니다.
-
-  해당 기능을 이용하기 위해서는, 먼저 아래와 같이 프로퍼티를 변경해야
-  합니다.
-
-  \>
-
-  ALTER SYSTEM SET \_\_KEY\_PRESERVED\_TABLE = 0;
-
-  지원되는 중첩 View 형태는 Select 문 From 구절에 View 1개를 가진
-  형태만 지원합니다.
-
-  \>
-
-  CREATE TABLE T1 ( I1 INT, I2 INT, I3 INT );
-
-  CREATE VIEW V1 AS SELECT \* FROM T1;
-
-  CREATE VIEW V2 AS SELECT I2, I3 **FROM V1** WHERE I1 = 1;
-
-  CREATE VIEW V3 AS SELECT I1, I3 **FROM V1** WHERE I2 = 1;
-
-- **재현 방법**
-
-  -   **재현 절차**
-
-          drop table t1;
-          drop view v1;
-          drop view v2;
-          create table t1 (i1 int primary key, i2 int);
-          create view v1 as select * from t1 where i1=i2;
-          insert into v1 values (1,1);
-          create view v2 as select * from v1 where v1.i1=v1.i2;
-          insert into v2 values (2,2);
-
-  - **수행 결과**
-
-        iSQL> drop table t1;
-        Drop success.
-        iSQL> drop view v1;
-        Drop success.
-        iSQL> drop view v2;
-        Drop success.
-        iSQL> create table t1 (i1 int primary key, i2 int);
-        Create success.
-        iSQL>
-        iSQL> create view v1 as select * from t1 where i1=i2;
-        Create success.
-        iSQL>
-        iSQL> insert into v1 values (1,1);
-        1 row inserted.
-        iSQL>
-        iSQL> create view v2 as select * from v1 where v1.i1=v1.i2;
-        Create success.
-        iSQL>
-        iSQL> insert into v2 values (2,2);
-        [ERR-313A4 : Cannot modify a column for a non key-preserved table]
-
-  - **예상 결과**
-
-        iSQL> drop table t1;
-        Drop success.
-        iSQL> drop view v1;
-        Drop success.
-        iSQL> drop view v2;
-        Drop success.
-        iSQL> create table t1 (i1 int primary key, i2 int);
-        Create success.
-        iSQL>
-        iSQL> create view v1 as select * from t1 where i1=i2;
-        Create success.
-        iSQL>
-        iSQL> insert into v1 values (1,1);
-        1 row inserted.
-        iSQL>
-        iSQL> create view v2 as select * from v1 where v1.i1=v1.i2;
-        Create success.
-        iSQL>
-        iSQL> insert into v2 values (2,2);
-        1 row inserted.
-
-- **Workaround**
-
-- **변경사항**
-
-  -   Performance view
-  -   Property
-  -   Compile Option
-  -   Error Code
 
 ### BUG-46416  view가 function, view에서 동시에 참조되는 경우 무한 대기 상태에 빠질 수 있습니다.
 
