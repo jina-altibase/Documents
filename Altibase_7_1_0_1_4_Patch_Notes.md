@@ -7,8 +7,8 @@
     - [BUG-45779  APRE에서 PSM 인자로 Array type을 지원해야 합니다.](#bug-45779-apre%EC%97%90%EC%84%9C-psm-%EC%9D%B8%EC%9E%90%EB%A1%9C-array-type%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-45701  PSM associative array parameter binding](#bug-45701-psm-associative-array-parameter-binding)
     - [BUG-46032  bulk collect into 절에서 2-level associative array variable 지원](#bug-46032-bulk-collect-into-%EC%A0%88%EC%97%90%EC%84%9C-2-level-associative-array-variable-%EC%A7%80%EC%9B%90)
-    - [BUG-45946  이중화를 통하여 DDL 복제(DDL SYNCHRONIZATION)를 허용합니다.](#bug-45946-%EC%9D%B4%EC%A4%91%ED%99%94%EB%A5%BC-%ED%86%B5%ED%95%98%EC%97%AC-ddl-%EB%B3%B5%EC%A0%9Cddl-synchronization%EB%A5%BC-%ED%97%88%EC%9A%A9%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-46308  Partition Merge / Split DDL 동기화 지원](#bug-46308-partition-merge--split-ddl-%EB%8F%99%EA%B8%B0%ED%99%94-%EC%A7%80%EC%9B%90)
+    - [BUG-45946  이중화를 통하여 DDL 동기화(DDL SYNCHRONIZATION)를 허용합니다.](#bug-45946-%EC%9D%B4%EC%A4%91%ED%99%94%EB%A5%BC-%ED%86%B5%ED%95%98%EC%97%AC-ddl-%EB%8F%99%EA%B8%B0%ED%99%94ddl-synchronization%EB%A5%BC-%ED%97%88%EC%9A%A9%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46308  Partition Merge / Split DDL 이중화 지원](#bug-46308-partition-merge--split-ddl-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A7%80%EC%9B%90)
     - [BUG-45972  Standalone 에서만 동작하는 DDL 구문의 처리](#bug-45972-standalone-%EC%97%90%EC%84%9C%EB%A7%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%8A%94-ddl-%EA%B5%AC%EB%AC%B8%EC%9D%98-%EC%B2%98%EB%A6%AC)
     - [BUG-45984  이중화에서 InfiniBand(IB) 통신 방법을 지원한다.](#bug-45984-%EC%9D%B4%EC%A4%91%ED%99%94%EC%97%90%EC%84%9C-infinibandib-%ED%86%B5%EC%8B%A0-%EB%B0%A9%EB%B2%95%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%9C%EB%8B%A4)
     - [BUG-46209  이중화 infiniband 통신방식 관련 추가된 구문을 APRE와 AEXPORT에도 추가 해야 합니다.](#bug-46209-%EC%9D%B4%EC%A4%91%ED%99%94-infiniband-%ED%86%B5%EC%8B%A0%EB%B0%A9%EC%8B%9D-%EA%B4%80%EB%A0%A8-%EC%B6%94%EA%B0%80%EB%90%9C-%EA%B5%AC%EB%AC%B8%EC%9D%84-apre%EC%99%80-aexport%EC%97%90%EB%8F%84-%EC%B6%94%EA%B0%80-%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
@@ -47,8 +47,8 @@
     - [BUG-46197  altilinker가 구동중이지 않은경우에 disconnect을 수행하면, altilinker를 다시 connect 하는 문제가 있어 수정하였습니다.](#bug-46197-altilinker%EA%B0%80-%EA%B5%AC%EB%8F%99%EC%A4%91%EC%9D%B4%EC%A7%80-%EC%95%8A%EC%9D%80%EA%B2%BD%EC%9A%B0%EC%97%90-disconnect%EC%9D%84-%EC%88%98%ED%96%89%ED%95%98%EB%A9%B4-altilinker%EB%A5%BC-%EB%8B%A4%EC%8B%9C-connect-%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%96%B4-%EC%88%98%EC%A0%95%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46202  v\$event\_name에 중복된 항목이 있습니다.](#bug-46202-v%5Cevent%5C_name%EC%97%90-%EC%A4%91%EB%B3%B5%EB%90%9C-%ED%95%AD%EB%AA%A9%EC%9D%B4-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46230  iduMemory의 getStatus(), setStatus() 함수 에러메시지 세분화](#bug-46230-idumemory%EC%9D%98-getstatus-setstatus-%ED%95%A8%EC%88%98-%EC%97%90%EB%9F%AC%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%84%B8%EB%B6%84%ED%99%94)
-    - [BUG-46239  DDL 복제 중 Select 시, Lock 획득에 실패하는 경우 DDL 복제가 실패할 수 있습니다.](#bug-46239-ddl-%EB%B3%B5%EC%A0%9C-%EC%A4%91-select-%EC%8B%9C-lock-%ED%9A%8D%EB%93%9D%EC%97%90-%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-ddl-%EB%B3%B5%EC%A0%9C%EA%B0%80-%EC%8B%A4%ED%8C%A8%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46242  DDL 복제 시 Propagation 옵션이 켜져 있으면 실패해야 합니다.](#bug-46242-ddl-%EB%B3%B5%EC%A0%9C-%EC%8B%9C-propagation-%EC%98%B5%EC%85%98%EC%9D%B4-%EC%BC%9C%EC%A0%B8-%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%8B%A4%ED%8C%A8%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46239  DDL 동기화 중 Select 시, Lock 획득에 실패하는 경우 DDL 동기화가 실패할 수 있습니다.](#bug-46239-ddl-%EB%8F%99%EA%B8%B0%ED%99%94-%EC%A4%91-select-%EC%8B%9C-lock-%ED%9A%8D%EB%93%9D%EC%97%90-%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-ddl-%EB%8F%99%EA%B8%B0%ED%99%94%EA%B0%80-%EC%8B%A4%ED%8C%A8%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46242  DDL 동기화 시 Propagation 옵션이 켜져 있으면 실패해야 합니다.](#bug-46242-ddl-%EB%8F%99%EA%B8%B0%ED%99%94-%EC%8B%9C-propagation-%EC%98%B5%EC%85%98%EC%9D%B4-%EC%BC%9C%EC%A0%B8-%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%8B%A4%ED%8C%A8%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
     - [BUG-46249  group by 표현식에 있는 컬럼을 참조하는 집합 연산이 존재하지 않으면 결과값 오류가 발생할 수 있습니다.](#bug-46249-group-by-%ED%91%9C%ED%98%84%EC%8B%9D%EC%97%90-%EC%9E%88%EB%8A%94-%EC%BB%AC%EB%9F%BC%EC%9D%84-%EC%B0%B8%EC%A1%B0%ED%95%98%EB%8A%94-%EC%A7%91%ED%95%A9-%EC%97%B0%EC%82%B0%EC%9D%B4-%EC%A1%B4%EC%9E%AC%ED%95%98%EC%A7%80-%EC%95%8A%EC%9C%BC%EB%A9%B4-%EA%B2%B0%EA%B3%BC%EA%B0%92-%EC%98%A4%EB%A5%98%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46264  디스크테이블에서 window sort의 order by 절에 동일한 컬럼을 중복하여 나열하는 경우, hang이 발생할 수 있습니다.](#bug-46264-%EB%94%94%EC%8A%A4%ED%81%AC%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90%EC%84%9C-window-sort%EC%9D%98-order-by-%EC%A0%88%EC%97%90-%EB%8F%99%EC%9D%BC%ED%95%9C-%EC%BB%AC%EB%9F%BC%EC%9D%84-%EC%A4%91%EB%B3%B5%ED%95%98%EC%97%AC-%EB%82%98%EC%97%B4%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0-hang%EC%9D%B4-%EB%B0%9C%EC%83%9D%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
     - [BUG-46265  Create Disk Temp Table 에서 Key column list가 순환 할 수도 있는지 검증합니다.](#bug-46265-create-disk-temp-table-%EC%97%90%EC%84%9C-key-column-list%EA%B0%80-%EC%88%9C%ED%99%98-%ED%95%A0-%EC%88%98%EB%8F%84-%EC%9E%88%EB%8A%94%EC%A7%80-%EA%B2%80%EC%A6%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
@@ -256,7 +256,7 @@ New Features
   - Compile Option
   - Error Code
 
-### BUG-45946  이중화를 통하여 DDL 복제(DDL SYNCHRONIZATION)를 허용합니다.
+### BUG-45946  이중화를 통하여 DDL 동기화(DDL SYNCHRONIZATION)를 허용합니다.
 
 - **module** : rp
 
@@ -264,20 +264,20 @@ New Features
 
 - **재현 빈도** : Always
 
-- **증상** : 이중화를 통하여 DDL 복제를 허용합니다. 이 기능을 사용하기 위해서는 각노드의 REPLICATION_DDL_SYNC 프로퍼티를 1로 설정해야 합니다. 또한, 각 노드의 [REPLICATION_DDL_ENABLE](<https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md#replication_ddl_enable>) 프로퍼티를 1로 설정하고, [REPLICATION_DDL_ENABLE_LEVEL](<https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md#replication_ddl_enable_level>)이 동일해야 합니다.
+- **증상** : 이중화를 통하여 DDL 동기화(Synchronization)를 허용합니다. 이 기능을 사용하기 위해서는 각노드의 REPLICATION_DDL_SYNC 프로퍼티를 1로 설정해야 합니다. 또한, 각 노드의 [REPLICATION_DDL_ENABLE](<https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md#replication_ddl_enable>) 프로퍼티를 1로 설정하고, [REPLICATION_DDL_ENABLE_LEVEL](<https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/GeneralReference_2.md#replication_ddl_enable_level>)이 동일해야 합니다.
 
-  DDL 복제를 사용하기 위해 다음의 제약 조건을 따릅니다.
+  DDL 동기화를 사용하기 위해 다음의 제약 조건을 따릅니다.
 
-  * DDL 복제를 수행할 노드들의 이중화가 동작하고 있어야 한다.
+  * DDL 동기화를 수행할 노드들의 이중화가 동작하고 있어야 한다.
 
-  -    DDL 복제를 수행할 Local 노드와 Remote 노드의 Table 이름이 같아야 한다.
-  -    DDL 복제를 수행할 Local 노드와 Remote 노드의 Table 파티션이름이 같아야 한다.
-  -    DDL 복제를 수행할 이중화 대상 유저의 이름이 같아야 한다.
-  -    한번에 하나의 노드에서만 DDL 복제를 수행해야 한다.
-  -    DDL 복제를 수행할 각 이중화 노드의 REPLICATION_DDL_ENABLE과 REPLICATION_DDL_ENABLE_LEVEL 프로퍼티 값이 같아야 한다.
+  -    DDL 동기화를 수행할 Local 노드와 Remote 노드의 Table 이름이 같아야 한다.
+  -    DDL 동기화를 수행할 Local 노드와 Remote 노드의 Table 파티션이름이 같아야 한다.
+  -    DDL 동기화를 수행할 이중화 대상 유저의 이름이 같아야 한다.
+  -    한번에 하나의 노드에서만 DDL 동기화를 수행해야 한다.
+  -    DDL 동기화를 수행할 각 이중화 노드의 REPLICATION_DDL_ENABLE과 REPLICATION_DDL_ENABLE_LEVEL 프로퍼티 값이 같아야 한다.
   -    <font color=red>Altibase Patch 버전(5자리)이 동일해야한다.</font>
 
-  Propagation 옵션 사용시 DDL 복제를 허용하지 않는다.
+  Propagation 옵션 사용시 DDL 동기화를 허용하지 않는다.
 
 - **재현 방법**
 
@@ -340,7 +340,7 @@ New Features
 
   - Error Code
 
-### BUG-46308  Partition Merge / Split DDL 동기화 지원
+### BUG-46308  Partition Merge / Split DDL 이중화 지원
 
 - **module** : rp
 
@@ -375,7 +375,7 @@ New Features
 
 - **재현 빈도** : Always
 
-- **증상** : 기존에 DDL 복제가 허용되지 않는 DDL 중 Active 에서만 동작하던 DDL 을 DDL 복제허용하도록 변경하였습니다. 
+- **증상** : 기존에 DDL 동기화가 허용되지 않는 DDL 중 Active 에서만 동작하던 DDL 을 DDL 동기화 허용하도록 변경하였습니다. 
 
   허용하는 DDL List - Aging , Compact, Drop Default, Rename Constraint, SetDefualt
 
@@ -1180,7 +1180,7 @@ Fixed Bugs
 -   **재현 빈도** : Always
 
 -   **증상** : 이중화에서 Active Server와 Standby Server의 List Partition 테이블의 범위가 포함관계에 있는경우, 두 partition의 범위가 달라도 HandShake 가 성공하는 문제가 있습니다. 이에, List Partition
-    테이블의 경우 Active Server와 Standby Server의 범위가 같은 경우에만 HandShake가 성공하도록 수정하였습니다.
+    테이블의 경우 Active Server와 Standby Server의 범위가 같은 경우에만 Handshake가 성공하도록 수정하였습니다.
 
 -   **재현 방법**
     -   **재현 절차**
@@ -1840,7 +1840,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46239  DDL 복제 중 Select 시, Lock 획득에 실패하는 경우 DDL 복제가 실패할 수 있습니다.
+### BUG-46239  DDL 동기화 중 Select 시, Lock 획득에 실패하는 경우 DDL 동기화가 실패할 수 있습니다.
 
 -   **module** : rp
 
@@ -1848,7 +1848,7 @@ Fixed Bugs
 
 -   **재현 빈도** : Always
 
--   **증상** : DDL 복제 중 복제 대상 테이블에 내부적으로 Lock 을 잡는데, Lock 획득에 실패하는 경우 DDL 복제가 실패할 수 있습니다.
+-   **증상** : DDL 동기화 중에 DDL 동기화 대상 테이블에 내부적으로 Lock을 잡는데, Lock 획득에 실패하는 경우 DDL 동기화가 실패할 수 있습니다.
 
 -   **재현 방법**
     -   **재현 절차**
@@ -1865,7 +1865,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46242  DDL 복제 시 Propagation 옵션이 켜져 있으면 실패해야 합니다.
+### BUG-46242  DDL 동기화 시 Propagation 옵션이 켜져 있으면 실패해야 합니다.
 
 -   **module** : rp
 
@@ -1873,7 +1873,7 @@ Fixed Bugs
 
 -   **재현 빈도** : Always
 
--   **증상** : 기존에 DDL 복제기능에 Propagation 기능이 켜져있을 때 DDL 복제를 시도하면 DDL 이 실패하도록 합니다.
+-   **증상** : Propagation 기능이 켜져있을 때 DDL 동기화를 시도하면 DDL 동기화를 실패하도록 수정 합니다.
 
 -   **재현 방법**
 
@@ -1886,7 +1886,6 @@ Fixed Bugs
 -   **Workaround**
 
 -   **변경사항**
-
     -   Performance view
     -   Property
     -   Compile Option
