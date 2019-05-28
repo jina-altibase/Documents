@@ -1959,27 +1959,28 @@ Fixed Bugs
   - **예상 결과**
 
         iSQL> select /*+ no_plan_cache */ substr(c1, 1, 3)
-        ,count(case when substr(c1, 1, 3) = 'SPBKO' then 1 else 0 end) gg1
-        from t1 group by substr(c1, 1, 3);
+             ,count(case when substr(c1, 1, 3) = 'SPBKO' then 1 else 0 end) gg1
+             from t1 group by substr(c1, 1, 3);
+        select /*+ no_plan_cache */ substr(c1, 1, 3)
         SUBSTR(C1,1,3)   GG1
         -----------------------------------------
+        eee              2
         aaa              2
         bbb              2
-        ccc              2
         ddd              2
-        eee              2
+        ccc              2
         5 rows selected.
         iSQL> select /*+ no_plan_cache */ substr(c1, 1, 3)
-        ,min(c1)
-        ,count(case when substr(c1, 1, 3) = 'SPBKO' then 1 else 0 end) gg1
-        from t1 group by substr(c1, 1, 3);
+             ,min(c1)
+             ,count(case when substr(c1, 1, 3) = 'SPBKO' then 1 else 0 end) gg1
+             from t1 group by substr(c1, 1, 3);
         SUBSTR(C1,1,3)   MIN(C1)          GG1
         -----------------------------------------------------------
+        eee              eee              2
         aaa              aaa              2
         bbb              bbb              2
-        ccc              ccc              2
         ddd              ddd              2
-        eee              eee              2
+        ccc              ccc              2
         5 rows selected.
 
 -   **Workaround**
@@ -2100,29 +2101,24 @@ Fixed Bugs
 
   - **재현 절차**
 
-        iSQL>  CREATE TABLE RANGE_T1( I1 VARCHAR(10) PRIMARY KEY, I2 VARCHAR(10) )
-                 PARTITION BY RANGE(I1)
-                 (
-                     PARTITION P1 VALUES LESS THAN (300),
-                     PARTITION P2 VALUES LESS THAN (600),
-                     PARTITION PD VALUES DEFAULT
-                 );
-        Create success.
-        iSQL>     CREATE TABLE RANGE_T1_REBUILD( I1 VARCHAR(10) PRIMARY KEY, I2 VARCHAR(10) )
-                 PARTITION BY RANGE(I1)
-                 (
-                     PARTITION P1 VALUES LESS THAN (300),
-                     PARTITION P2 VALUES LESS THAN (600),
-                     PARTITION PD VALUES DEFAULT
-                 );
-        Create success.
-        iSQL> 
-        iSQL> update range_t1 set i2 =1;
-        No rows updated.
-        iSQL> ALTER TABLE RANGE_T1 REPLACE RANGE_T1_REBUILD PARTITION P1;
-        Alter success.
-        iSQL> update range_t1 set i2 =1;
-        [ERR-31318 : Unexpected errors may have occurred: qmo::makePartUpdateColumnList: Column not found]
+        CREATE TABLE RANGE_T1( I1 VARCHAR(10) PRIMARY KEY, I2 VARCHAR(10) ) 
+        PARTITION BY RANGE(I1)
+           (
+              PARTITION P1 VALUES LESS THAN (300),
+              PARTITION P2 VALUES LESS THAN (600),
+              PARTITION PD VALUES DEFAULT
+           );
+        CREATE TABLE RANGE_T1_REBUILD( I1 VARCHAR(10) PRIMARY KEY, I2 VARCHAR(10) )
+        PARTITION BY RANGE(I1)
+           (
+              PARTITION P1 VALUES LESS THAN (300),
+              PARTITION P2 VALUES LESS THAN (600),
+              PARTITION PD VALUES DEFAULT
+            );
+        
+        update range_t1 set i2 =1;
+        ALTER TABLE RANGE_T1 REPLACE RANGE_T1_REBUILD PARTITION P1;
+        update range_t1 set i2 =1;
 
   - **수행 결과**
 
@@ -2156,35 +2152,35 @@ Fixed Bugs
 
 - **재현 방법**
 
-  -   **재현 절차**
+  - **재현 절차**
 
-          DROP TABLE T1;
-          DROP TABLE T3;
-          CREATE TABLE T1 ( game_id int ) TABLESPACE sys_tbs_disk_data;
-          CREATE TABLE T3 ( game_nm int, game_id int ) TABLESPACE sys_tbs_disk_data;
-          INSERT INTO T1 SELECT LEVEL FROM DUAL CONNECT BY LEVEL <= 5;
-          INSERT INTO T3 SELECT LEVEL, LEVEL FROM DUAL CONNECT BY LEVEL <= 5;
-          SELECT (SELECT GAME_NM FROM T3 WHERE GAME_ID = a.GAME_ID) AS GAME_NM
-          FROM T1 a
-          GROUP BY a.GAME_Id
-          ORDER BY a.GAME_ID,
-                   GAME_NM
-          ;
-          SELECT /*+ TEMP_TBS_MEMORY */ (SELECT GAME_NM FROM T3 WHERE GAME_ID = A.GAME_ID) AS GAME_NM
-          FROM T1 A
-          GROUP BY A.GAME_ID
-          ORDER BY A.GAME_ID,
-                   GAME_NM
-          ;
+        DROP TABLE T1;
+        DROP TABLE T3;
+        CREATE TABLE T1 ( game_id int ) TABLESPACE sys_tbs_disk_data;
+        CREATE TABLE T3 ( game_nm int, game_id int ) TABLESPACE sys_tbs_disk_data;
+        INSERT INTO T1 SELECT LEVEL FROM DUAL CONNECT BY LEVEL <= 5;
+        INSERT INTO T3 SELECT LEVEL, LEVEL FROM DUAL CONNECT BY LEVEL <= 5;
+        SELECT (SELECT GAME_NM FROM T3 WHERE GAME_ID = a.GAME_ID) AS GAME_NM
+        FROM T1 a
+        GROUP BY a.GAME_Id
+        ORDER BY a.GAME_ID,
+                 GAME_NM
+        ;
+        SELECT /*+ TEMP_TBS_MEMORY */ (SELECT GAME_NM FROM T3 WHERE GAME_ID = A.GAME_ID) AS GAME_NM
+        FROM T1 A
+        GROUP BY A.GAME_ID
+        ORDER BY A.GAME_ID,
+                 GAME_NM
+        ;
 
   - **수행 결과**
 
         iSQL> SELECT (SELECT GAME_NM FROM T3 WHERE GAME_ID = a.GAME_ID) AS GAME_NM
-            2 FROM T1 a
-            3 GROUP BY a.GAME_Id
-            4 ORDER BY a.GAME_ID,
-            5          GAME_NM
-            6 ;
+             FROM T1 a
+             GROUP BY a.GAME_Id
+             ORDER BY a.GAME_ID,
+                      GAME_NM
+             ;
         GAME_NM     
         --------------
         3           
@@ -2193,11 +2189,11 @@ Fixed Bugs
         2           
         5 rows selected.
         iSQL> SELECT /*+ TEMP_TBS_MEMORY */ (SELECT GAME_NM FROM T3 WHERE GAME_ID = A.GAME_ID) AS GAME_NM
-            2 FROM T1 A
-            3 GROUP BY A.GAME_ID
-            4 ORDER BY A.GAME_ID,
-            5          GAME_NM
-            6 ;
+             FROM T1 A
+             GROUP BY A.GAME_ID
+             ORDER BY A.GAME_ID,
+                      GAME_NM
+             ;
         GAME_NM     
         --------------
         1           
@@ -2210,11 +2206,11 @@ Fixed Bugs
   - **예상 결과**
 
         iSQL> SELECT (SELECT GAME_NM FROM T3 WHERE GAME_ID = a.GAME_ID) AS GAME_NM
-            2 FROM T1 a
-            3 GROUP BY a.GAME_Id
-            4 ORDER BY a.GAME_ID,
-            5          GAME_NM
-            6 ;
+             FROM T1 a
+             GROUP BY a.GAME_Id
+             ORDER BY a.GAME_ID,
+                      GAME_NM
+             ;
         GAME_NM     
         --------------
         1           
@@ -2224,11 +2220,11 @@ Fixed Bugs
         5           
         5 rows selected.
         iSQL> SELECT /*+ TEMP_TBS_MEMORY */ (SELECT GAME_NM FROM T3 WHERE GAME_ID = A.GAME_ID) AS GAME_NM
-            2 FROM T1 A
-            3 GROUP BY A.GAME_ID
-            4 ORDER BY A.GAME_ID,
-            5          GAME_NM
-            6 ;
+             FROM T1 A
+             GROUP BY A.GAME_ID
+             ORDER BY A.GAME_ID,
+                      GAME_NM
+             ;
         GAME_NM     
         --------------
         1           
