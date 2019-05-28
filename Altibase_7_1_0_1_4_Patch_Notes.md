@@ -823,7 +823,7 @@ New Features
 
   ​2. Hint
 
-  PLAN\_CACHE\_KEEP 힌트는 생성된 플랜이 Victim 선정 과정에서 제외되어
+  [PLAN\_CACHE\_KEEP 힌트](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/TuningGuide.md#%ED%94%8C%EB%9E%9C-%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A0%A8-%ED%9E%8C%ED%8A%B8)는 생성된 플랜이 Victim 선정 과정에서 제외되어
   Plan cache내에 유지될 수 있도록 지시하는 힌트입니다.
 
   PLAN\_CACHE\_KEEP 힌트는 Hardprepare 과정에서 적용됩니다.
