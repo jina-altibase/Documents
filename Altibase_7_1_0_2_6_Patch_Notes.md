@@ -1,31 +1,32 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Altibase 7.1.0.2.6 Patch Notes](#altibase-71026-patch-notes)
   - [New Features](#new-features)
-    - [BUG-46824 APRE에 anonymous block을 지원해야 합니다.](#bug-46824%C2%A0apre%EC%97%90-anonymous-block%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-46887 dbms\_metadata.get\_ddl 패키지 지원](#bug-46887%C2%A0dbms%5C_metadataget%5C_ddl-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%A7%80%EC%9B%90)
-    - [BUG-47159 dbms\_metadata.get\_ddl 패키지를 aexport 에 적용](#bug-47159%C2%A0dbms%5C_metadataget%5C_ddl-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-aexport-%EC%97%90-%EC%A0%81%EC%9A%A9)
-    - [BUG-46922 Percentile\_Cont , Percentile\_Disc 함수의 메모리 재사용 기능 향상](#bug-46922%C2%A0percentile%5C_cont--percentile%5C_disc-%ED%95%A8%EC%88%98%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B8%B0%EB%8A%A5-%ED%96%A5%EC%83%81)
-    - [BUG-47082 메모리 인덱스 VALUE BASE BOTTOM-UP 빌드 성능 향상](#bug-47082%C2%A0%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%9D%B8%EB%8D%B1%EC%8A%A4-value-base-bottom-up-%EB%B9%8C%EB%93%9C-%EC%84%B1%EB%8A%A5-%ED%96%A5%EC%83%81)
+    - [BUG-46824  APRE에 anonymous block을 지원해야 합니다.](#bug-46824-apre%EC%97%90-anonymous-block%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46887  dbms_metadata 패키지 지원](#bug-46887-dbms_metadata-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%A7%80%EC%9B%90)
+    - [BUG-47159  dbms\_metadata 패키지를 aexport 에 적용](#bug-47159-dbms%5C_metadata-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-aexport-%EC%97%90-%EC%A0%81%EC%9A%A9)
+    - [BUG-46922  Percentile_Cont , Percentile_Disc 함수의 메모리 재사용 기능 향상](#bug-46922-percentile_cont--percentile_disc-%ED%95%A8%EC%88%98%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B8%B0%EB%8A%A5-%ED%96%A5%EC%83%81)
+    - [BUG-47082  메모리 인덱스 VALUE BASE BOTTOM-UP 빌드 성능 향상](#bug-47082-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%9D%B8%EB%8D%B1%EC%8A%A4-value-base-bottom-up-%EB%B9%8C%EB%93%9C-%EC%84%B1%EB%8A%A5-%ED%96%A5%EC%83%81)
   - [Fixed Bugs](#fixed-bugs)
-    - [BUG-46409 Alter replication set 구문 중 meta 초기화가 안된 구문이 있습니다.](#bug-46409%C2%A0alter-replication-set-%EA%B5%AC%EB%AC%B8-%EC%A4%91-meta-%EC%B4%88%EA%B8%B0%ED%99%94%EA%B0%80-%EC%95%88%EB%90%9C-%EA%B5%AC%EB%AC%B8%EC%9D%B4-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46783 이중화 중 DDL 수행 시 receiver 가 종료할 경우 이미 free 된 이중화 이름을 복사 할 수 있습니다.](#bug-46783%C2%A0%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A4%91-ddl-%EC%88%98%ED%96%89-%EC%8B%9C-receiver-%EA%B0%80-%EC%A2%85%EB%A3%8C%ED%95%A0-%EA%B2%BD%EC%9A%B0-%EC%9D%B4%EB%AF%B8-free-%EB%90%9C-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%9D%B4%EB%A6%84%EC%9D%84-%EB%B3%B5%EC%82%AC-%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-46879 openjdk11 에서 jdbcAdapter 구동 실패 수정](#bug-46879%C2%A0openjdk11-%EC%97%90%EC%84%9C-jdbcadapter-%EA%B5%AC%EB%8F%99-%EC%8B%A4%ED%8C%A8-%EC%88%98%EC%A0%95)
-    - [BUG-47090 AIX, HP 장비에서 sysdba로 remote 접속을 막는 기능이 제대로 동작하지 않습니다.](#bug-47090%C2%A0aix-hp-%EC%9E%A5%EB%B9%84%EC%97%90%EC%84%9C-sysdba%EB%A1%9C-remote-%EC%A0%91%EC%86%8D%EC%9D%84-%EB%A7%89%EB%8A%94-%EA%B8%B0%EB%8A%A5%EC%9D%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%8F%99%EC%9E%91%ED%95%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-47095 partition simple query 수행 시, 메모리 초기화 누락](#bug-47095%C2%A0partition-simple-query-%EC%88%98%ED%96%89-%EC%8B%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B4%88%EA%B8%B0%ED%99%94-%EB%88%84%EB%9D%BD)
-    - [BUG-47105 cpu 정보를 가져올 때 on-line 인지 off-line 인지 체크하지 않아, 서버가 boot 과정에서 실패할 수 있습니다.](#bug-47105%C2%A0cpu-%EC%A0%95%EB%B3%B4%EB%A5%BC-%EA%B0%80%EC%A0%B8%EC%98%AC-%EB%95%8C-on-line-%EC%9D%B8%EC%A7%80-off-line-%EC%9D%B8%EC%A7%80-%EC%B2%B4%ED%81%AC%ED%95%98%EC%A7%80-%EC%95%8A%EC%95%84-%EC%84%9C%EB%B2%84%EA%B0%80-boot-%EA%B3%BC%EC%A0%95%EC%97%90%EC%84%9C-%EC%8B%A4%ED%8C%A8%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-47115 OpenJDK11 환경에서 jdbcAdapter 테스트 수행시, StackOverflowError가 발생하는 문제 수정](#bug-47115%C2%A0openjdk11-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-jdbcadapter-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%88%98%ED%96%89%EC%8B%9C-stackoverflowerror%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C-%EC%88%98%EC%A0%95)
-    - [BUG-47119 이중화 접속시 sendHandshakeAck 를 보낼 때 패킷 계산이 잘못되어 메모리를 긁을 수 있습니다.](#bug-47119%C2%A0%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A0%91%EC%86%8D%EC%8B%9C-sendhandshakeack-%EB%A5%BC-%EB%B3%B4%EB%82%BC-%EB%95%8C-%ED%8C%A8%ED%82%B7-%EA%B3%84%EC%82%B0%EC%9D%B4-%EC%9E%98%EB%AA%BB%EB%90%98%EC%96%B4-%EB%A9%94%EB%AA%A8%EB%A6%AC%EB%A5%BC-%EA%B8%81%EC%9D%84-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-47121 jdbcAdapter conf 파일에 OTHER\_DATABASE\_JDBC\_MAX\_HEAP\_SIZE 가 설정이 되지 않는 문제가 있습니다.](#bug-47121%C2%A0jdbcadapter-conf-%ED%8C%8C%EC%9D%BC%EC%97%90-other%5C_database%5C_jdbc%5C_max%5C_heap%5C_size-%EA%B0%80-%EC%84%A4%EC%A0%95%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-47126 호스트 변수에 길이가 긴 값을 할당하면 segment fault 발생합니다](#bug-47126%C2%A0%ED%98%B8%EC%8A%A4%ED%8A%B8-%EB%B3%80%EC%88%98%EC%97%90-%EA%B8%B8%EC%9D%B4%EA%B0%80-%EA%B8%B4-%EA%B0%92%EC%9D%84-%ED%95%A0%EB%8B%B9%ED%95%98%EB%A9%B4-segment-fault-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-47128 Query rebuild시 query\_binding memory가 지속적으로 증가할 수 있습니다.](#bug-47128%C2%A0query-rebuild%EC%8B%9C-query%5C_binding-memory%EA%B0%80-%EC%A7%80%EC%86%8D%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%A6%9D%EA%B0%80%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-47135 openjdk에서 실행시 jvm 생성이 안 됩니다](#bug-47135%C2%A0openjdk%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%EC%8B%9C-jvm-%EC%83%9D%EC%84%B1%EC%9D%B4-%EC%95%88-%EB%90%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-47136  alter tablespace swap시, 테이블 스페이스 사용량를 계산하는 로직 오류 수정](#bug-47136%C2%A0-alter-tablespace-swap%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89%EB%A5%BC-%EA%B3%84%EC%82%B0%ED%95%98%EB%8A%94-%EB%A1%9C%EC%A7%81-%EC%98%A4%EB%A5%98-%EC%88%98%EC%A0%95)
-    - [BUG-47140 하위버전과 이중화시 해시 파티션드 테이블의 파티션 개수가 같은 경우에도 이중화 실패가 발생할수 있습니다.](#bug-47140%C2%A0%ED%95%98%EC%9C%84%EB%B2%84%EC%A0%84%EA%B3%BC-%EC%9D%B4%EC%A4%91%ED%99%94%EC%8B%9C-%ED%95%B4%EC%8B%9C-%ED%8C%8C%ED%8B%B0%EC%85%98%EB%93%9C-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-%ED%8C%8C%ED%8B%B0%EC%85%98-%EA%B0%9C%EC%88%98%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0%EC%97%90%EB%8F%84-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%8B%A4%ED%8C%A8%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
-    - [BUG-47142 BLOB컬럼과 DECIMAL 컬럼을 포함한 테이블에서 첫번째 컬럼의 타입이 BLOB 이고, HASH 조인을 할 경우 에러가 발생합니다.](#bug-47142%C2%A0blob%EC%BB%AC%EB%9F%BC%EA%B3%BC-decimal-%EC%BB%AC%EB%9F%BC%EC%9D%84-%ED%8F%AC%ED%95%A8%ED%95%9C-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90%EC%84%9C-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EC%BB%AC%EB%9F%BC%EC%9D%98-%ED%83%80%EC%9E%85%EC%9D%B4-blob-%EC%9D%B4%EA%B3%A0-hash-%EC%A1%B0%EC%9D%B8%EC%9D%84-%ED%95%A0-%EA%B2%BD%EC%9A%B0-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-47173 host variable precision이 컬럼 size보다 큰 경우 simple query 수행 시 에러처리 되는 것을 개선해야합니다.](#bug-47173%C2%A0host-variable-precision%EC%9D%B4-%EC%BB%AC%EB%9F%BC-size%EB%B3%B4%EB%8B%A4-%ED%81%B0-%EA%B2%BD%EC%9A%B0-simple-query-%EC%88%98%ED%96%89-%EC%8B%9C-%EC%97%90%EB%9F%AC%EC%B2%98%EB%A6%AC-%EB%90%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EA%B0%9C%EC%84%A0%ED%95%B4%EC%95%BC%ED%95%A9%EB%8B%88%EB%8B%A4)
-    - [BUG-47195 PARTITION SWAP 후 비정상종료시 재구동 실패.](#bug-47195%C2%A0partition-swap-%ED%9B%84-%EB%B9%84%EC%A0%95%EC%83%81%EC%A2%85%EB%A3%8C%EC%8B%9C-%EC%9E%AC%EA%B5%AC%EB%8F%99-%EC%8B%A4%ED%8C%A8)
+    - [BUG-46409  Alter replication set 구문 중 meta 초기화가 안된 구문이 있습니다.](#bug-46409-alter-replication-set-%EA%B5%AC%EB%AC%B8-%EC%A4%91-meta-%EC%B4%88%EA%B8%B0%ED%99%94%EA%B0%80-%EC%95%88%EB%90%9C-%EA%B5%AC%EB%AC%B8%EC%9D%B4-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46783  이중화 중 DDL 수행 시 receiver 가 종료할 경우 이미 free 된 이중화 이름을 복사 할 수 있습니다.](#bug-46783-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A4%91-ddl-%EC%88%98%ED%96%89-%EC%8B%9C-receiver-%EA%B0%80-%EC%A2%85%EB%A3%8C%ED%95%A0-%EA%B2%BD%EC%9A%B0-%EC%9D%B4%EB%AF%B8-free-%EB%90%9C-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%9D%B4%EB%A6%84%EC%9D%84-%EB%B3%B5%EC%82%AC-%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-46879  OpenJDK11 에서 jdbcAdapter 구동 실패 수정](#bug-46879-openjdk11-%EC%97%90%EC%84%9C-jdbcadapter-%EA%B5%AC%EB%8F%99-%EC%8B%A4%ED%8C%A8-%EC%88%98%EC%A0%95)
+    - [BUG-47090  AIX, HP 장비에서 sysdba로 remote 접속을 막는 기능이 제대로 동작하지 않습니다.](#bug-47090-aix-hp-%EC%9E%A5%EB%B9%84%EC%97%90%EC%84%9C-sysdba%EB%A1%9C-remote-%EC%A0%91%EC%86%8D%EC%9D%84-%EB%A7%89%EB%8A%94-%EA%B8%B0%EB%8A%A5%EC%9D%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%8F%99%EC%9E%91%ED%95%98%EC%A7%80-%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-47095  partition simple query 수행 시, 메모리 초기화 누락](#bug-47095-partition-simple-query-%EC%88%98%ED%96%89-%EC%8B%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B4%88%EA%B8%B0%ED%99%94-%EB%88%84%EB%9D%BD)
+    - [BUG-47105  cpu 정보를 가져올 때 on-line 인지 off-line 인지 체크하지 않아, 서버가 boot 과정에서 실패할 수 있습니다.](#bug-47105-cpu-%EC%A0%95%EB%B3%B4%EB%A5%BC-%EA%B0%80%EC%A0%B8%EC%98%AC-%EB%95%8C-on-line-%EC%9D%B8%EC%A7%80-off-line-%EC%9D%B8%EC%A7%80-%EC%B2%B4%ED%81%AC%ED%95%98%EC%A7%80-%EC%95%8A%EC%95%84-%EC%84%9C%EB%B2%84%EA%B0%80-boot-%EA%B3%BC%EC%A0%95%EC%97%90%EC%84%9C-%EC%8B%A4%ED%8C%A8%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-47115  OpenJDK11 환경에서 jdbcAdapter 테스트 수행시, StackOverflowError가 발생하는 문제 수정](#bug-47115-openjdk11-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-jdbcadapter-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%88%98%ED%96%89%EC%8B%9C-stackoverflowerror%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C-%EC%88%98%EC%A0%95)
+    - [BUG-47119  이중화 접속시 sendHandshakeAck 를 보낼 때 패킷 계산이 잘못되어 메모리를 긁을 수 있습니다.](#bug-47119-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%A0%91%EC%86%8D%EC%8B%9C-sendhandshakeack-%EB%A5%BC-%EB%B3%B4%EB%82%BC-%EB%95%8C-%ED%8C%A8%ED%82%B7-%EA%B3%84%EC%82%B0%EC%9D%B4-%EC%9E%98%EB%AA%BB%EB%90%98%EC%96%B4-%EB%A9%94%EB%AA%A8%EB%A6%AC%EB%A5%BC-%EA%B8%81%EC%9D%84-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-47121  jdbcAdapter conf 파일에 OTHER\_DATABASE\_JDBC\_MAX\_HEAP\_SIZE 가 설정이 되지 않는 문제가 있습니다.](#bug-47121-jdbcadapter-conf-%ED%8C%8C%EC%9D%BC%EC%97%90-other%5C_database%5C_jdbc%5C_max%5C_heap%5C_size-%EA%B0%80-%EC%84%A4%EC%A0%95%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-47126  호스트 변수에 길이가 긴 값을 할당하면 segment fault 발생합니다](#bug-47126-%ED%98%B8%EC%8A%A4%ED%8A%B8-%EB%B3%80%EC%88%98%EC%97%90-%EA%B8%B8%EC%9D%B4%EA%B0%80-%EA%B8%B4-%EA%B0%92%EC%9D%84-%ED%95%A0%EB%8B%B9%ED%95%98%EB%A9%B4-segment-fault-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-47128  Query rebuild시 query\_binding memory가 지속적으로 증가할 수 있습니다.](#bug-47128-query-rebuild%EC%8B%9C-query%5C_binding-memory%EA%B0%80-%EC%A7%80%EC%86%8D%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%A6%9D%EA%B0%80%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-47135  OpenJDK에서 실행시 jvm 생성이 안 됩니다](#bug-47135-openjdk%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%EC%8B%9C-jvm-%EC%83%9D%EC%84%B1%EC%9D%B4-%EC%95%88-%EB%90%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-47136  alter tablespace swap시, 테이블 스페이스 사용량를 계산하는 로직 오류 수정](#bug-47136-alter-tablespace-swap%EC%8B%9C-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89%EB%A5%BC-%EA%B3%84%EC%82%B0%ED%95%98%EB%8A%94-%EB%A1%9C%EC%A7%81-%EC%98%A4%EB%A5%98-%EC%88%98%EC%A0%95)
+    - [BUG-47140  하위버전과 이중화시 해시 파티션드 테이블의 파티션 개수가 같은 경우에도 이중화 실패가 발생할수 있습니다.](#bug-47140-%ED%95%98%EC%9C%84%EB%B2%84%EC%A0%84%EA%B3%BC-%EC%9D%B4%EC%A4%91%ED%99%94%EC%8B%9C-%ED%95%B4%EC%8B%9C-%ED%8C%8C%ED%8B%B0%EC%85%98%EB%93%9C-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-%ED%8C%8C%ED%8B%B0%EC%85%98-%EA%B0%9C%EC%88%98%EA%B0%80-%EA%B0%99%EC%9D%80-%EA%B2%BD%EC%9A%B0%EC%97%90%EB%8F%84-%EC%9D%B4%EC%A4%91%ED%99%94-%EC%8B%A4%ED%8C%A8%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+    - [BUG-47142  BLOB컬럼과 DECIMAL 컬럼을 포함한 테이블에서 첫번째 컬럼의 타입이 BLOB 이고, HASH 조인을 할 경우 에러가 발생합니다.](#bug-47142-blob%EC%BB%AC%EB%9F%BC%EA%B3%BC-decimal-%EC%BB%AC%EB%9F%BC%EC%9D%84-%ED%8F%AC%ED%95%A8%ED%95%9C-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90%EC%84%9C-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EC%BB%AC%EB%9F%BC%EC%9D%98-%ED%83%80%EC%9E%85%EC%9D%B4-blob-%EC%9D%B4%EA%B3%A0-hash-%EC%A1%B0%EC%9D%B8%EC%9D%84-%ED%95%A0-%EA%B2%BD%EC%9A%B0-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-47173  host variable precision이 컬럼 size보다 큰 경우 simple query 수행 시 에러처리 되는 것을 개선해야합니다.](#bug-47173-host-variable-precision%EC%9D%B4-%EC%BB%AC%EB%9F%BC-size%EB%B3%B4%EB%8B%A4-%ED%81%B0-%EA%B2%BD%EC%9A%B0-simple-query-%EC%88%98%ED%96%89-%EC%8B%9C-%EC%97%90%EB%9F%AC%EC%B2%98%EB%A6%AC-%EB%90%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EA%B0%9C%EC%84%A0%ED%95%B4%EC%95%BC%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-47195  PARTITION SWAP 후 비정상종료시 재구동 실패.](#bug-47195-partition-swap-%ED%9B%84-%EB%B9%84%EC%A0%95%EC%83%81%EC%A2%85%EB%A3%8C%EC%8B%9C-%EC%9E%AC%EA%B5%AC%EB%8F%99-%EC%8B%A4%ED%8C%A8)
   - [Changes](#changes)
     - [Version Info](#version-info)
     - [호환성](#%ED%98%B8%ED%99%98%EC%84%B1)
@@ -40,7 +41,7 @@ Altibase 7.1.0.2.6 Patch Notes
 New Features
 ------------
 
-### BUG-46824 APRE에 anonymous block을 지원해야 합니다.
+### BUG-46824  APRE에 anonymous block을 지원해야 합니다.
 
 -   **module** : mm-apre
 
@@ -67,7 +68,7 @@ New Features
     -   Compile Option
     -   Error Code
 
-### BUG-46887 dbms_metadata 패키지 지원
+### BUG-46887  dbms_metadata 패키지 지원
 
 -   **module** : ut
 
@@ -93,7 +94,7 @@ New Features
     -   Compile Option
     -   Error Code
 
-### BUG-47159 dbms\_metadata 패키지를 aexport 에 적용
+### BUG-47159  dbms\_metadata 패키지를 aexport 에 적용
 
 - **module** : ux-aexport
 - **Category** : Functionality
@@ -110,7 +111,7 @@ New Features
   - Compile Option
   - Error Code
 
-### BUG-46922 Percentile_Cont , Percentile_Disc 함수의 메모리 재사용 기능 향상
+### BUG-46922  Percentile_Cont , Percentile_Disc 함수의 메모리 재사용 기능 향상
 
 -   **module** : mt-function
 
@@ -137,7 +138,7 @@ New Features
     -   Compile Option
     -   Error Code
 
-### BUG-47082 메모리 인덱스 VALUE BASE BOTTOM-UP 빌드 성능 향상
+### BUG-47082  메모리 인덱스 VALUE BASE BOTTOM-UP 빌드 성능 향상
 
 - **module** : sm-mem-index
 
@@ -173,7 +174,7 @@ New Features
 Fixed Bugs
 ----------
 
-### BUG-46409 Alter replication set 구문 중 meta 초기화가 안된 구문이 있습니다.
+### BUG-46409  Alter replication set 구문 중 meta 초기화가 안된 구문이 있습니다.
 
 -   **module** : rp
 
@@ -200,7 +201,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46783 이중화 중 DDL 수행 시 receiver 가 종료할 경우 이미 free 된 이중화 이름을 복사 할 수 있습니다.
+### BUG-46783  이중화 중 DDL 수행 시 receiver 가 종료할 경우 이미 free 된 이중화 이름을 복사 할 수 있습니다.
 
 -   **module** : rp-control
 
@@ -227,7 +228,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46879 openjdk11 에서 jdbcAdapter 구동 실패 수정
+### BUG-46879  OpenJDK11 에서 jdbcAdapter 구동 실패 수정
 
 - **module** : rp-jdbcAdapter
 
@@ -235,7 +236,7 @@ Fixed Bugs
 
 - **재현 빈도** : Always
 
-- **증상** : openjdk 11에서 jdbcAdapter 구동이 되지 않는 문제를 수정하였습니다.
+- **증상** : OpenJDK11에서 jdbcAdapter 구동이 되지 않는 문제를 수정하였습니다.
 
   또한, jdbcAdapter 실행시 jvm생성시 stderr가 발생하면 ALA socket으로 error가 전송되는 문제가 있었는데, $ALTIBASE_HOME/trc/stderr.log에 쓰도록 로그파일이 추가되었습니다.
 
@@ -256,7 +257,7 @@ Fixed Bugs
   -   Compile Option
   -   Error Code
 
-### BUG-47090 AIX, HP 장비에서 sysdba로 remote 접속을 막는 기능이 제대로 동작하지 않습니다.
+### BUG-47090  AIX, HP 장비에서 sysdba로 remote 접속을 막는 기능이 제대로 동작하지 않습니다.
 
 -   **module** : cm
 
@@ -282,7 +283,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47095 partition simple query 수행 시, 메모리 초기화 누락
+### BUG-47095  partition simple query 수행 시, 메모리 초기화 누락
 
 -   **module** : qp-dml-execute
 
@@ -308,7 +309,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47105 cpu 정보를 가져올 때 on-line 인지 off-line 인지 체크하지 않아, 서버가 boot 과정에서 실패할 수 있습니다.
+### BUG-47105  cpu 정보를 가져올 때 on-line 인지 off-line 인지 체크하지 않아, 서버가 boot 과정에서 실패할 수 있습니다.
 
 - **module** : id
 
@@ -337,7 +338,7 @@ Fixed Bugs
   -   Compile Option
   -   Error Code
 
-### BUG-47115 OpenJDK11 환경에서 jdbcAdapter 테스트 수행시, StackOverflowError가 발생하는 문제 수정
+### BUG-47115  OpenJDK11 환경에서 jdbcAdapter 테스트 수행시, StackOverflowError가 발생하는 문제 수정
 
 -   **module** : mm-jdbc
 
@@ -367,7 +368,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47119 이중화 접속시 sendHandshakeAck 를 보낼 때 패킷 계산이 잘못되어 메모리를 긁을 수 있습니다.
+### BUG-47119  이중화 접속시 sendHandshakeAck 를 보낼 때 패킷 계산이 잘못되어 메모리를 긁을 수 있습니다.
 
 -   **module** : rp
 
@@ -394,7 +395,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47121 jdbcAdapter conf 파일에 OTHER\_DATABASE\_JDBC\_MAX\_HEAP\_SIZE 가 설정이 되지 않는 문제가 있습니다.
+### BUG-47121  jdbcAdapter conf 파일에 OTHER\_DATABASE\_JDBC\_MAX\_HEAP\_SIZE 가 설정이 되지 않는 문제가 있습니다.
 
 - **module** : rp-jdbcAdapter
 
@@ -426,7 +427,7 @@ Fixed Bugs
   -   Compile Option
   -   Error Code
 
-### BUG-47126 호스트 변수에 길이가 긴 값을 할당하면 segment fault 발생합니다
+### BUG-47126  호스트 변수에 길이가 긴 값을 할당하면 segment fault 발생합니다
 
 -   **module** : ux-isql
 
@@ -453,7 +454,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47128 Query rebuild시 query\_binding memory가 지속적으로 증가할 수 있습니다.
+### BUG-47128  Query rebuild시 query\_binding memory가 지속적으로 증가할 수 있습니다.
 
 -   **module** : qp-dml-execute
 
@@ -503,7 +504,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47135 openjdk에서 실행시 jvm 생성이 안 됩니다
+### BUG-47135  OpenJDK에서 실행시 jvm 생성이 안 됩니다
 
 - **module** : ux-altiMon
 
@@ -511,14 +512,14 @@ Fixed Bugs
 
 - **재현 빈도** : Always
 
-- **증상** : openjdk에서 altimon.sh 실행시 아래 에러 메시지를
-  출력하고 jvm 생성이 안 되는 문제를 수정하였습니다.
+- **증상** : OpenJDK에서 altimon.sh 실행시 아래 에러 메시지를 출력하고 jvm 생성이 안 되는 문제를 수정하였습니다.
+  
 
-  % cat altimon\_stderr.log
+% cat altimon\_stderr.log
 
-  Error: Could not create the Java Virtual Machine.
+Error: Could not create the Java Virtual Machine.
 
-  Error: A fatal exception has occurred. Program will exit.
+Error: A fatal exception has occurred. Program will exit.
 
 - **재현 방법**
 
@@ -619,7 +620,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47140 하위버전과 이중화시 해시 파티션드 테이블의 파티션 개수가 같은 경우에도 이중화 실패가 발생할수 있습니다.
+### BUG-47140  하위버전과 이중화시 해시 파티션드 테이블의 파티션 개수가 같은 경우에도 이중화 실패가 발생할수 있습니다.
 
 -   **module** : rp
 
@@ -649,7 +650,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47142 BLOB컬럼과 DECIMAL 컬럼을 포함한 테이블에서 첫번째 컬럼의 타입이 BLOB 이고, HASH 조인을 할 경우 에러가 발생합니다.
+### BUG-47142  BLOB컬럼과 DECIMAL 컬럼을 포함한 테이블에서 첫번째 컬럼의 타입이 BLOB 이고, HASH 조인을 할 경우 에러가 발생합니다.
 
 -   **module** : qp
 
@@ -705,7 +706,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47173 host variable precision이 컬럼 size보다 큰 경우 simple query 수행 시 에러처리 되는 것을 개선해야합니다.
+### BUG-47173  host variable precision이 컬럼 size보다 큰 경우 simple query 수행 시 에러처리 되는 것을 개선해야합니다.
 
 -   **module** : qp-dml-execute
 
@@ -762,7 +763,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47195 PARTITION SWAP 후 비정상종료시 재구동 실패.
+### BUG-47195  PARTITION SWAP 후 비정상종료시 재구동 실패.
 
 -   **module** : sm
 
