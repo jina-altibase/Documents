@@ -7,7 +7,7 @@
     - [BUG-47159  dbms_metadata 패키지를 aexport에 적용](#bug-47159-dbms_metadata-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-aexport%EC%97%90-%EC%A0%81%EC%9A%A9)
   - [Fixed Bugs](#fixed-bugs)
     - [BUG-45933  APRE에서 APRE_NUMERIC 타입 사용시 소수점값이 잘리는 문제 수정](#bug-45933-apre%EC%97%90%EC%84%9C-apre_numeric-%ED%83%80%EC%9E%85-%EC%82%AC%EC%9A%A9%EC%8B%9C-%EC%86%8C%EC%88%98%EC%A0%90%EA%B0%92%EC%9D%B4-%EC%9E%98%EB%A6%AC%EB%8A%94-%EB%AC%B8%EC%A0%9C-%EC%88%98%EC%A0%95)
-    - [BUG-46019  프로시져 PRINT 구문 사용시 불필요한 데이터 전송을 제거해야 합니다.](#bug-46019-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%B8-print-%EA%B5%AC%EB%AC%B8-%EC%82%AC%EC%9A%A9%EC%8B%9C-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1%EC%9D%84-%EC%A0%9C%EA%B1%B0%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
+    - [BUG-46019  프로시저에서 PRINT 구문 사용시 불필요한 데이터 전송을 제거해야 합니다.](#bug-46019-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80%EC%97%90%EC%84%9C-print-%EA%B5%AC%EB%AC%B8-%EC%82%AC%EC%9A%A9%EC%8B%9C-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1%EC%9D%84-%EC%A0%9C%EA%B1%B0%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4)
   - [Changes](#changes)
     - [Version Info](#version-info)
     - [호환성](#%ED%98%B8%ED%99%98%EC%84%B1)
@@ -88,7 +88,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-46019  프로시져 PRINT 구문 사용시 불필요한 데이터 전송을 제거해야 합니다.
+### BUG-46019  프로시저에서 PRINT 구문 사용시 불필요한 데이터 전송을 제거해야 합니다.
 
 -   **module** : mm
 
@@ -99,7 +99,7 @@ Fixed Bugs
 -   **증상** : 클라이언트에 메시지 콜백 함수가 등록되어 있는 경우에만
     서버 메시지를 클라이언트에 전송하도록 수정하였습니다.
 
-    불필요한 메시지 전송으로 인한 성능 감소를 방지할 수 있습니다.
+    불필요한 메시지 전송으로 인한 성능 영향을 줄였습니다.
 
 -   **재현 방법**
 
