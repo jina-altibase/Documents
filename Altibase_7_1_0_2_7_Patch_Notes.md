@@ -160,7 +160,7 @@ Changes
 
 #### Replication protocol Version
 
-Replication 프로토콜 버전은 변경되지 않았다..
+Replication 프로토콜 버전은 변경되지 않았다.
 
 #### Sharding Version
 

@@ -557,7 +557,7 @@ Error: A fatal exception has occurred. Program will exit.
             DROP TABLESPACE MEM__TBS_0 INCLUDING CONTENTS AND DATAFILES;
             CREATE DISK     TABLESPACE DISK_TBS_0 DATAFILE 'disk_tbs_0' SIZE 4M AUTOEXTEND ON MAXSIZE 40M;
             CREATE MEMORY   TABLESPACE MEM__TBS_0                       SIZE 4M AUTOEXTEND ON MAXSIZE 40M;
-            iSQL> create table t1
+            create table t1
                  (
                      c1 integer,
                      c2 char(100),
@@ -570,47 +570,24 @@ Error: A fatal exception has occurred. Program will exit.
                      c9  integer,
                      c10 date
                    ) TABLESPACE MEM__TBS_0;
-            Create success.
-            iSQL> alter table t1 add primary key(c3,c1) ;
-            Alter success.
-            iSQL>
-            iSQL> insert into t1 select level, level, 3, level, level, level, level, level, level, sysdate
-                 from dual connect by level <=  50000;
-            50000 rows inserted.
-            iSQL> alter table t1 alter tablespace DISK_TBS_0;
-            [ERR-3144E : Need more free space of tablespace. Tablespace Name: DISK_TBS_0, Progress : 1%, Threshold : 80%, Estimated Page Count : 400.]
-
-    -   **수행 결과**
-
-    -   **예상 결과**
-
-            DROP TABLESPACE DISK_TBS_0 INCLUDING CONTENTS AND DATAFILES;
-            DROP TABLESPACE MEM__TBS_0 INCLUDING CONTENTS AND DATAFILES;
-            CREATE DISK     TABLESPACE DISK_TBS_0 DATAFILE 'disk_tbs_0' SIZE 4M AUTOEXTEND ON MAXSIZE 40M;
-            CREATE MEMORY   TABLESPACE MEM__TBS_0                       SIZE 4M AUTOEXTEND ON MAXSIZE 40M;
-            iSQL> create table t1
-                2 (
-                3     c1 integer,
-                4     c2 char(100),
-                5     c3  integer,
-                6     c4  char(100),
-                7     c5  char(100),
-                8     c6  char(100),
-                9     c7  char(100),
-                10     c8  char(100),
-                11     c9  integer,
-                12     c10 date
-                13   ) TABLESPACE MEM__TBS_0;
-            Create success.
-            iSQL> alter table t1 add primary key(c3,c1) ;
-            Alter success.
-            iSQL>
-            iSQL> insert into t1 select level, level, 3, level, level, level, level, level, level, sysdate
-                2 from dual connect by level <=  50000;
-            50000 rows inserted.
+            alter table t1 add primary key(c3,c1) ;
+            insert into t1 
+             select level, level, 3, level, level, level, level, level, level, sysdate
+             from dual connect by level <=  50000;
+            alter table t1 alter tablespace DISK_TBS_0;
+        
+    - **수행 결과**
+    
+      ```
+  iSQL> alter table t1 alter tablespace DISK_TBS_0;
+      [ERR-3144E : Need more free space of tablespace. Tablespace Name: DISK_TBS_0, Progress : 1%, Threshold : 80%, Estimated Page Count : 400.]
+  ```
+    
+-   **예상 결과**
+    
             iSQL> alter table t1 alter tablespace DISK_TBS_0;
             Alter success.
-
+    
 -   **Workaround**
 
 -   **변경사항**
@@ -669,36 +646,29 @@ Error: A fatal exception has occurred. Program will exit.
             drop table t2;                    
             CREATE TABLE t1 ( COL   blob,
                                              COL_DECIMAL     DECIMAL );
-             CREATE TABLE T2( COL   blob,
+            CREATE TABLE T2( COL   blob,
                                               COL_DECIMAL     DECIMAL );
             select * from  t1 left outer join t2 on t1.col_decimal = t2.col_decimal;
-            [651]
-            select /*+ USE_HASH(t1,t2) */ * from  t1 left outer join t2 on t1.col_decimal = t2.col_decimal;
-
+        
     -   **수행 결과**
 
             iSQL> select * from  t1 left outer join t2 on t1.col_decimal = t2.col_decimal;
-            [ERR-31318 : Unexpected errors may have occurred: qtc::fixAfterValidation: tuple row size is larger than 4GB]
-            [651]
-            iSQL> select /*+ USE_HASH(t1,t2) */ * from  t1 left outer join t2 on t1.col_decimal = t2.col_decimal;
-            [ERR-31318 : Unexpected errors may have occurred: qtc::fixAfterValidation: tuple row size is larger than 4GB]
-
+        [ERR-31318 : Unexpected errors may have occurred: qtc::fixAfterValidation: tuple row size is larger than 4GB]
+        
     -   **예상 결과**
-
+    
             iSQL> select * from  t1 left outer join t2 on t1.col_decimal = t2.col_decimal;[ERR-91022 : LOB and GEOMETRY type data cannot be displayed]
-
+    
 -   **Workaround**
 
         drop table t1;
         drop table t2;                    
         CREATE TABLE t1 ( COL_DECIMAL     DECIMAL ,
                                         COL_int1   blob);
-         CREATE TABLE T2( COL_DECIMAL     DECIMAL,
+        CREATE TABLE T2( COL_DECIMAL     DECIMAL,
                                           COL_int1   blob );
         select * from  t1 left outer join t2 on t1.col_decimal = t2.col_decimal;
-        [651]
-        use_hash 힌트 제거
-
+    
 -   **변경사항**
 
     -   Performance view
