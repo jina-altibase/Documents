@@ -111,7 +111,6 @@ New Features
     -   Property
     -   Compile Option
     -   Error Code
-    -   메타 테이블
 
 ### BUG-47873 GEOMETRY 컬럼의 SRID 속성에 대해서 Replication  지원
 
