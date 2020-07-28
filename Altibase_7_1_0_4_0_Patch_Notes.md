@@ -83,13 +83,12 @@ New Features
   > 기존에 GEOMETRY\_COLUMNS 와  SPATIAL\_REF\_SYS 테이블을 사용하는 고객은 아래의 변경사항이 있으므로, 패치전에 숙지해야 합니다.
   >
   > * [GEOMETRY_COLUMNS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#geometry_columns) 테이블이 메타테이블로 변경되었고, 내용도 자동으로 설정됩니다.
-  >      * 기존에 GEOMETRY\_COLUMNS를 수동으로 설정하기 위해서 사용했던 ADDGEOMETRYCOLUMNS, DROPGEOMETRYCOLUMNS 프로시저는 더이상 사용할 수 없습니다. 자동으로 설정되기 때문에, 더이상 필요하지 않아서 삭제되었습니다. 
+  >    * 기존에 GEOMETRY\_COLUMNS를 수동으로 설정하기 위해서 사용했던 ADDGEOMETRYCOLUMNS, DROPGEOMETRYCOLUMNS 프로시저는 더이상 사용할 수 없습니다. 자동으로 설정되기 때문에, 더이상 필요하지 않아서 삭제되었습니다. 
+  > * [SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#spatial_ref_sys)  테이블이 메타테이블로 변경되었습니다.
+  >    * 패치를 하면, 기존에 SPATIAL\_REF\_SYS  테이블에 있던 내용은 모두 사라집니다.
+  >    * 업그레이드 및 마이그레이션시에, 해당 정보는 메타테이블에 INSERT를 수행할수 없기 때문에 Migration tool에서는 지원하지 않습니다.
+  >    * 기존에는 SPATIAL_REF_SYS 테이블에 Spatial Reference System 메타 데이터를 등록하기 위해서는 DML을 이용했지만, 패치후에는 [ADD_SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#add_spatial_ref_sys), [DELETE_SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#delete_spatial_ref_sys) 프로시저를 이용해야 합니다.
   >
-  >    -  [SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#spatial_ref_sys)  테이블이 메타테이블로 변경되었습니다.
-  >
-  >          -  패치를 하면, 기존에 SPATIAL\_REF\_SYS  테이블에 있던 내용은 모두 사라집니다.
-  >          -  업그레이드 및 마이그레이션시에, 해당 정보는 메타테이블에 INSERT를 수행할수 없기 때문에 Migration tool에서는 지원하지 않습니다.
-  >          -  기존에는 SPATIAL_REF_SYS 테이블에 Spatial Reference System 메타 데이터를 등록하기 위해서는 DML을 이용했지만, 패치후에는 [ADD_SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#add_spatial_ref_sys), [DELETE_SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#delete_spatial_ref_sys) 프로시저를 이용해야 합니다.
 
   > 업/다운그레이드 주의 사항
   >
