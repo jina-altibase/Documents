@@ -92,9 +92,9 @@ New Features
   >          -  기존에는 SPATIAL_REF_SYS 테이블에 Spatial Reference System 메타 데이터를 등록하기 위해서는 DML을 이용했지만, 패치후에는 [ADD_SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#add_spatial_ref_sys), [DELETE_SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#delete_spatial_ref_sys) 프로시저를 이용해야 합니다.
 
   > 업/다운그레이드 주의 사항
-
-     -  메타버전이 8.7.1 에서 8.8.1로 변경되어 , GEOMETRY 타입 컬럼이 있는 경우 메타 버전 8.7.1 이하(7.1.0.3.9 이하)로 다운그레이드를 할 수 없습니다.
-     -  GEOMETRY 타입 컬럼이 없는 경우는 업/다운그레이드 이슈 없습니다.
+  >
+  >    -  메타버전이 8.7.1 에서 8.8.1로 변경되어 , GEOMETRY 타입 컬럼이 있는 경우 메타 버전 8.7.1 이하(7.1.0.3.9 이하)로 다운그레이드를 할 수 없습니다.
+  >    -  GEOMETRY 타입 컬럼이 없는 경우는 업/다운그레이드 이슈 없습니다.
 
 -   **재현 방법**
 
@@ -129,10 +129,10 @@ New Features
   GEOMETRY 컬럼을 사용하는 고객은 아래의 주의 사항을 확인하시기 바랍니다.
 
   > GEOMETRY 컬럼을 사용하는 경우의 이중화 주의 사항
-
-  - SRID를 지원하는 버전(7.1.0.4.0 이상)에서 SRID를 지원하지 않는 버전(7.1.0.3.9 이하)으로 이중화는 불가능
-
-  - SRID를 지원하지 않는 버전(7.1.0.3.9 이하)에서 SRID를 지원하는 버전(7.1.0.4.0 이상)으로 이중화는 가능
+  >
+  > - SRID를 지원하는 버전(7.1.0.4.0 이상)에서 SRID를 지원하지 않는 버전(7.1.0.3.9 이하)으로 이중화는 불가능
+  >
+  > - SRID를 지원하지 않는 버전(7.1.0.3.9 이하)에서 SRID를 지원하는 버전(7.1.0.4.0 이상)으로 이중화는 가능
 
 - **재현 방법**
 
@@ -169,12 +169,12 @@ New Features
   ```
 
   > 주의
-
-  이 함수는 Intel 환경의 Linux 에서만 사용되며, 다른 환경에서 호출시에는 아래와 같이 오류가 발생합니다.
-
-  [ERR-31129 : Procedure or function not found.]
-
-   입출력 좌표계는 SRID 또는 PROJ4TEXT 문자열로 입력될 수 있으며, PROJ4TEXT 문법은 PROJ 라이브러리 버전 4 형식만 지원합니다.
+>
+  > 이 함수는 Intel 환경의 Linux 에서만 사용되며, 다른 환경에서 호출시에는 아래와 같이 오류가 발생합니다.
+>
+  > [ERR-31129 : Procedure or function not found.]
+>
+  >  입출력 좌표계는 SRID 또는 PROJ4TEXT 문자열로 입력될 수 있으며, PROJ4TEXT 문법은 PROJ 라이브러리 버전 4 형식만 지원합니다.
 
 -   **재현 방법**
 
@@ -1473,9 +1473,9 @@ BUG-47873으로 인해, Replication protocol version이 7.4.5에서 7.4.6으로 
 
 #### 추가된 테이블
 
-* GEOMETRY\_COLUMNS 
+* [GEOMETRY_COLUMNS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#geometry_columns) 
 
-* SPATIAL_REF_SYS
+* [SPATIAL_REF_SYS](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#spatial_ref_sys)
 
 #### 삭제된 테이블
 
