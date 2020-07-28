@@ -76,7 +76,7 @@ New Features
 
   자세한 내용은 [Spatial SQL Refernce 매뉴얼](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md)을 참고하시기 바랍니다.
 
-  GEOMETRY 컬럼에 대한 제약사항이 추가되었으므로, [SRID제약사항]([https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#geometry-%EC%B9%BC%EB%9F%BC%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%9C%EC%95%BD-%EC%82%AC%ED%95%AD](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#geometry-칼럼에-대한-제약-사항))를 참고하시기 바랍니다.
+  GEOMETRY 컬럼에 대한 제약사항이 추가되었으므로, [SRID제약사항](https://github.com/ALTIBASE/Documents/blob/master/Manuals/Altibase_7.1/kor/SpatialSQL.md#geometry-%EC%B9%BC%EB%9F%BC%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%9C%EC%95%BD-%EC%82%AC%ED%95%AD)를 참고하시기 바랍니다.
 
   > 주의사항 
   >
