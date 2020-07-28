@@ -166,22 +166,23 @@ New Features
   GEOMETRY ST_Transform( GEOMETRY, VARCHAR from_proj4text, INTEGER to_srid );
   ```
 
-  > 주의
+>주의
 >
-  > 이 함수는 Intel 환경의 Linux 에서만 사용되며, 다른 환경에서 호출시에는 아래와 같이 오류가 발생합니다.
+>이 함수는 PROJ 라이브러리를 사용하는 함수로 altibase 서버에 내장되어 있습니다. (PROJ 버전: 4.9.3)
 >
-  > [ERR-31129 : Procedure or function not found.]
+>Intel 환경의 Linux 에서만 사용할수 있으며, 다른 환경에서 호출시에는 아래와 같이 해당 함수를 찾을 수 없다는 오류가 발생합니다.
 >
-  >  입출력 좌표계는 SRID 또는 PROJ4TEXT 문자열로 입력될 수 있으며, PROJ4TEXT 문법은 PROJ 라이브러리 버전 4 형식만 지원합니다.
+>[ERR-31129 : Procedure or function not found.]
+>
+>PROJ4TEXT 문법은 PROJ 라이브러리 버전 4 형식만 지원합니다.
 
 -   **재현 방법**
-
-    -   **재현 절차**
-
-    -   **수행 결과**
-
-    -   **예상 결과**
-
+-   **재현 절차**
+    
+-   **수행 결과**
+    
+-   **예상 결과**
+    
 -   **Workaround**
 
 -   **변경사항**
@@ -349,7 +350,7 @@ ST_PolygonFromText( wkt [, SRID] )
 -   **module** : sm\_resource
 -   **Category** : Enhancement
 -   **재현 빈도** : Frequence
--   **증상** : MAX_OPEN_DATAFILE_COUNT property 보다 사용하는 file이 더 많을 때 발생하는 mutex 병목을 제거 합니다.
+-   **증상** : MAX_OPEN_DATAFILE_COUNT 프로퍼티 보다 사용하는 file이 더 많을 때 발생하는 mutex 병목을 제거 합니다.
 -   **재현 방법**
 
     -   **재현 절차**
