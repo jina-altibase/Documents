@@ -56,7 +56,7 @@ New Features
 
 - **증상** : ESRI의 ArcGIS 연동을 위하여 SRID(Spatial Reference IDentifier) Interface 를 지원합니다.
 
-  SRID(Spatial Reference Identifier)는 공간 객체를 구분하기 위해 지정하는 식별자입니다. SRID는 GEOMETRY 칼럼에 적용할 수 있으며, 테이블에 INSERT하는 GEOMETRY 객체에 SRID를 지정할 수도 있습니다.
+  SRID(Spatial Reference IDentifier)는 공간 객체를 구분하기 위해 지정하는 식별자입니다. SRID는 GEOMETRY 칼럼에 적용할 수 있으며, 테이블에 INSERT하는 GEOMETRY 객체에 SRID를 지정할 수도 있습니다. 칼럼이나 객체의 SRID를 지정하지 않는 경우 기본값으로 0이 됩니다.
 
   공간 정보를 가지는 테이블 생성구문에 SRID 속성이 추가되었습니다.
 
@@ -169,6 +169,8 @@ New Features
 >주의
 >
 >이 함수는 PROJ 라이브러리를 사용하는 함수로 altibase 서버에 내장되어 있습니다. (PROJ 버전: 4.9.3)
+>
+>추가된 ST_transform 함수 사용시 PROJ 라이브러리가 사용하는 메모리는 알티베이스에서 관리되지 않습니다.
 >
 >Intel 환경의 Linux 에서만 사용할수 있으며, 다른 환경에서 호출시에는 아래와 같이 해당 함수를 찾을 수 없다는 오류가 발생합니다.
 >
@@ -1146,7 +1148,7 @@ Fixed Bugs
     -   Compile Option
     -   Error Code
 
-### BUG-47945 Disk Buffer의 CheckPoint List 오류에 대한 디버깅 코드 추가.
+### BUG-47945 Disk Buffer의 CheckPoint List 오류에 대한 디버깅 코드 추가
 
 -   **module** : sm-disk-resource
 
@@ -1210,7 +1212,7 @@ Fixed Bugs
 
 -   **재현 빈도** : Always
 
--   **증상** : 서버 비정상 종료 이후, DW_BUFFER를 이용하여 깨진 페이지(Corrupt Page)를 복구할 때, 내부적으로 DW에서 Logging을 시도하여 비정상 종료하는 문제가 발생합니다. 불필요한 logging을 시도하지 않도록 수정하여 비정상 종료가 발생하지 않도록 수정합니다.
+-   **증상** : 서버 비정상 종료 이후, DW_BUFFER를 이용하여 깨진 페이지(Corrupt Page)를 복구할 때, 내부적으로 DW에서 Logging을 시도하여 비정상 종료하는 문제가 발생합니다. 불필요한 logging을 시도하지 않도록 수정하여 해결합니다.
 
 -   **재현 방법**
 
@@ -1450,7 +1452,9 @@ BUG-47805 SRID 인터페이스 지원으로 메타 버전이 8.7.1에서 8.8.1�
 
 #### Replication protocol Version
 
-BUG-47873으로 인해, Replication protocol version이 7.4.5에서 7.4.6으로 변경됨에 따라, 내부적으로 ALA 프로토콜이 변경되었습니다. 이로 인해, 7.1.0.4.0 JDBC Adapter 와 oraAdapter 에서 아래의 오류(BUG-48015)가 발생합니다. 이 문제는 다음번 패치(7.1.0.4.1)에서 반영될 예정입니다.
+BUG-47873으로 인해, 이중화 프로토콜 버전이 7.4.5에서 7.4.6으로 변경됨에 따라, GEOMETRY 컬럼을 사용하는 고객의 경우 하위 버전과 이중화가 되지 않습니다.
+
+또한 내부적으로 ALA 프로토콜이 변경되어, 7.1.0.4.0 JDBC Adapter 와 oraAdapter 에서 아래의 오류(BUG-48015)가 발생합니다. 이 문제는 다음번 패치(7.1.0.4.1)에서 반영될 예정입니다.
 
 > BUG-48015 ALA protocol 변경으로 인해 jdbcAdapter, oraAdapter가 7.1.0.3.9 이하 버전과 연동 되지 않습니다. 
 
